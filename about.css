@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 :root {
 	--main-border: 0.25em solid #399677;
@@ -240,3 +241,247 @@
 	}
 
 }
+=======
+
+:root {
+	--main-border: 0.25em solid #399677;
+	--main-radius: 1.5em;
+	--main-padding: 0.25em;
+	--main-bg: #d5ffbd;
+	--btn-gradient: linear-gradient(
+		0deg,
+		rgba(172, 227, 158, 1) 0%,
+		rgba(186, 233, 158, 1) 20%,
+		rgba(221, 246, 192, 1) 100%
+	);
+	--btn-solid: rgb(173, 209, 151);
+}
+
+
+.container {
+	line-height: 1.2em;
+	margin: 1em auto;
+	display: grid;
+	grid-template-columns: 1fr 1fr 0.5fr 1.5fr;
+	grid-template-rows: repeat(7, auto);
+	grid-template-areas:
+		"banner banner banner banner"
+		"side1 main main main"
+		"side1 mecore mecore mecore"
+		"side1 likes likes dislikes"
+		"side1 interests interests interests"
+		"side1 footer footer footer";
+}
+
+.maininfo {
+	background-color: var(--main-bg);
+	border: var(--main-border);
+	border-radius: var(--main-radius);
+	grid-area: main;
+}
+
+
+.felixlet {
+	height: 5.5em;
+	margin-right: 1.5em;
+	float: left;
+	border-radius: 1em;
+}
+
+.intro {
+	width: 100%;
+}
+
+.toast{
+	margin: 0 auto;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.flags img {
+	margin: 0.25em;
+	height: 1.5em;
+}
+
+.mecore {
+	border: var(--main-border);
+	border-radius: var(--main-radius);
+	background-color: var(--main-bg);
+	grid-area: mecore;
+}
+
+.basic {
+	font-weight: 1000;
+	filter: drop-shadow(0px 1px #004a47) drop-shadow(0 -1px #004a47)
+		drop-shadow(1px 0 #004a47) drop-shadow(-1px 0 #004a47);
+	color: white;
+	font-family: Pixelon;
+	font-size: 1.5em;
+	width: 100%;
+}
+
+.basic img {
+	height: 0.75em;
+}
+
+.textbox {
+	overflow-x: hidden;
+	height: 15.5em;
+	overflow-y: scroll;
+	margin: 0 auto 0 auto;
+	width: 100%;
+}
+
+
+.textbox p{
+	padding: 0 1em 0.5em 1em;
+	margin: 0 auto;
+	text-align: left;
+}
+
+.textbox h4{
+	text-align: center;
+	font-weight: 1000;
+	filter: drop-shadow(0px 1px #004a47) drop-shadow(0 -1px #004a47)
+		drop-shadow(1px 0 #004a47) drop-shadow(-1px 0 #004a47);
+	color: white;
+	font-family: 'Pixelon';
+	line-height: 0.5em;
+	margin: 0.5em auto;
+}
+.likes ul,
+.dislikes ul {
+	margin: 0 0.5em 0 0;
+	height: 5em;
+	overflow-y: scroll;
+}
+
+.labels {
+	line-height: 0.75em;
+	font-weight: 1000;
+	filter: drop-shadow(0px 1px #004a47) drop-shadow(0 -1px #004a47)
+		drop-shadow(1px 0 #004a47) drop-shadow(-1px 0 #004a47);
+	color: white;
+	font-family: 'Pixelon';
+	font-size: 1em;
+	margin: 0 auto 0.5em auto;
+}
+
+.maininfo p {
+	margin: 0.5em auto 0.5em auto;
+}
+
+.mecont {
+	padding: 0.5em;
+	display: grid;
+	grid-template-columns: repeat(6, auto);
+	grid-template-rows: auto;
+}
+
+.mecore img {
+	margin: 0.5em auto;
+	width: 100%;
+}
+
+.likes {
+	background-color: var(--main-bg);
+	border: var(--main-border);
+	border-radius: var(--main-radius);
+	grid-area: likes;
+}
+
+.dislikes {
+	background-color: var(--main-bg);
+	border: var(--main-border);
+	border-radius: var(--main-radius);
+	grid-area: dislikes;
+}
+
+.interests {
+	background-color: var(--main-bg);
+	border: var(--main-border);
+	border-radius: var(--main-radius);
+	grid-area: interests;
+}
+
+.interests p {
+	text-align: left;
+	margin-bottom: 0.25em;
+}
+
+.interests img {
+	width: 100%;
+}
+
+.intcont {
+	height: 10em;
+	overflow-y: scroll;
+	padding: 0.5em;
+}
+
+.intcont p {
+	border: 0.25em dotted #a5dba0;
+	background-color: #c4f1b2;
+	padding: 0.5em;
+	margin: 0.5em auto;
+}
+
+
+@media only screen and (max-width: 850px) {
+	.jobname {
+		font-size: 1.2em !important;
+	}
+
+	body {
+		padding: 0;
+		margin: 0;
+	}
+
+	.container {
+		align-self: start;
+		width: 95% !important;
+		margin: 0 auto;
+		grid-gap: none;
+		grid-template-columns: 0.5fr 1fr;
+		grid-template-rows: repeat(8, auto);
+		grid-template-areas:
+			"banner banner"
+			"side1 main"
+			"side1 mecore"
+			"side1 likes"
+			"side1 dislikes"
+			"side1 interests"
+			"side1 footer";
+	}
+
+	.textbox {
+		height: 16em;
+	}
+
+
+	.likes ul,
+	.dislikes ul {
+		height: 6em;
+	}
+	.textbox strong{
+	    line-height: 1.6;
+			font-size: 1.6em;
+	}
+
+	.mecont {
+		height: fit-content;
+		margin: 1em 0;
+		width: calc(100%-20%);
+		grid-template-columns: repeat(3, 1fr);
+		grid-template-rows: repeat(2, 1fr);
+	}
+
+
+
+	.footer {
+		width: 55%;
+	}
+
+}
+>>>>>>> 6eb4c7c (fixing my mistakes)

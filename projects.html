@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -153,3 +154,160 @@
 
 </body>
 </html>
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Projects</title>
+    <link rel="icon" href="img/favicon.ico">
+    <link rel="stylesheet" href="about.css">
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+    .textbox {
+        height: 28em;
+    }
+    details {
+        margin-bottom: 0.5rem; /* Reduced margin between sections */
+
+        padding: 0.5rem; /* Smaller padding to make it compact */
+    }
+
+    summary {
+        cursor: pointer;
+        list-style: none;
+        outline: none;
+        padding: 0.3rem 0; /* Adjusted padding for a tighter fit */
+        margin: 0; /* Removed margin to reduce space between summaries */
+    }
+
+    summary::-webkit-details-marker {
+        display: none;
+    }
+
+    summary::before {
+        content: "▶ ";
+        display: inline-block;
+        margin-right: 0.5rem;
+        transition: transform 0.2s ease;
+    }
+
+    details[open] summary::before {
+        transform: rotate(90deg);
+    }
+
+    .gallery-item {
+        display: none; /* Hide gallery items by default */
+        margin-top: 1rem;
+    }
+
+    details[open] .gallery-item {
+        display: block; /* Show gallery items when dropdown is open */
+    }
+
+
+    .gallery-item img {
+        width: 50%;
+        height: auto;
+        border: 2px solid #666;
+        border-radius: 5px;
+        margin-top: 10px;
+    }
+    .link{
+      color: #2c4a5c;
+    }
+    #travel{
+      width: 90%;
+    }
+    </style>
+</head>
+
+<body>
+
+    <div class="main">
+
+    <div class="container">
+      <div class="banner">
+        <img class="banimg" src="img/log.png" alt="Zoie Firkins tab">
+      </div>
+      <div class="side1">
+
+        <nav>
+          <div class="labeled"><p>Nav</p></div>
+            <a href="index.html">❥ Home</a>
+            <a href="about.html">❥ About Me</a>
+            <a href="gallery.html">❥ Gallery</a>
+            <a href="projects.html">❥ Projects</a>
+            <a href="contact.html">❥ Contact me</a>
+          <div class="labeled" style="border-radius: 0;">
+            <p>Outlinks</p>
+          </div>
+          <a href="mailto:zmfirkins@gmail.com" target="_blank" rel="noopener noreferrer">❥ Email</a>
+          <a href="https://github.com/zmfirkins" target="_blank" rel="noopener noreferrer">❥ Github</a>
+          <a href="https://www.linkedin.com/in/zoie-firkins-2832b2321/" target="_blank" rel="noopener noreferrer">❥ LinkedIn</a>
+          <a href="https://www.artstation.com/luckyducky3rd" target="_blank" rel="noopener noreferrer">❥ Art Station</a>
+          <a class="last" href="https://dribbble.com/zmfirkins"target="_blank" rel="noopener noreferrer">❥ Dribble</a>
+        </nav>
+      </div>
+
+      <div class="maininfo">
+        <div class="labeled">
+          <p>🏗️ Projects 🏗️</p>
+        </div>
+
+        <div class="textbox">
+          <details>
+            <summary><strong>Interactive Art Sandbox</strong></summary>
+            <div class="gallery-item">
+                <img src="img/apple.png" alt="Apple" loading="lazy">
+                <br>
+                <a class = "link" href="https://github.com/zmfirkins/InteractiveArtSandbox.git">Art Sandbox Github</a>
+            </div>
+          </details>
+
+          <details>
+            <summary><strong>TravelNest - booking near your adventurers made easy</strong></summary>
+            <div class="gallery-item">
+                <img id = "travel" src="img/travelnest.png" alt="TravelNest Image" loading="lazy">
+          <p>
+            TravelNest is a personal project inspired by a conversation with my dad while we were planning a trip to Chicago. We wanted to stay somewhere that was roughly central to all the places we wanted to visit — and that sparked the idea.<br>
+            TravelNest lets you input any locations you plan to visit and then suggests nearby hotels or Airbnbs based on the average location of those places. It’s a simple tool to help make trip planning smarter and more efficient.<br>
+            The project is still a work in progress — in the future, I’d love to add the ability to view popular attractions directly on the map and easily add them to your list.
+            <br>
+          </br>
+            <a class = "link" href="https://zmfirkins.github.io/travelnest/" target="_blank" rel="noopener noreferrer">TravelNest Website</a><br>
+          </br>
+            <a class = "link" href="https://github.com/zmfirkins/travelnest" target="_blank" rel="noopener noreferrer">TravelNest Github Repo</a><br>
+          </p>
+            </div>
+          </details>
+
+        <!--  <details>
+            <summary><strong>InspoNet</strong></summary>
+            <div class="gallery-item">
+
+            </div>
+          </details>
+
+          <details>
+            <summary><strong>Local Legends</strong></summary>
+            <div class="gallery-item">
+      
+            </div>
+          </details>
+-->
+        </div>
+      </div>
+
+    </div>
+    <div class="footer">
+      <mark>
+        <br>Zoie Firkins zmfirkins@gmail.com
+        </mark>
+    </div>
+  </div>
+
+</body>
+</html>
+>>>>>>> 6eb4c7c (fixing my mistakes)
