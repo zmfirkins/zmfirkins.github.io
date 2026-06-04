@@ -409,7 +409,12 @@ p {
 	border-radius: 1.3em;
 	max-width: 100%;
 }
-.tea, .rat{
+ .rat{
+	display: block;
+	border-radius: 1.3em;
+	max-width: 200px;
+}
+ .cat{
 	display: block;
 	border-radius: 1.3em;
 	max-width: 200px;
@@ -440,9 +445,13 @@ p {
   .toast {
 		height: 6em !important;
 	}
-	.tea,
+
 .rat {
 	width: 45%;  /* adjust to your preference */
+	height: auto;
+}
+	.cat {
+	width: 50%;  /* adjust to your preference */
 	height: auto;
 }
 	.footer{
