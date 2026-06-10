@@ -1,177 +1,220 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8" />
-    <title>About Me</title>
-    <link rel="icon" href="img\favicon.ico">
-    <link rel="stylesheet" href="about.css">
-    <link rel="stylesheet" href="style.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-</head>
+/* about.css — layout only, no color overrides */
 
-<body>
+.container {
+	line-height: 1.2em;
+	margin: 1em auto;
+	display: grid;
+	grid-template-columns: 1fr 1fr 0.5fr 1.5fr;
+	grid-template-rows: repeat(7, auto);
+	grid-template-areas:
+		"banner banner banner banner"
+		"side1 main main main"
+		"side1 mecore mecore mecore"
+		"side1 likes likes dislikes"
+		"side1 interests interests interests"
+		"side1 footer footer footer";
+}
 
-    <div class="main">
+.maininfo {
+	grid-area: main;
+}
 
-    <div class="container">
-      <div class="banner">
-        <img class="banimg" src="img\log.png" alt="Zoie Firkins tab">
-      </div>
-      <div class="side1">
+.felixlet {
+	height: 5.5em;
+	margin-right: 1.5em;
+	float: left;
+	border-radius: 1em;
+}
 
-        <nav>
-          <div class="labeled"><p>Nav</p></div>
-           <a href="index.html">❥ Home</a>
-            <a href="about.html">❥ About Me</a>
-            <a href="gallery.html">❥ Gallery</a>
-            <a href="library.html">❥ Library</a>
-            <a href="projects.html">❥ Projects</a>
-            <a href="contact.html">❥ Contact me</a>
-          <div class="labeled" style="border-radius: 0;">
-            <p>Outlinks</p>
-          </div>
-          <a href="mailto:zmfirkins@gmail.com" target="_blank" rel="noopener noreferrer">❥ Email</a>
-          <a href="https://github.com/zmfirkins" target="_blank" rel="noopener noreferrer">❥ Github</a>
-          <a class="last" href="https://www.linkedin.com/in/zoie-firkins-2832b2321/" target="_blank" rel="noopener noreferrer">❥ LinkedIn</a>
-          
-        </div>
-      <div class="maininfo">
-        <div class="labeled">
-          <p>
-          🐸  About Me 🐸
-          </p>
-        </div>
-        <div class="basic">
-          <p>
-            Zoie Firkins | She/Her | 22
-          </p>
-        </div>
+.intro {
+	width: 100%;
+}
 
-          <div class="textbox">
-            <p>
-              <img class="toast" src="img\zoie_and_toast.png">
-            </br>
-              <p>
-              Hi! I am Zoie Firkins.
-              </br>
-              I am currently 22 years old and live in Iowa.
-              </br>
+.toast {
+	margin: 0 auto;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
 
-              <p><strong> 🎱 Interests  🎱</strong></p>
-              <p> My favorite hobbies include video games, all mediums of art, and programming. I hope to find a job where I can combine my artist skills with my technology skills to create creative, yet practical and functional projects.</p>
-              </br>
+.flags img {
+	margin: 0.25em;
+	height: 1.5em;
+}
 
-              <p><strong>💼 Experience 💼</strong></p>
-              <p class = "jobname">Perfection Learning, Clive— IT Generalist </p>
-              <p class = "time">January 2025-- PRESENT</p>
-              <ul>
-                <li>Provide hardware and software support across departments</li>
-                <li>Maintain user accounts, permissions, and systems access</li>
-                <li>Troubleshoot network and workstation issues for staff</li>
-                <li>Assist with deployment, maintenance, and documentation of IT systems</li>
-                <li>Ensure timely resolution of tickets and escalate complex issues when necessary</li>
-              </ul>
+.mecore {
+	border: var(--main-border);
+	border-radius: var(--main-radius);
+	background-color: var(--main-bg);
+	grid-area: mecore;
+}
 
-              <p class = "jobname">  Menards, Grimes — Service Desk Worker / Cashier </p>
-              <p class = "time">  OCTOBER 2022-- MAY 2025</p>
-              <ul>
-                <li>Assisted with POS transactions and product returns</li>
-                <li>Resolved customer service concerns with professionalism</li>
-                <li>Maintained knowledge of store layout to help customers locate items</li>
-              </ul>
-            </br>
+.basic {
+	font-weight: 1000;
+	filter: drop-shadow(0px 1px #00364a) drop-shadow(0 -1px #00364a)
+		drop-shadow(1px 0 #00364a) drop-shadow(-1px 0 #00364a);
+	color: white;
+	font-family: Pixelon;
+	font-size: 1.5em;
+	width: 100%;
+}
 
-              <p><strong>🎓 Education 🎓</strong></p>
-              <p class = "jobname"> Grand View University, Des Moines- BS</p>
-              <p class = "time">August 2024 - May 2026 </p>
-              <p> Graduated with a Bachleors of Arts in Information Technology. </p>
+.basic img {
+	height: 0.75em;
+}
 
-              <p class = "jobname"> DMACC, Ankeny— AAS </p>
-              <p class = "time">  May 2022  - May 2024 </p>
-              <p> Graduated with an Associates in Computer Information Systems.</p>
-              </br>
+.textbox {
+	overflow-x: hidden;
+	height: 15.5em;
+	overflow-y: scroll;
+	margin: 0 auto;
+	width: 100%;
+}
 
-              <p><strong>🛠️ Skills 🛠️</strong></p>
-              <ul>
-                <li>Great organization and time management</li>
-                <li>Technology and adaptability to new software</li>
-                <li>Quick learner and an aptitude for helping others</li>
-              </ul>
-              </br>
+.textbox p {
+	padding: 0 1em 0.5em 1em;
+	margin: 0 auto;
+	text-align: left;
+}
 
-              <p><strong>💻 Programming / Software capabilities 💻</strong></p>
-              <p class = "jobname">  All Google / Microsoft Platforms </p>
-              <p class = "jobname">    Atom </p>
-              <p> HTML, CSS, Javascript, and Bootstrap programming</p>
-              <p class = "jobname">    Eclipse </p>
-              <p>Java program creation</p>
-              <p class = "jobname">    Visual Studio </p>
-              <p> Java, C#, Python, and C++ program creation</p>
-              <p class = "jobname">    SQL Developer/MYSQL </p>
-              <p> Database management systems</p>
-              <p class = "jobname">  PyCharm </p>
-              <p>Python program creation</p>
-              <p class = "jobname">  Github </p>
-              <p>Project sharing and management</p>
-            </p>
-          </div>
-      </div>
+.textbox h4 {
+	text-align: center;
+	font-weight: 1000;
+	filter: drop-shadow(0px 1px #00364a) drop-shadow(0 -1px #00364a)
+		drop-shadow(1px 0 #00364a) drop-shadow(-1px 0 #00364a);
+	color: white;
+	font-family: 'Pixelon';
+	line-height: 0.5em;
+	margin: 0.5em auto;
+}
 
-      <div class="likes">
-        <div class="labeled">
-          <p>
-            Favorites
-          </p>
-        </div>
-        <p>
-          <ul style="list-style-type: none;">
-            <li>Color: Blue</li>
-            <li>Animal: Raccoon or Cat</li>
-            <li>Game: Night In The Woods</li>
-            <li>Genre: Psychological Horror</li>
-            <li>Movie: Heathers</li>
-            <li>Trilogy: Knives Out</li>
-            <li>Anime: Death Note</li>
-            <li>Manga: The Summer Hikaru Died</li>
-            <li>Band: Peach Pit</li>
-            <li>Book: Howls Moving Castle</li>
-            <li>Musical: Ride The Cyclone</li>
-            <li>Aesthetic: Whimsical Goth</li>
-          </ul>
-        </p>
-      </div>
-      <div class="dislikes">
-        <div class="labeled">
-          <p>
-          Songs on Replay
-          </p>
-        </div>
-        <p>
-          <ul>
-            <li>Vickie by Peach Pit</li>
-            <li>Headlock by Imogen Heap</li>
-            <li>New Waves by Ellie Dixon & Austin Prince</li>
-            <li>Blue Hair by TV Girl</li>
-            <li>Voodoo by Valencia Grace</li>
-            <li>Dracula by Tame Impala</li>
-            <li>She's My Collar by Gorillaz & Kali Uchis</li>
-            <li>Do I Wanna Know? by Arctic Monkeys</li>
-            <li>Helena by My Chemical Romance</li>
-          </ul>
-        </p>
-      </div>
+.likes ul,
+.dislikes ul {
+	margin: 0 0.5em 0 0;
+	height: 5em;
+	overflow-y: scroll;
+}
 
-      </div>
-      <div class="footer">
-        <mark>
-          <br>Zoie Firkins zmfirkins@gmail.com
-          </mark>
-      </div>
-    </div>
+.labels {
+	line-height: 0.75em;
+	font-weight: 1000;
+	filter: drop-shadow(0px 1px #00364a) drop-shadow(0 -1px #00364a)
+		drop-shadow(1px 0 #00364a) drop-shadow(-1px 0 #00364a);
+	color: white;
+	font-family: 'Pixelon';
+	font-size: 1em;
+	margin: 0 auto 0.5em auto;
+}
 
-    </div>
+.maininfo p {
+	margin: 0.5em auto;
+}
 
+.mecont {
+	padding: 0.5em;
+	display: grid;
+	grid-template-columns: repeat(6, auto);
+	grid-template-rows: auto;
+}
 
+.mecore img {
+	margin: 0.5em auto;
+	width: 100%;
+}
 
-</body>
-</html>
+.likes {
+	border: var(--main-border);
+	border-radius: var(--main-radius);
+	background-color: var(--main-bg);
+	grid-area: likes;
+}
+
+.dislikes {
+	border: var(--main-border);
+	border-radius: var(--main-radius);
+	background-color: var(--main-bg);
+	grid-area: dislikes;
+}
+
+.interests {
+	border: var(--main-border);
+	border-radius: var(--main-radius);
+	background-color: var(--main-bg);
+	grid-area: interests;
+}
+
+.interests p {
+	text-align: left;
+	margin-bottom: 0.25em;
+}
+
+.interests img {
+	width: 100%;
+}
+
+.intcont {
+	height: 10em;
+	overflow-y: scroll;
+	padding: 0.5em;
+}
+
+.intcont p {
+	border: 0.25em dotted #a5c8db;
+	background-color: #b8dff5;
+	padding: 0.5em;
+	margin: 0.5em auto;
+}
+
+@media only screen and (max-width: 850px) {
+	.jobname {
+		font-size: 1.2em !important;
+	}
+
+	body {
+		padding: 0;
+		margin: 0;
+	}
+
+	.container {
+		align-self: start;
+		width: 95% !important;
+		margin: 0 auto;
+		grid-gap: none;
+		grid-template-columns: 0.5fr 1fr;
+		grid-template-rows: repeat(8, auto);
+		grid-template-areas:
+			"banner banner"
+			"side1 main"
+			"side1 mecore"
+			"side1 likes"
+			"side1 dislikes"
+			"side1 interests"
+			"side1 footer";
+	}
+
+	.textbox {
+		height: 16em;
+	}
+
+	.likes ul,
+	.dislikes ul {
+		height: 6em;
+	}
+
+	.textbox strong {
+		line-height: 1.6;
+		font-size: 1.6em;
+	}
+
+	.mecont {
+		height: fit-content;
+		margin: 1em 0;
+		width: calc(100% - 20%);
+		grid-template-columns: repeat(3, 1fr);
+		grid-template-rows: repeat(2, 1fr);
+	}
+
+	.footer {
+		width: 55%;
+	}
+}
