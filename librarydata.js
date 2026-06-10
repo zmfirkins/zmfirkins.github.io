@@ -20,8 +20,6 @@ const categories = [
   { id: "movie", label: "🎬 Movies" },
   { id: "anime", label: "🌸 Anime"  },
   { id: "manga", label: "📖 Manga"  },
-  { id: "show",  label: "📺 Shows"  },
-  { id: "book",  label: "📚 Books"  },
 ];
 
 // ── CSV parser ────────────────────────────────────────
