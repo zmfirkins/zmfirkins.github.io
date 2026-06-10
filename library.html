@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Library</title>
+  <link rel="icon" href="img/favicon.ico">
+  <link rel="stylesheet" href="about.css">
+  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    .filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4em;
+      padding: 0.5em;
+      align-items: center;
+    }
+    .filter-btn {
+      font-family: 'Pixelon', monospace;
+      font-size: 0.85em;
+      color: #4b6779;
+      border: none;
+      border-bottom: 0.1em solid #77a8b9;
+      background: var(--btn-gradient);
+      border-radius: 0.8em;
+      padding: 0.35em 0.8em;
+      cursor: pointer;
+    }
+    .filter-btn:hover, .filter-btn.active {
+      color: #2E4A5C;
+      background: linear-gradient(0deg, #9bd0eb 0%, #86bde0 20%, #a5d3f3 100%);
+    }
+    .grid-scroll {
+      max-height: 28em;
+      overflow-y: auto;
+      scrollbar-width: thin;
+      scrollbar-color: #8fbad3 transparent;
+    }
+    .fav-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 0.6em;
+      padding: 0.6em;
+    }
+    .fav-card {
+      border-radius: var(--main-radius);
+      border: var(--main-border);
+      background-color: var(--main-bg);
+      overflow: hidden;
+    }
+    .fav-card.hidden { display: none; }
+    .fav-card .card-body { padding: 0.4em 0.75em 0.75em; }
+    .fav-card .card-note {
+      font-size: 0.78em;
+      color: #416478;
+      margin-bottom: 0.3em;
+    }
+    .fav-card .labeled {
+      height: auto;
+      min-height: 1.5em;
+      padding: 0.3em 0.5em;
+      white-space: normal;
+      text-align: center;
+    }
+    .fav-card .labeled p {
+      font-size: 0.9em;
+      white-space: normal;
+      word-break: break-word;
+      line-height: 1.2;
+    }
+
+    /* ── Half-star rating system ── */
+    .stars {
+      display: inline-flex;
+      gap: 0;
+      letter-spacing: -1px;
+      font-size: 1.2em;
+      line-height: 1;
+    }
+    .star-full  { color: #397a96; }
+    .star-empty { color: #b3d6e8; }
+    .star-half  {
+      background: linear-gradient(90deg, #397a96 50%, #b3d6e8 50%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* letterboxd status strip */
+    .lb-status {
+      font-size: 0.72em;
+      color: #416478;
+      padding: 0.2em 0.6em 0.4em;
+      text-align: center;
+    }
+    .lb-status a { color: #397a96; text-decoration: none; }
+    .lb-status a:hover { text-decoration: underline; }
+    .lb-loading { color: #7aabb8; font-style: italic; padding: 0.4em 0.6em; font-size: 0.8em; }
+  </style>
+</head>
+<body>
+<div class="main">
+  <div class="container">
+
+    <div class="banner">
+      <img class="banimg" src="img/log.png" alt="Zoie Firkins tab">
+    </div>
+
+    <div class="side1">
+      <nav>
+        <div class="labeled"><p>Nav</p></div>
+        <a href="index.html">❥ Home</a>
+        <a href="about.html">❥ About Me</a>
+        <a href="gallery.html">❥ Gallery</a>
+        <a href="library.html">❥ Library</a>
+        <a href="projects.html">❥ Projects</a>
+        <a href="contact.html">❥ Contact me</a>
+        <div class="labeled" style="border-radius: 0;"><p>Outlinks</p></div>
+        <a href="mailto:zmfirkins@gmail.com" target="_blank" rel="noopener noreferrer">❥ Email</a>
+        <a href="https://github.com/zmfirkins" target="_blank" rel="noopener noreferrer">❥ Github</a>
+        <a class="last" href="https://www.linkedin.com/in/zoie-firkins-2832b2321/" target="_blank" rel="noopener noreferrer">❥ LinkedIn</a>
+      </nav>
+    </div>
+
+    <div class="maininfo">
+      <div class="labeled"><p>📖 Library 📖</p></div>
+
+      <div class="filter-bar" id="filterBar"></div>
+      <div class="grid-scroll">
+        <div class="fav-grid" id="grid"></div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  <mark><br>Zoie Firkins zmfirkins@gmail.com</mark>
+</div>
+
+<script src="librarydata.js"></script>
+<script>
+
+const LETTERBOXD_USERNAME = "zmfirkins"; // ← change to your username, or null to disable
+
+
+// ── Half-star renderer ────────────────────────────────
+// rating: 0–5, supports .5 increments
+function makeStars(rating) {
+  let html = '<div class="stars">';
+  for (let i = 1; i <= 5; i++) {
+    if (rating >= i) {
+      html += '<span class="star-full">★</span>';
+    } else if (rating >= i - 0.5) {
+      html += '<span class="star-half">★</span>';
+    } else {
+      html += '<span class="star-empty">★</span>';
+    }
+  }
+  return html + "</div>";
+}
+
+// ── Build a card element ──────────────────────────────
+function makeCard(title, category, rating, note, lbUrl) {
+  const card = document.createElement("div");
+  card.className = "fav-card";
+  card.dataset.category = category;
+  card.innerHTML = `
+    <div class="labeled"><p>${title}</p></div>
+    <div class="card-body">
+      ${note  ? `<div class="card-note">${note}</div>` : ""}
+      ${makeStars(rating)}
+    </div>
+    ${lbUrl ? `<div class="lb-status"><a href="${lbUrl}" target="_blank" rel="noopener">↗ letterboxd</a></div>` : ""}
+  `;
+  return card;
+}
+
+// ── Build filter buttons ──────────────────────────────
+const filterBar = document.getElementById("filterBar");
+categories.forEach(cat => {
+  const btn = document.createElement("button");
+  btn.className = "filter-btn" + (cat.id === "all" ? " active" : "");
+  btn.dataset.filter = cat.id;
+  btn.textContent = cat.label;
+  filterBar.appendChild(btn);
+});
+
+// ── Render entries into the grid ──────────────────────
+const grid = document.getElementById("grid");
+
+function renderEntries(entries) {
+  entries.forEach(e => grid.appendChild(makeCard(e.title, e.category, e.rating, e.note || null, null)));
+}
+
+// ── Load sheet + manual entries ───────────────────────
+async function loadSheetEntries() {
+  const loader = document.createElement("div");
+  loader.className = "lb-loading";
+  loader.textContent = "⟳ loading ratings…";
+  grid.appendChild(loader);
+
+  // safety fallback in case librarydata.js didn't define these
+  const manual = (typeof manualEntries !== "undefined") ? manualEntries : [];
+  const fetchFn = (typeof fetchSheetEntries !== "undefined") ? fetchSheetEntries : null;
+
+  try {
+    if (!fetchFn) throw new Error("librarydata.js not loaded");
+    const sheetEntries = await fetchFn();
+    loader.remove();
+    renderEntries([...sheetEntries, ...manual]);
+  } catch (err) {
+    loader.textContent = "⚠ couldn't load sheet — check the CSV URL in librarydata.js";
+    console.warn("Sheet fetch error:", err);
+    renderEntries(manual);
+  }
+}
+
+loadSheetEntries();
+
+// ── Letterboxd RSS fetch ──────────────────────────────
+// Ratings come through as ★ / ½ in the description.
+async function loadLetterboxd(username) {
+  const rssUrl    = `https://letterboxd.com/${username}/rss/`;
+  const apiUrl    = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}`;
+
+  const loader = document.createElement("div");
+  loader.className = "lb-loading";
+  loader.textContent = "⟳ loading letterboxd ratings…";
+  grid.prepend(loader);
+
+  try {
+    const res  = await fetch(apiUrl);
+    const data = await res.json();
+
+    if (data.status !== "ok") throw new Error(data.message || "rss2json error");
+
+    loader.remove();
+
+    data.items.forEach(item => {
+      const link = item.link || "";
+
+      let rating = parseFloat(
+        item["letterboxd:memberRating"] ||
+        item.memberRating ||
+        0
+      );
+
+      // fallback: title format is "Film Name, 2025 - ★★½" — parse the stars
+      if (!rating) {
+        const stars = (item.title.match(/★/g) || []).length;
+        const half  = item.title.includes("½") ? 0.5 : 0;
+        rating = stars + half;
+      }
+
+      // also check description as last resort
+      if (!rating) {
+        const desc  = item.description || "";
+        const stars = (desc.match(/★/g) || []).length;
+        const half  = desc.includes("½") ? 0.5 : 0;
+        rating = stars + half;
+      }
+
+      // clean title: "Heathers, 1988 - ★★★★★" → "Heathers"
+      const cleanTitle = (item.title || "")
+        .replace(/\s*[-–]\s*[★½].*$/, "")  // remove " - ★★★" suffix
+        .replace(/,\s*\d{4}$/, "")          // remove ", 1988" year
+        .trim();
+
+      if (rating > 0 && cleanTitle) {
+        grid.appendChild(makeCard(cleanTitle, "movie", rating, null, link));
+      }
+    });
+
+  } catch (err) {
+    loader.textContent = "⚠ couldn't load letterboxd — add movies manually in the entries array";
+    console.warn("Letterboxd error:", err);
+  }
+}
+
+if (LETTERBOXD_USERNAME) loadLetterboxd(LETTERBOXD_USERNAME);
+
+// ── Filter logic ──────────────────────────────────────
+document.querySelectorAll(".filter-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    const f = btn.dataset.filter;
+    document.querySelectorAll(".fav-card").forEach(c => {
+      c.classList.toggle("hidden", f !== "all" && c.dataset.category !== f);
+    });
+  });
+});
+</script>
+</body>
+</html>
