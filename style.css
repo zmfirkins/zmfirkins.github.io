@@ -140,7 +140,7 @@ mark {
 /* ── Main wrapper ── */
 .main {
 	width: 98vw;
-	margin: 2em auto 1em auto;
+	margin: auto;
 }
 
 /* ── Default container grid (gallery, library, projects, contact) ── */
@@ -255,7 +255,7 @@ nav a:hover {
 	grid-area: banner;
 	padding-bottom: 1rem;
 }
-.banimg { margin: 0 auto; width: 100%; }
+.banimg { margin: 0 auto; width: 90%; }
 .side1  { grid-area: side1; }
 .side2  { max-width: 100%; grid-area: side2; }
 .stuff  { grid-area: stuff; }
