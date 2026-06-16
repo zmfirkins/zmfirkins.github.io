@@ -4,24 +4,26 @@
     <meta charset="UTF-8" />
     <title>Gallery/Portfolio</title>
     <link rel="icon" href="img/favicon.ico">
-    <link rel="stylesheet" href="about.css">
     <link rel="stylesheet" href="style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style>
     .textbox {
-        height: 28em;
+        height: auto;
+        max-height: 48em;
     }
     details {
-        margin-bottom: 0.5rem; /* Reduced margin between sections */
-        padding: 0.5rem; /* Smaller padding to make it compact */
+        margin-bottom: 0.5rem;
+        padding: 0.5rem;
     }
 
     summary {
         cursor: pointer;
         list-style: none;
         outline: none;
-        padding: 0.3rem 0; /* Adjusted padding for a tighter fit */
-        margin: 0; /* Removed margin to reduce space between summaries */
+        padding: 0.3rem 0;
+        margin: 0;
+        display: flex;
+        align-items: center;
     }
 
     summary::-webkit-details-marker {
@@ -39,30 +41,146 @@
         transform: rotate(90deg);
     }
 
+    .count-badge {
+        font-family: 'PixelOperator';
+        font-size: 0.7em;
+        background: #397a96;
+        color: white;
+        border-radius: 1em;
+        padding: 0.1em 0.6em;
+        margin-left: 0.6em;
+    }
+
     .gallery-item {
-        display: none; /* Hide gallery items by default */
+        display: none;
         margin-top: 1rem;
     }
 
     details[open] .gallery-item {
-        display: block; /* Show gallery items when dropdown is open */
+        display: block;
     }
 
-    .gallery-item img {
-        width: 50%;
-        height: auto;
+    .img-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        gap: 0.6rem;
+        padding: 0 0.25rem;
+    }
+
+    .img-grid figure {
+        margin: 0 auto;
+        position: relative;
+        aspect-ratio: 1 / 1;
+        max-width: 170px;
+        width: 100%;
         border: 2px solid #666;
         border-radius: 5px;
-        margin-top: 10px;
+        overflow: hidden;
+        cursor: pointer;
+        background: #9fc6dd;
+        transition: border-color 0.15s ease;
     }
-    .blur-image {
-  filter: blur(10px);
-  transition: filter 0.3s ease;
-}
 
-.clear {
-  filter: none;
-}
+    .img-grid figure:hover {
+        border-color: #2c4a5c;
+    }
+
+    .img-grid img {
+        width: 100%;
+        height: 100%;
+        margin:auto;
+        object-fit: cover;
+        display: block;
+    }
+
+    .sensitive-badge {
+        position: absolute;
+        top: 4px;
+        right: 4px;
+        background: #a33d3d;
+        color: white;
+        font-family: 'PixelOperator';
+        font-size: 0.65em;
+        padding: 0.1em 0.4em;
+        border-radius: 4px;
+        z-index: 2;
+    }
+
+    .blur-image img {
+        filter: blur(14px) !important;
+        transform: scale(1.1);
+        transition: filter 0.2s ease;
+    }
+
+    .blur-image.clear img {
+        filter: none !important;
+        transform: none;
+    }
+
+    /* Lightbox */
+    #lightbox {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(20, 35, 45, 0.85);
+        z-index: 999;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #lightbox.active {
+        display: flex;
+    }
+
+    .lb-box {
+        background: #cceeff;
+        border: var(--main-border);
+        border-radius: var(--main-radius);
+        padding: 1em;
+        max-width: 90vw;
+        max-height: 90vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .lb-box img {
+        max-width: 100%;
+        max-height: 65vh;
+        border-radius: 8px;
+        border: 2px solid #666;
+        object-fit: contain;
+    }
+
+    .lb-caption {
+        margin-top: 0.6em;
+        font-family: 'PixelOperator';
+        color: #416478;
+        text-align: center;
+    }
+
+    .lb-controls {
+        display: flex;
+        gap: 0.6em;
+        margin-top: 0.6em;
+    }
+
+    .lb-controls button {
+        font-family: 'Pixelon';
+        font-size: 0.8em;
+        color: #4b6779;
+        border: none;
+        border-bottom: 0.1em solid #77a8b9;
+        background: var(--btn-gradient);
+        border-radius: 8px;
+        padding: 0.5em 1em;
+        cursor: pointer;
+    }
+
+    .lb-controls button:hover {
+        color: #2E4A5C;
+        background: linear-gradient(0deg, #9bd0eb 0%, #86bde0 20%, #a5d3f3 100%);
+    }
     </style>
 </head>
 
@@ -99,48 +217,54 @@
         </div>
 
         <div class="textbox">
-          <details>
-            <summary><strong>Digital Paintings</strong></summary>
+          <details open>
+            <summary><strong>Digital Paintings</strong><span class="count-badge">11</span></summary>
             <div class="gallery-item">
-              <img src="img/xander.png" alt="Digital Painting of a DND character" loading="lazy">
-              <img src="img/dragon.png" alt="Digital Painting of a dragon" loading="lazy">
-              <img src="img/ace_what.png" alt="Digital Painting of a man" loading="lazy">
-              <img src="img/battle.png" alt="Digital Painting of people battling" loading="lazy">
-              <img src="img/kq.png" alt="Digital Painting of a dynamic group" loading="lazy">
-                <img src="img/room.png" alt="Digital Painting of dirty apartment with fun perspective" loading="lazy">
-              <img src="img/darius.png" alt="Digital Painting of a DND character" loading="lazy">
-              <img src="img/ava.png" alt="Digital Painting of a DND character" loading="lazy">
-                <img src="img/dnd.png" alt="Digital Painting of DND character" loading="lazy">
-              <img src="img/nash_and_ash.png" alt="Digital Painting of DND characters" loading="lazy">
-              <img src="img/gross.png" alt="Digital Artwork - Gore" class="blur-image" id="clickImage" loading="lazy">
-              <p> You can click this image to show! (It has gore!) </p>
+              <div class="img-grid">
+                <figure><img src="img/xander.png" alt="Digital Painting of my friend's DND character" loading="lazy"></figure>
+                <figure><img src="img/dragon.png" alt="Digital Painting of a dragon" loading="lazy"></figure>
+                <figure><img src="img/ace_what.png" alt="Digital Painting of a character I created" loading="lazy"></figure>
+                <figure><img src="img/battle.png" alt="Digital Painting of people battling" loading="lazy"></figure>
+                <figure><img src="img/kq.png" alt="Digital Painting of a dynamic dnd group" loading="lazy"></figure>
+                <figure><img src="img/room.png" alt="Digital Painting of dirty apartment" loading="lazy"></figure>
+                <figure><img src="img/darius.png" alt="Digital Painting of my friend's DND character" loading="lazy"></figure>
+                <figure><img src="img/ava.png" alt="Digital Painting of my friend's DND character" loading="lazy"></figure>
+                <figure><img src="img/dnd.png" alt="Digital Painting of myDND character" loading="lazy"></figure>
+                <figure><img src="img/nash_and_ash.png" alt="Digital Painting of DND characters" loading="lazy"></figure>
+                <figure class="blur-image" id="goreFigure"><span class="sensitive-badge">⚠ gore</span><img src="img/gross.png" alt="Digital Artwork - Gore" loading="lazy"></figure>
+              </div>
+              <p>The artwork marked ⚠ contains gore — click it to reveal.</p>
             </div>
           </details>
 
           <details>
-            <summary><strong>Sculptures/Dioramas</strong></summary>
+            <summary><strong>Sculptures/Dioramas</strong><span class="count-badge">5</span></summary>
             <div class="gallery-item">
-                <img src="img/goose.jpg" alt="Whimsical Jewlery Box" loading="lazy">
-                <img src="img/nuka.jpg" alt="Nuka Cola Minifridge" loading="lazy">
-                <img src="img/tub.jpg" alt="Bathtub Diodrama" loading="lazy">
-                <img src="img/beef.jpg" alt="Beefaroni Art" loading="lazy">
-                <img src="img/cd.jpg" alt="CD Chandelier" loading="lazy">
+              <div class="img-grid">
+                <figure><img src="img/goose.jpg" alt="Whimsical Jewlery Box" loading="lazy"></figure>
+                <figure><img src="img/nuka.jpg" alt="Nuka Cola Minifridge" loading="lazy"></figure>
+                <figure><img src="img/tub.jpg" alt="Bathtub Diodrama" loading="lazy"></figure>
+                <figure><img src="img/beef.jpg" alt="Beefaroni Art" loading="lazy"></figure>
+                <figure><img src="img/cd.jpg" alt="CD Chandelier" loading="lazy"></figure>
+              </div>
             </div>
           </details>
 
           <details>
-            <summary><strong>Photos</strong></summary>
+            <summary><strong>Photos</strong><span class="count-badge">10</span></summary>
             <div class="gallery-item">
-                <img src="img/me.jpg" alt="" loading="lazy">
-                <img src="img/toastinasweater.jpg" alt="" loading="lazy">
-                <img src="img/celebrasian2026.jpg" alt="" loading="lazy">
-                <img src="img/atopisewed.jpg" alt="" loading="lazy">
-                <img src="img/bbno$.jpg" alt="" loading="lazy">
-                <img src="img/toasteepy.jpg" alt="" loading="lazy">
-                <img src="img/friends.jpg" alt="" loading="lazy">
-                <img src="img/apollo.jpg" alt="" loading="lazy">
-                <img src="img/DubH.jpg" alt="" loading="lazy">
-                <img src="img/wizardtoast.jpg" alt="" loading="lazy">
+              <div class="img-grid">
+                <figure><img src="img/me.jpg" alt="Me :D" loading="lazy"></figure>
+                <figure><img src="img/toastinsweater.jpg" alt="Toast in a Sweater" loading="lazy"></figure>
+                <figure><img src="img/celebrasian2026.jpg" alt="My friends and I at Celebrasian" loading="lazy"></figure>
+                <figure><img src="img/atopisewed.jpg" alt="A top I sewed out of a scarf" loading="lazy"></figure>
+                <figure><img src="img/bbno$.jpg" alt="BBNO$ Concert" loading="lazy"></figure>
+                <figure><img src="img/toasteepy.jpg" alt="Toast sleepy" loading="lazy"></figure>
+                <figure><img src="img/friends.jpg" alt="my friends" loading="lazy"></figure>
+                <figure><img src="img/apollo.jpg" alt="Apollo the dog" loading="lazy"></figure>
+                <figure><img src="img/DubH.jpg" alt="My friends dance show" loading="lazy"></figure>
+                <figure><img src="img/wizardtoast.jpg" alt="Wizard Toast" loading="lazy"></figure>
+              </div>
             </div>
           </details>
 
@@ -171,11 +295,85 @@
     </div>
   </div>
 
-  <script>
-    const image = document.getElementById("clickImage");
+  <div id="lightbox">
+    <div class="lb-box">
+      <img id="lb-img" src="" alt="">
+      <div class="lb-caption" id="lb-caption"></div>
+      <div class="lb-controls">
+        <button id="lb-prev">❮ Prev</button>
+        <button id="lb-close">✕ Close</button>
+        <button id="lb-next">Next ❯</button>
+      </div>
+    </div>
+  </div>
 
-    image.addEventListener("click", () => {
-      image.classList.toggle("clear");
+  <script>
+    // Lightbox
+    const lightbox = document.getElementById("lightbox");
+    const lbImg = document.getElementById("lb-img");
+    const lbCaption = document.getElementById("lb-caption");
+    const lbPrev = document.getElementById("lb-prev");
+    const lbNext = document.getElementById("lb-next");
+    const lbClose = document.getElementById("lb-close");
+
+    let currentGroup = [];
+    let currentIndex = 0;
+
+    function openLightbox(figures, index) {
+      currentGroup = figures;
+      currentIndex = index;
+      updateLightbox();
+      lightbox.classList.add("active");
+    }
+
+    function updateLightbox() {
+      const fig = currentGroup[currentIndex];
+      const img = fig.querySelector("img");
+      lbImg.src = img.src;
+      lbImg.alt = img.alt;
+      lbCaption.textContent = img.alt || "";
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove("active");
+    }
+
+    document.querySelectorAll(".img-grid").forEach((grid) => {
+      const figures = Array.from(grid.querySelectorAll("figure"));
+      figures.forEach((fig, i) => {
+        fig.addEventListener("click", () => {
+          const isBlurred = fig.classList.contains("blur-image") && !fig.classList.contains("clear");
+          if (isBlurred) {
+            // First click on sensitive content only reveals it, doesn't open lightbox
+            fig.classList.add("clear");
+            return;
+          }
+          openLightbox(figures, i);
+        });
+      });
+    });
+
+    lbPrev.addEventListener("click", () => {
+      currentIndex = (currentIndex - 1 + currentGroup.length) % currentGroup.length;
+      updateLightbox();
+    });
+
+    lbNext.addEventListener("click", () => {
+      currentIndex = (currentIndex + 1) % currentGroup.length;
+      updateLightbox();
+    });
+
+    lbClose.addEventListener("click", closeLightbox);
+
+    lightbox.addEventListener("click", (e) => {
+      if (e.target === lightbox) closeLightbox();
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (!lightbox.classList.contains("active")) return;
+      if (e.key === "Escape") closeLightbox();
+      if (e.key === "ArrowLeft") lbPrev.click();
+      if (e.key === "ArrowRight") lbNext.click();
     });
   </script>
 </body>
