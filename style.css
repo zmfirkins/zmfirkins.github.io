@@ -4,19 +4,6 @@
 	font-weight: normal;
 	font-style: normal;
 }
-@font-face {
-	font-family: 'PixelOperator';
-	src: url('fonts/PixelOperator.ttf') format('truetype');
-	font-weight: normal;
-	font-style: normal;
-}
-@font-face {
-	font-family: 'PixelOperator-Bold';
-	src: url('fonts/PixelOperator-Bold.ttf') format('truetype');
-	font-weight: normal;
-	font-style: normal;
-}
-
 :root {
 	--main-border: 0.25em solid #397a96;
 	--main-radius: 1.5em;
@@ -39,21 +26,22 @@ body {
 	background-color: #708363;
 	padding: 0;
 	margin: 0;
-	font-family: 'PixelOperator';
-	font-weight: 600;
+	font-family: 'Pixelon';
+	font-weight: 300;
 	font-size: 1.20em;
 }
 
 strong {
+	font-family: 'Pixelon';
 	color: #2c4a5c;
 	font-weight: 1000;
-	font-size: 25px;
+	font-size: 22px;
 	text-decoration: 0.1em underline dashed #7da0a8;
 	text-underline-offset: 0.15em;
 }
 
 mark {
-	font-family: 'PixelOperator';
+	font-family: 'Pixelon';
 	background-color: transparent;
 	font-size: 0.9em;
 	color: white;
@@ -282,8 +270,8 @@ nav a:hover {
 }
 
 /* ── Misc ── */
-.jobname { font-family: 'PixelOperator-Bold'; font-weight: 700; font-size: 1.25rem; }
-.time    { font-weight: 300; }
+.jobname { font-family: 'Pixelon'; font-weight: 700; font-size: 1.25rem; }
+.time    {  font-family: 'Pixelon';font-weight: 300; }
 
 .giffy {
 	margin: 0 1em 0 0;
@@ -311,7 +299,7 @@ p { padding: 0 0.5em; text-align: center; }
 	margin: 0;
 	grid-area: footer;
 	margin-bottom: 1rem;
-	font-family: 'PixelOperator';
+	font-family: 'Pixelon';
 }
 .footer p { padding: 0.5em; margin: 0; }
 
