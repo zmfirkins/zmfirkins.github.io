@@ -368,7 +368,7 @@ body.dark-mode {
 		rgba(63, 100, 120, 1) 100%
 	);
 	--btn-solid: rgb(58, 92, 110);
-	background-color: #10171a;
+	background-color: #2d4047;
 	background-blend-mode: multiply;
 	color: #cfe8f5;
 }
