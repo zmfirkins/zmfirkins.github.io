@@ -191,7 +191,7 @@ summary {
 }
 summary::-webkit-details-marker { display: none; }
 summary::before {
-	content: "▶ ";
+	content: "❥ ";
 	display: inline-block;
 	margin-right: 0.5rem;
 	transition: transform 0.2s ease;
@@ -216,14 +216,14 @@ nav .nav-panel {
 	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.16);
 }
 nav .nav-panel::after {
-	content: "✕";
+	content: "✖";
 	position: absolute;
-	top: 0.5rem;
-	right: .9rem;
+	top: 0.7rem;
+	right: .6rem;
 	font-size: 0.72rem;
 	font-weight: 700;
 	line-height: 1;
-	font-family: Arial, sans-serif;
+	font-family: 'Pixelon';
 	color: #6a90a1;
 	text-shadow: 0 0 1px rgba(255,255,255,0.7);
 	border: 1px solid rgba(47, 74, 85, 0.45);
@@ -233,6 +233,7 @@ nav .nav-panel::after {
 	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
 	pointer-events: none;
 }
+
 nav .nav-links {
 	display: flex;
 	flex-direction: column;
@@ -317,14 +318,13 @@ nav a:hover {
 .likes::after,
 .dislikes::after,
 .interests::after {
-	content: "✕";
+	content: "✖";
 	position: absolute;
-	top: 0.5rem;
-	right: .9rem;
+	top: 0.7rem;
+	right: .6rem;
 	font-size: 0.72rem;
 	font-weight: 700;
 	line-height: 1;
-	font-family: Arial, sans-serif;
 	color: #6a90a1;
 	text-shadow: 0 0 1px rgba(255,255,255,0.7);
 	pointer-events: none;
@@ -474,8 +474,9 @@ body.dark-mode .download-button:hover,
 body.dark-mode .filter-btn:hover,
 body.dark-mode .filter-btn.active,
 body.dark-mode .lb-controls button:hover,
+body.dark-mode nav a{color: #cfe8f5},
 body.dark-mode nav a:hover {
-	color: #eaf7ff;
+	
 	background: linear-gradient(0deg, #3f6478 0%, #365670 20%, #4a7690 100%);
 }
 
