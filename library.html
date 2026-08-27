@@ -47,6 +47,14 @@
     }
     .fav-card.hidden { display: none; }
     .fav-card .card-body { padding: 0.4em 0.75em 0.75em; }
+    .fav-card .card-image {
+      display: block;
+      width: 100%;
+      max-height: 14em;
+     bject-fit: contain
+      border-radius: 0.6em;
+      margin-bottom: 0.4em;
+    }
     .fav-card .card-note {
       font-size: 0.78em;
       color: #416478;
@@ -166,13 +174,14 @@ function makeStars(rating) {
 }
 
 // ── Build a card element ──────────────────────────────
-function makeCard(title, category, rating, note, lbUrl) {
+function makeCard(title, category, picture, rating, note, lbUrl) {
   const card = document.createElement("div");
   card.className = "fav-card";
   card.dataset.category = category;
   card.innerHTML = `
     <div class="labeled"><p>${title}</p></div>
     <div class="card-body">
+      ${picture ? `<img src="${picture}" alt="${title}" class="card-image">` : ""}
       ${note  ? `<div class="card-note">${note}</div>` : ""}
       ${makeStars(rating)}
     </div>
@@ -195,7 +204,7 @@ categories.forEach(cat => {
 const grid = document.getElementById("grid");
 
 function renderEntries(entries) {
-  entries.forEach(e => grid.appendChild(makeCard(e.title, e.category, e.rating, e.note || null, null)));
+  entries.forEach(e => grid.appendChild(makeCard(e.title, e.category, e.picture || null, e.rating, e.note || null, null)));
 }
 
 // ── Load sheet + manual entries ───────────────────────
@@ -272,8 +281,13 @@ async function loadLetterboxd(username) {
         .replace(/,\s*\d{4}$/, "")          // remove ", 1988" year
         .trim();
 
+      // poster image: rss2json usually fills item.thumbnail;
+      // fall back to scraping the first <img> out of the description
+      const descMatch = (item.description || "").match(/<img[^>]+src="([^"]+)"/i);
+      const poster = item.thumbnail || (descMatch ? descMatch[1] : null);
+
       if (rating > 0 && cleanTitle) {
-        grid.appendChild(makeCard(cleanTitle, "movie", rating, null, link));
+        grid.appendChild(makeCard(cleanTitle, "movie", poster, rating, null, link));
       }
     });
 
