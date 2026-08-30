@@ -483,9 +483,9 @@ body.dark-mode .download-button:hover,
 body.dark-mode .filter-btn:hover,
 body.dark-mode .filter-btn.active,
 body.dark-mode .lb-controls button:hover,
-body.dark-mode nav a{color: #cfe8f5},
+body.dark-mode nav a,
 body.dark-mode nav a:hover {
-	
+	color: #cfe8f5;
 	background: linear-gradient(0deg, #3f6478 0%, #365670 20%, #4a7690 100%);
 }
 
