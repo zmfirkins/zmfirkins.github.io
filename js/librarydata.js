@@ -1,5 +1,5 @@
 // ── Google Sheet CSV URL ─────────────────────────
-const SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRa4YNwQGG3HdZH9FmCJTYhaqdXOrNtZdMn_xujOixDPTkDeLs7A7VPCuH5GhAdhfZDRVJRnHxPiSIm/pub?output=csv";
+const SHEET_CSV_URL ="https://docs.google.com/spreadsheets/d/e/2PACX-1vRa4YNwQGG3HdZH9FmCJTYhaqdXOrNtZdMn_xujOixDPTkDeLs7A7VPCuH5GhAdhfZDRVJRnHxPiSIm/pub?output=csv";
 
 // ── Manual entries rom Letterboxd) ──────e
 //  Fields: title, category, rating, picture (0–5, halves ok), note (optional)
