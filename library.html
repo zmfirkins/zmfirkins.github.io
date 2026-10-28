@@ -232,72 +232,34 @@ async function loadSheetEntries() {
 
 loadSheetEntries();
 
-// ── Letterboxd RSS fetch ──────────────────────────────
-// Ratings come through as ★ / ½ in the description.
-async function loadLetterboxd(username) {
-  const rssUrl    = `https://letterboxd.com/${username}/rss/`;
-  const apiUrl    = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}`;
-
+// ── Letterboxd cached feed fetch ──────────────────────
+async function loadLetterboxd() {
   const loader = document.createElement("div");
   loader.className = "lb-loading";
   loader.textContent = "⟳ loading letterboxd ratings…";
   grid.prepend(loader);
 
   try {
-    const res  = await fetch(apiUrl);
-    const data = await res.json();
-
-    if (data.status !== "ok") throw new Error(data.message || "rss2json error");
+    const res = await fetch(`data/letterboxd.json?v=${Date.now()}`, { cache: "no-store" });
+    if (!res.ok) throw new Error(`Letterboxd feed returned HTTP ${res.status}`);
+    const entries = await res.json();
+    if (!Array.isArray(entries)) throw new Error("Letterboxd feed has an invalid format");
 
     loader.remove();
 
-    data.items.forEach(item => {
-      const link = item.link || "";
-
-      let rating = parseFloat(
-        item["letterboxd:memberRating"] ||
-        item.memberRating ||
-        0
-      );
-
-      // fallback: title format is "Film Name, 2025 - ★★½" — parse the stars
-      if (!rating) {
-        const stars = (item.title.match(/★/g) || []).length;
-        const half  = item.title.includes("½") ? 0.5 : 0;
-        rating = stars + half;
-      }
-
-      // also check description as last resort
-      if (!rating) {
-        const desc  = item.description || "";
-        const stars = (desc.match(/★/g) || []).length;
-        const half  = desc.includes("½") ? 0.5 : 0;
-        rating = stars + half;
-      }
-
-      // clean title: "Heathers, 1988 - ★★★★★" → "Heathers"
-      const cleanTitle = (item.title || "")
-        .replace(/\s*[-–]\s*[★½].*$/, "")  // remove " - ★★★" suffix
-        .replace(/,\s*\d{4}$/, "")          // remove ", 1988" year
-        .trim();
-
-      // poster image: rss2json usually fills item.thumbnail;
-      // fall back to scraping the first <img> out of the description
-      const descMatch = (item.description || "").match(/<img[^>]+src="([^"]+)"/i);
-      const poster = item.thumbnail || (descMatch ? descMatch[1] : null);
-
-      if (rating > 0 && cleanTitle) {
-        grid.appendChild(makeCard(cleanTitle, "movie", poster, rating, null, link));
+    entries.forEach(entry => {
+      if (entry.rating > 0 && entry.title) {
+        grid.appendChild(makeCard(entry.title, "movie", entry.poster, entry.rating, null, entry.link));
       }
     });
 
   } catch (err) {
-    loader.textContent = "⚠ couldn't load letterboxd — add movies manually in the entries array";
+    loader.textContent = "⚠ couldn't load letterboxd — please try again later";
     console.warn("Letterboxd error:", err);
   }
 }
 
-if (LETTERBOXD_USERNAME) loadLetterboxd(LETTERBOXD_USERNAME);
+if (LETTERBOXD_USERNAME) loadLetterboxd();
 
 // ── Filter logic ──────────────────────────────────────
 document.querySelectorAll(".filter-btn").forEach(btn => {
