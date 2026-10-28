@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>zmfirkins — desktop</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="css/desktop.css">
+<link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- shared icon defs -->
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <linearGradient id="rb" x1="0%" y1="0%" x2="100%" y2="100%" gradientTransform="rotate(27.5)">
+      <stop offset="0%" stop-color="#FF7979"/>
+      <stop offset="20%" stop-color="#FFD084"/>
+      <stop offset="40%" stop-color="#FFFB91"/>
+      <stop offset="60%" stop-color="#B7FFC3"/>
+      <stop offset="80.29%" stop-color="#77BBFF"/>
+      <stop offset="100%" stop-color="#D180FF"/>
+    </linearGradient>
+    <filter id="pshadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="2" stdDeviation="1.4" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+</svg>
+
+<div id="desktop">
+
+  <div id="floatavatar" title="That's me!">ZF</div>
+
+  <!-- PROFILE FLYOUT (opens from taskbar avatar) -->
+  <div id="profile-flyout" class="hidden">
+    <div class="flyout-header" id="flyout-header">
+      <div class="flyout-avatar"><div class="pixicon" data-icon="person" data-icon-fill="black"></div></div>
+      <div class="flyout-name">Zoie Firkins</div>
+      <div class="flyout-quick">
+        <button data-open="welcome" title="Welcome"><div class="pixicon" data-icon="welcome" data-icon-fill="black"></div></button>
+        <button data-open="projects" title="Projects"><div class="pixicon" data-icon="projects" data-icon-fill="black"></div></button>
+      </div>
+    </div>
+    <div class="flyout-row" data-open="about">
+      <div class="pixicon" data-icon="info"></div>
+      <span>About</span>
+    </div>
+    <div class="flyout-row" data-open="gallery">
+      <div class="pixicon" data-icon="heart"></div>
+      <span>Gallery</span>
+    </div>
+      <div class="flyout-row" data-open="library">
+      <div class="pixicon" data-icon="eye"></div>
+      <span>Library</span>
+    </div>
+    <div class="flyout-row" data-open="projects">
+      <div class="pixicon" data-icon="briefcase"></div>
+      <span>Projects</span>
+    </div>
+    <div class="flyout-row" data-open="contact">
+      <div class="pixicon" data-icon="contact"></div>
+      <span>Contact</span>
+    </div>
+    </div>
+    
+
+  <!-- ICONS -->
+  <div id="icons">
+    <div class="icon" data-open="trash">
+      <div class="pixicon" data-icon="trash"></div>
+      <div class="label">Trash</div>
+    </div>
+    <div class="icon" data-open="music">
+      <div class="pixicon" data-icon="music"></div>
+      <div class="label">Music</div>
+    </div>
+    <div class="icon" data-open="welcome">
+      <div class="pixicon" data-icon="welcome"></div>
+      <div class="label">Welcome</div>
+    </div>
+    <div class="icon" data-open="paint">
+      <div class="pixicon" data-icon="paint"></div>
+      <div class="label">MS Paint</div>
+    </div>
+    <div class="icon" data-open="projects">
+      <div class="pixicon" data-icon="projects"></div>
+      <div class="label">Projects</div>
+    </div>
+    <div class="icon" data-open="resume">
+      <div class="pixicon" data-icon="resume"></div>
+      <div class="label">resume.pdf</div>
+    </div>
+    <div class="icon" data-open="gallery">
+      <div class="pixicon" data-icon="gallery"></div>
+      <div class="label">Gallery</div>
+    </div>
+    <div class="icon" data-open="library">
+      <div class="pixicon" data-icon="library"></div>
+      <div class="label">Library</div>
+    </div>
+    <div class="icon" data-open="contact">
+      <div class="pixicon" data-icon="contact"></div>
+      <div class="label">Contact</div>
+    </div>
+    <div class="icon" data-open="cat">
+      <div class="pixicon" data-icon="cat"></div>
+      <div class="label">Toast</div>
+    </div>
+  </div>
+
+  <!-- WELCOME.HTML -->
+  <div class="window" id="win-welcome" style="left:20vw; top:6vh; width:560px; height:400px;">
+    <div class="titlebar" data-drag>
+      <div class="tleft">
+        <div class="pixicon" data-icon="welcome" data-icon-fill="black"></div>
+        <div class="name">Welcome.exe</div>
+      </div>
+      <div class="controls">
+        <button data-min><div class="pixicon ctrlicon" data-icon="minimize" data-icon-fill="black"></div></button>
+        <button data-max><div class="pixicon ctrlicon" data-icon="maximize" data-icon-fill="black"></div></button>
+        <button data-close><div class="pixicon ctrlicon" data-icon="close" data-icon-fill="black"></div></button>
+      </div>
+    </div>
+    <div class="addressrow" data-nav-win="welcome">
+      <div class="pixicon navicon" data-nav="back" data-icon="navback"></div>
+      <div class="pixicon navicon" data-nav="forward" data-icon="navforward"></div>
+      <div class="pixicon navicon" data-nav="refresh" data-icon="refresh"></div>
+      <div class="addresspill"><span>https://zmfirkins.github.io/</span></div>
+    </div>
+    <div class="content">
+      <h1>Hi, I'm Zoie </h1>
+       <img class="giffy" src="img/me.gif" alt="sprite of me">
+      <p class="placeholder">Welcome to my desktop!</p>
+      <p>Click the icons on the left to explore — a bit about me, some projects, my gallery, my library, and how to reach me.</p>
+      <p>Everything here is draggable, just like a real desktop. Drag any window by its title bar, close it, and reopen it from the dock or the taskbar.</p>
+        </p>
+    </div>
+  </div>
+
+  <!-- PROJECTS.HTML -->
+  <div class="window hidden" id="win-projects" style="left:34vw; top:8vh; width:560px; height:420px;">
+    <div class="titlebar" data-drag>
+      <div class="tleft">
+        <div class="pixicon" data-icon="projects" data-icon-fill="black"></div>
+        <div class="name">Projects</div>
+      </div>
+      <div class="controls">
+        <button data-min><div class="pixicon ctrlicon" data-icon="minimize" data-icon-fill="black"></div></button>
+        <button data-max><div class="pixicon ctrlicon" data-icon="maximize" data-icon-fill="black"></div></button>
+        <button data-close><div class="pixicon ctrlicon" data-icon="close" data-icon-fill="black"></div></button>
+      </div>
+    </div>
+    <div class="addressrow" data-nav-win="projects">
+      <div class="pixicon navicon" data-nav="back" data-icon="navback"></div>
+      <div class="pixicon navicon" data-nav="forward" data-icon="navforward"></div>
+      <div class="pixicon navicon" data-nav="refresh" data-icon="refresh"></div>
+      <div class="addresspill"><span>https://zmfirkins.github.io/projects</span></div>
+    </div>
+    <div class="content">
+      <div id="projects-list">
+        <div class="tilegrid" id="projects-grid"></div>
+      </div>
+      <div id="projects-detail" style="display:none;"></div>
+    </div>
+  </div>
+
+  <!-- GALLERY.HTML -->
+  <div class="window hidden" id="win-gallery" style="left:56vw; top:10vh; width:520px; height:400px;">
+    <div class="titlebar" data-drag>
+      <div class="tleft">
+        <div class="pixicon" data-icon="gallery" data-icon-fill="black"></div>
+        <div class="name">Gallery</div>
+      </div>
+      <div class="controls">
+        <button data-min><div class="pixicon ctrlicon" data-icon="minimize" data-icon-fill="black"></div></button>
+        <button data-max><div class="pixicon ctrlicon" data-icon="maximize" data-icon-fill="black"></div></button>
+        <button data-close><div class="pixicon ctrlicon" data-icon="close" data-icon-fill="black"></div></button>
+      </div>
+    </div>
+    <div class="addressrow" data-nav-win="gallery">
+      <div class="pixicon navicon" data-nav="back" data-icon="navback"></div>
+      <div class="pixicon navicon" data-nav="forward" data-icon="navforward"></div>
+      <div class="pixicon navicon" data-nav="refresh" data-icon="refresh"></div>
+      <div class="addresspill"><span>https://zmfirkins.github.io/gallery</span></div>
+    </div>
+    <div class="content">
+      <div id="gallery-list">
+        <div class="tilegrid two" id="gallery-grid"></div>
+      </div>
+      <div id="gallery-detail" style="display:none;"></div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <div class="window hidden" id="win-about" style="left:20vw; top:16vh; width:520px; height:420px;">
+    <div class="titlebar" data-drag>
+      <div class="tleft">
+        <div class="pixicon" data-icon="info" data-icon-fill="black"></div>
+        <div class="name">About.exe</div>
+      </div>
+      <div class="controls">
+        <button data-min><div class="pixicon ctrlicon" data-icon="minimize" data-icon-fill="black"></div></button>
+        <button data-max><div class="pixicon ctrlicon" data-icon="maximize" data-icon-fill="black"></div></button>
+        <button data-close><div class="pixicon ctrlicon" data-icon="close" data-icon-fill="black"></div></button>
+      </div>
+    </div>
+    <div class="content">
+      <p>
+              <img class="toast" src="img/zoie_and_toast.webp"  alt="My Cat and I">
+            </p>
+            <p>
+              Hi! I am Zoie Firkins.
+              <br>
+              I am currently 22 years old and live in Iowa.
+            </p>
+
+              <p><strong> 🎱 Interests  🎱</strong></p>
+              <p> My favorite hobbies include video games, all mediums of art, and programming. I hope to find a job where I can combine my artist skills with my technology skills to create creative, yet practical and functional projects.</p>
+
+              <p><strong>💼 Experience 💼</strong></p>
+              <p class = "jobname">Perfection Learning, Clive— IT Generalist </p>
+              <p class = "time">January 2025-- PRESENT</p>
+              <ul>
+                <li>Provide hardware and software support across departments</li>
+                <li>Maintain user accounts, permissions, and systems access</li>
+                <li>Troubleshoot network and workstation issues for staff</li>
+                <li>Assist with deployment, maintenance, and documentation of IT systems</li>
+                <li>Ensure timely resolution of tickets and escalate complex issues when necessary</li>
+              </ul>
+
+              <p class = "jobname">  Menards, Grimes — Service Desk Worker / Cashier </p>
+              <p class = "time">  OCTOBER 2022-- MAY 2025</p>
+              <ul>
+                <li>Assisted with POS transactions and product returns</li>
+                <li>Resolved customer service concerns with professionalism</li>
+                <li>Maintained knowledge of store layout to help customers locate items</li>
+              </ul>
+
+              <p><strong>🎓 Education 🎓</strong></p>
+              <p class = "jobname"> Grand View University, Des Moines- BS</p>
+              <p class = "time">August 2024 - May 2026 </p>
+              <p> Graduated with a Bachleors of Arts in Information Technology. </p>
+
+              <p class = "jobname"> DMACC, Ankeny— AAS </p>
+              <p class = "time">  May 2022  - May 2024 </p>
+              <p> Graduated with an Associates in Computer Information Systems.</p>
+
+              <p><strong>🛠️ Skills 🛠️</strong></p>
+              <ul>
+                <li>Great organization and time management</li>
+                <li>Technology and adaptability to new software</li>
+                <li>Quick learner and an aptitude for helping others</li>
+              </ul>
+
+              <p><strong>💻 Programming / Software capabilities 💻</strong></p>
+              <p class = "jobname">  All Google / Microsoft Platforms </p>
+              <p class = "jobname">    Atom </p>
+              <p> HTML, CSS, Javascript, and Bootstrap programming</p>
+              <p class = "jobname">    Eclipse </p>
+              <p>Java program creation</p>
+              <p class = "jobname">    Visual Studio </p>
+              <p> Java, C#, Python, and C++ program creation</p>
+              <p class = "jobname">    SQL Developer/MYSQL </p>
+              <p> Database management systems</p>
+              <p class = "jobname">  PyCharm </p>
+              <p>Python program creation</p>
+              <p class = "jobname">  Github </p>
+              <p>Project sharing and management</p>
+                <p class = "jobname">    Jira Service Management </p>
+              <p>Ticketing and issue tracking</p>
+                <p class = "jobname">    NinjaOne </p>
+              <p>Remote monitoring and management</p>
+                <p class = "jobname">    Oracle Virtual Box</p>
+              <p> Graphic design and wireframing</p>
+              <p class = "jobname">    Figma </p>
+              <p> Wireframing and prototyping</p>
+              <p class = "jobname">    Canva </p>
+              <p> Graphic design and wireframing</p>
+              <p class = "jobname">    Adobe Creative Cloud, Acrobat, Indesign, XD, Photoshop, and Illustrator </p>
+              <p>Web design and intergration </p>
+    </div>
+  </div>
+
+  <!-- LIBRARY -->
+  <div class="window hidden" id="win-library" style="left:14vw; top:22vh; width:340px; height:420px;">
+    <div class="titlebar" data-drag>
+      <div class="tleft">
+        <div class="pixicon" data-icon="library" data-icon-fill="black"></div>
+        <div class="name">Library.exe</div>
+      </div>
+      <div class="controls">
+        <button data-min><div class="pixicon ctrlicon" data-icon="minimize" data-icon-fill="black"></div></button>
+        <button data-max><div class="pixicon ctrlicon" data-icon="maximize" data-icon-fill="black"></div></button>
+        <button data-close><div class="pixicon ctrlicon" data-icon="close" data-icon-fill="black"></div></button>
+      </div>
+    </div>
+    <div class="content" style="padding:14px;">
+      <div class="bookshelf" id="bookshelf"></div>
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <div class="window hidden" id="win-contact" style="left:44vw; top:26vh; width:260px; height:340px;">
+    <div class="titlebar" data-drag>
+      <div class="tleft">
+        <div class="pixicon" data-icon="contact" data-icon-fill="black"></div>
+        <div class="name">Contact.exe</div>
+      </div>
+      <div class="controls">
+        <button data-min><div class="pixicon ctrlicon" data-icon="minimize" data-icon-fill="black"></div></button>
+        <button data-close><div class="pixicon ctrlicon" data-icon="close" data-icon-fill="black"></div></button>
+      </div>
+    </div>
+    <div class="content">
+      <div class="contact-row" data-href="mailto:you@example.com">
+        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2.5 6.5L12 13l9.5-6.5"/></svg>
+        <div><div class="ctext">Email</div><div class="csub">you@example.com</div></div>
+      </div>
+      <div class="contact-row" data-href="https://github.com/zmfirkins">
+        <svg viewBox="0 0 24 24" fill="white"><path d="M12 2a10 10 0 0 0-3.16 19.5c.5.1.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.56-1.11-4.56-4.93 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.6 9.6 0 0 1 5 0c1.9-1.3 2.74-1.02 2.74-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.83-2.34 4.68-4.57 4.92.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2z"/></svg>
+        <div><div class="ctext">GitHub</div><div class="csub">@zmfirkins</div></div>
+      </div>
+      <div class="contact-row" data-href="https://linkedin.com/in/your-handle">
+        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="2"/><path d="M7 10v7M7 7v.01M11 17v-4a2 2 0 1 1 4 0v4M11 13v4"/></svg>
+        <div><div class="ctext">LinkedIn</div><div class="csub">/in/your-handle</div></div>
+      </div>
+      <div class="contact-footer">
+        <div class="social">
+          <button title="GitHub" data-href="https://github.com/zmfirkins"><svg viewBox="0 0 24 24" fill="white"><path d="M12 2a10 10 0 0 0-3.16 19.5c.5.1.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.56-1.11-4.56-4.93 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.6 9.6 0 0 1 5 0c1.9-1.3 2.74-1.02 2.74-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.83-2.34 4.68-4.57 4.92.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2z"/></svg></button>
+          <button title="LinkedIn" data-href="https://linkedin.com/in/your-handle"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="2"/><path d="M7 10v7M7 7v.01M11 17v-4a2 2 0 1 1 4 0v4M11 13v4"/></svg></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MUSIC (stub) -->
+  <div class="window hidden" id="win-music" style="left:30vw; top:34vh; width:260px; height:120px;">
+    <div class="titlebar" data-drag>
+      <div class="tleft">
+        <div class="pixicon" data-icon="music" data-icon-fill="black"></div>
+        <div class="name">Music.exe</div>
+      </div>
+      <div class="controls">
+        <button data-min><div class="pixicon ctrlicon" data-icon="minimize" data-icon-fill="black"></div></button>
+        <button data-close><div class="pixicon ctrlicon" data-icon="close" data-icon-fill="black"></div></button>
+      </div>
+    </div>
+  <div id="musicplayer">   
+      
+        <div class="player-flex">
+            <div class="player-icon-holder">
+            <div class="player-icon"></div>
+            </div>
+            <div class="player-main">
+                 
+        <select class="track-select"></select>
+      <div class="controls">
+          <div class="seeking">
+              <div class="current-time">00:00</div>
+ 
+              <input type="range" min="1" max="100" value="0" class="seek_slider" onchange="seekTo()">
+ 
+              <div class="total-duration">0:00</div>
+          </div>
+ 
+          <div class="player-buttons">
+              <button class="window-button prev-track" onclick="prevTrack()">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-skip-back-icon lucide-skip-back"><path d="M17.971 4.285A2 2 0 0 1 21 6v12a2 2 0 0 1-3.029 1.715l-9.997-5.998a2 2 0 0 1-.003-3.432z"/><path d="M3 20V4"/></svg>
+              </button>
+ 
+              <button class="window-button playpause-track" onclick="playpauseTrack()">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-play-icon lucide-play"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"/></svg>
+              </button>
+ 
+              <button class="window-button next-track" onclick="nextTrack()">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-skip-forward-icon lucide-skip-forward"><path d="M21 4v16"/><path d="M6.029 4.285A2 2 0 0 0 3 6v12a2 2 0 0 0 3.029 1.715l9.997-5.998a2 2 0 0 0 .003-3.432z"/></svg>
+              </button>
+          </div>
+      </div>
+ 
+            </div>
+        </div>
+ 
+      <audio id="music" src=""></audio>
+  </div>
+  </div>
+ <!-- TOAST (stub) -->
+  <div class="window hidden" id="win-toast" style="left:38vw; top:36vh; width:302x; height:326px;">
+    <div class="titlebar" data-drag>
+      <div class="tleft">
+        <div class="pixicon" data-icon="cat" data-icon-fill="black"></div>
+        <div class="name">Toast.exe</div>
+      </div>
+      <div class="controls">
+        <button data-min><div class="pixicon ctrlicon" data-icon="minimize" data-icon-fill="black"></div></button>
+        <button data-close><div class="pixicon ctrlicon" data-icon="close" data-icon-fill="black"></div></button>
+      </div>
+    </div>
+    <iframe width="314" height="321" scrolling="no" src="https://gify.pet/pet/pet.html?name=Toast&dob=1789610842&gender=m&element=Earth&pet=https%3A%2F%2Fcdn.discordapp.com%2Fattachments%2F638121615032451143%2F1549948503503929344%2F1789606895274.png%3Fex%3D6aac8d87%26is%3D6aab3c07%26hm%3D5bc715ea6881aa8779810b796c17086f45b85ba99fae74842304ca9527afdbf6%26&map=hills.jpg&background=&tablecolor=black&textcolor=black" frameborder="0"></iframe>
+  </div>
+
+  <!-- PAINT (stub) -->
+  <div class="window hidden" id="win-paint" style="left:38vw; top:36vh; width:250px; height:300px;">
+    <div class="titlebar" data-drag>
+      <div class="tleft">
+        <div class="pixicon" data-icon="paint" data-icon-fill="black"></div>
+        <div class="name">MS Paint.exe</div>
+      </div>
+      <div class="controls">
+        <button data-min><div class="pixicon ctrlicon" data-icon="minimize" data-icon-fill="black"></div></button>
+        <button data-max><div class="pixicon ctrlicon" data-icon="maximize" data-icon-fill="black"></div></button>
+        <button data-close><div class="pixicon ctrlicon" data-icon="close" data-icon-fill="black"></div></button>
+      </div>
+    </div>
+    <iframe src="https://jspaint.app/" height="270px" width="250px" title="MS Paint Widget"></iframe>
+  </div>
+
+  <!-- TRASH (stub) -->
+  <div class="window hidden" id="win-trash" style="left:6vw; top:38vh; width:280px; height:170px;">
+    <div class="titlebar" data-drag>
+      <div class="tleft">
+        <div class="pixicon" data-icon="trash" data-icon-fill="black"></div>
+        <div class="name">Trash</div>
+      </div>
+      <div class="controls">
+       <button data-min><div class="pixicon ctrlicon" data-icon="minimize" data-icon-fill="black"></div></button>
+        <button data-max><div class="pixicon ctrlicon" data-icon="maximize" data-icon-fill="black"></div></button>
+        <button data-close><div class="pixicon ctrlicon" data-icon="close" data-icon-fill="black"></div></button>
+      </div>
+    </div>
+    <div class="content"><p>It's empty in here.</p></div>
+  </div>
+
+  <!-- RESUME (stub) -->
+  <div class="window hidden" id="win-resume" style="left:44vw; top:12vh; width:300px; height:180px;">
+    <div class="titlebar" data-drag>
+      <div class="tleft">
+        <div class="pixicon" data-icon="resume" data-icon-fill="black"></div>
+        <div class="name">resume.pdf</div>
+      </div>
+      <div class="controls">
+       <button data-min><div class="pixicon ctrlicon" data-icon="minimize" data-icon-fill="black"></div></button>
+        <button data-max><div class="pixicon ctrlicon" data-icon="maximize" data-icon-fill="black"></div></button>
+        <button data-close><div class="pixicon ctrlicon" data-icon="close" data-icon-fill="black"></div></button>
+      </div>
+    </div>
+    <div class="content">
+      <p class="placeholder">Placeholder — point this at your real résumé file.</p>
+      <p><a href="#" id="resume-link">Open resume.pdf →</a></p>
+    </div>
+  </div>
+
+  <!-- TASKBAR -->
+  <div id="taskbar">
+    <div id="avatar" title="About me"><div class="pixicon" data-icon="person" data-icon-fill="black"></div></div>
+    <div id="searchbar">
+      <svg viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg>
+      <input type="text" id="tasksearch" placeholder="Search this desktop...">
+    </div>
+    <div class="taskgap"></div>
+    <div class="tray" id="tray"></div>
+    <button class="traybtn" title="Expand"><div class="pixicon" data-icon="uparrow" data-icon-fill="black"></div></button>
+    <button class="traybtn" title="Settings"><div class="pixicon" data-icon="moon" data-icon-fill="black"></div></button>
+    <button class="traybtn" title="Wifi"><div class="pixicon" data-icon="wifi" data-icon-fill="black"></div></button>
+    <button class="traybtn" title="Volume"><div class="pixicon" data-icon="volume" data-icon-fill="black"></div></button>
+    <button class="traybtn" title="Battery"><div class="pixicon" data-icon="battery" data-icon-fill="black"></div></button>
+    <div id="clock"></div>
+  </div>
+
+</div>
+
+<script>
+// ---------------- real Figma pixel-icon assets ----------------
+// Shared once: gradient + drop-shadow, referenced by every icon instance.
+// (Previously each icon embedded its own local <defs> with duplicate ids,
+// which caused some icons to fail to render until something forced a
+// browser repaint, e.g. opening the profile flyout. Sharing one <defs>
+// fixes that for good.)
+const ICON_DATA = {
+  trash: { vb: "0 0 72 83", paths: ["M57.8947 13.6364V10.2273H54.5263V6.81818H51.1579V3.40909H47.7895V0H27.5789V3.40909H24.2105V6.81818H20.8421V10.2273H17.4737V13.6364H4V20.4545H10.7368V71.5909H14.1053V75H61.2632V68.1818H64.6316V20.4545H68V13.6364H57.8947ZM24.2105 10.2273H27.5789V6.81818H47.7895V10.2273H51.1579V13.6364H24.2105V10.2273ZM57.8947 68.1818H17.4737V20.4545H57.8947V68.1818Z","M24.2105 27.2727H30.9474V61.3636H24.2105V27.2727ZM44.4211 27.2727H51.1579V61.3636H44.4211V27.2727Z"] },
+  welcome: { vb: "0 0 83 83", paths: ["M57.5547 17.8594V25.0078H53.9922V35.7188H57.5547V39.2812H61.1406V42.8672H50.4297V46.4297H46.8438V49.9922H57.5547V57.1406H53.9922V64.2891H57.5547V67.8516H64.7031V64.2891H68.2891V60.7031H71.8516V53.5781H75.4141V46.4297H79V28.5703H75.4141V21.4219H71.8516V14.2969H68.2891V17.8594H57.5547ZM64.7031 10.7109H68.2891V14.2969H64.7031V10.7109ZM57.5547 7.14844H64.7031V10.7109H57.5547V7.14844Z","M50.4297 67.8516H57.5547V71.4375H50.4297V67.8516ZM50.4297 3.5625H57.5547V7.14844H50.4297V3.5625Z","M43.2812 67.8516H39.7188V64.2891H28.9844V67.8516H25.4219V71.4375H32.5703V75H50.4297V71.4375H43.2812V67.8516ZM32.5703 0H50.4297V3.5625H32.5703V0ZM28.9844 39.2812H32.5703V42.8672H36.1328V32.1328H28.9844V39.2812ZM18.2734 64.2891H25.4219V67.8516H18.2734V64.2891ZM14.7109 60.7031H18.2734V64.2891H14.7109V60.7031Z","M11.1484 53.5781V60.7031H14.7109V57.1406H18.2734V53.5781H21.8594V42.8672H18.2734V39.2812H14.7109V35.7188H11.1484V32.1328H14.7109V28.5703H25.4219V25.0078H28.9844V21.4219H32.5703V25.0078H36.1328V21.4219H39.7188V14.2969H36.1328V10.7109H28.9844V7.14844H32.5703V3.5625H25.4219V7.14844H18.2734V10.7109H14.7109V14.2969H11.1484V21.4219H7.5625V28.5703H4V46.4297H7.5625V53.5781H11.1484Z"] },
+  projects: { vb: "0 0 83 83", paths: ["M7.5625 19.7341H75.4375V71.0376H79V3.96236H75.4375V15.7976H7.5625V3.96236H4V71.0376H7.5625V19.7341ZM7.5625 71.0376H75.4375V75H7.5625V71.0376Z","M14.7109 27.6329V63.1647H68.2891V27.6329H14.7109ZM36.1328 47.3671H32.5703V51.3035H29.0078V55.2659H25.4219V51.3035H29.0078V47.3671H32.5703V43.4306H29.0078V39.4682H25.4219V35.5318H29.0078V39.4682H32.5703V43.4306H36.1328V47.3671ZM57.5781 47.3671H43.2812V43.4306H57.5781V47.3671ZM25.4219 7.89883H29.0078V11.8612H25.4219V7.89883ZM18.2969 7.89883H21.8594V11.8612H18.2969V7.89883ZM11.1484 7.89883H14.7109V11.8612H11.1484V7.89883ZM7.5625 0H75.4375V3.96236H7.5625V0Z"] },
+  gallery: { vb: "0 0 83 83", paths: ["M71.8516 57.1406V7.14844H21.8594V0H11.1484V7.14844H4V17.8594H11.1484V67.8516H61.1406V75H71.8516V67.8516H79V57.1406H71.8516ZM75.4375 64.2891H68.2891V71.4375H64.7266V64.2891H14.7109V14.2969H7.58594V10.7109H14.7109V3.5625H18.2969V10.7109H68.2891V60.7266H75.4375V64.2891Z","M18.2969 14.2969V60.7266H64.7266V14.2969H18.2969ZM61.1406 35.7188H50.4297V39.2812H61.1406V57.1406H50.4297V53.5781H46.8672V57.1406H21.8594V53.5781H25.4453V49.9922H21.8594V17.8594H61.1406V35.7188Z","M46.8672 39.2812H50.4297V42.8672H46.8672V39.2812Z","M43.2812 42.8672H46.8672V46.4297H43.2812V42.8672ZM43.2812 49.9922H46.8672V53.5781H43.2812V49.9922ZM39.7188 46.4297H43.2812V49.9922H39.7188V46.4297ZM29.0078 35.7188H36.1562V32.1328H39.7188V25.0078H36.1562V21.4219H29.0078V25.0078H25.4453V32.1328H29.0078V35.7188ZM29.0078 42.8672H39.7188V46.4297H29.0078V42.8672ZM25.4453 46.4297H29.0078V49.9922H25.4453V46.4297Z"] },
+  library: { vb: "0 0 83 83", paths: ["M50.4297 55.2495V51.3124H46.8672V55.2495H29.0078V51.3124H25.4453V39.475H29.0078V35.512H46.8672V39.475H50.4297V35.512H75.4375V39.475H79V31.5749H64.7266V27.6507H61.1641V31.5878H39.7188V27.6507H36.1562V23.6876H39.7188V19.7375H61.1641V23.6747H64.7266V11.8503H61.1641V15.7874H39.7188V11.8503H36.1562V15.7874H7.58594V19.7505H4V31.5878H7.58594V35.5249H11.1484V39.488H14.7344V35.5249H21.8594V39.488H18.2969V51.3253H21.8594V55.2625H14.7344V51.3253H11.1484V55.2625H7.58594V59.2255H4V71.0629H7.58594V75H79V67.0998H75.4375V71.0629H46.8672V67.0998H43.3047V63.1627H46.8672V59.2255H75.4375V63.1627H79V51.3253H75.4375V55.2625L50.4297 55.2495ZM18.2969 27.6507H11.1484V23.6876H18.2969V27.6507ZM36.1562 63.1627H32.5938V67.0998H36.1562V71.0629H32.5938V67.0998H29.0078V63.1627H32.5938V59.2255H36.1562V63.1627Z","M71.875 39.475L75.4375 39.475V51.3124H71.875V39.475ZM50.4297 63.1497H75.4375V67.0869H50.4297V63.1497ZM54.0156 47.3493H68.2891V51.3124H54.0156V47.3493ZM54.0156 39.475H68.2891V43.4122H54.0156V39.475ZM43.3047 23.6747H61.1641V27.6377H43.3047V23.6747ZM43.3047 7.90019H61.1641V11.8373H43.3047V7.90019ZM43.3047 39.475L46.8672 39.475V51.3124H43.3047V39.475ZM32.5938 7.90019H36.1562V11.8373H32.5938V7.90019ZM11.1484 7.90019H18.2969V11.8373H11.1484V7.90019ZM36.1562 3.93714V7.90019H39.7188V3.93714H61.1641V7.90019H64.7266V0H7.58594V3.93714H36.1562ZM7.58594 39.475H11.1484V51.3124H7.58594V39.475ZM4 3.93714H7.58594V15.7745H4V3.93714Z"] },
+  contact: { vb: "0 0 83 71", paths: ["M75.4141 7.41892H79V55.5811H75.4141V7.41892ZM71.8516 55.5811H75.4141V59.3027H71.8516V55.5811ZM71.8516 3.6973H75.4141V7.41892H71.8516V3.6973ZM68.2891 11.1162H71.8516V18.5351H68.2891V11.1162ZM11.1484 59.3027H71.8516V63H11.1484V59.3027ZM64.7031 48.1865H68.2891V51.8838H64.7031V48.1865ZM64.7031 18.5351H68.2891V22.2324H64.7031V18.5351ZM61.1406 44.4649H64.7031V48.1865H61.1406V44.4649ZM61.1406 22.2324H64.7031V25.9297H61.1406V22.2324ZM57.5547 40.7676H61.1406V44.4649H57.5547V40.7676ZM57.5547 25.9297H61.1406V29.6513H57.5547V25.9297ZM53.9922 37.0703H57.5547V40.7676H53.9922V37.0703ZM53.9922 29.6513H57.5547V33.3486H53.9922V29.6513ZM46.8438 33.3486H53.9922V37.0703H46.8438V33.3486ZM36.1328 37.0703H46.8438V40.7676H36.1328V37.0703ZM28.9844 33.3486H36.1328V37.0703H28.9844V33.3486ZM25.4219 37.0703H28.9844V40.7676H25.4219V37.0703ZM25.4219 29.6513H28.9844V33.3486H25.4219V29.6513ZM21.8594 40.7676H25.4219V44.4649H21.8594V40.7676ZM21.8594 25.9297H25.4219V29.6513H21.8594V25.9297ZM18.2734 44.4649H21.8594V48.1865H18.2734V44.4649ZM18.2734 22.2324H21.8594V25.9297H18.2734V22.2324ZM14.7109 48.1865H18.2734V51.8838H14.7109V48.1865ZM14.7109 18.5351H18.2734V22.2324H14.7109V18.5351ZM11.1484 0H71.8516V3.6973H11.1484V0ZM11.1484 11.1162H14.7109V18.5351H11.1484V11.1162ZM7.5625 55.5811H11.1484V59.3027H7.5625V55.5811ZM7.5625 3.6973H11.1484V7.41892H7.5625V3.6973ZM4 7.41892H7.5625V55.5811H4V7.41892Z"] },
+  cat: { vb: "0 0 83 75", paths: ["M75.4375 29.1743H71.8516V41.6697H64.7266V45.8531H71.8516V50.0091H64.7266V54.1651H71.8516V58.3485H75.4375V54.1651H79V50.0091H75.4375V45.8531H79V41.6697H75.4375V29.1743ZM68.2891 58.3485H71.8516V62.5046H68.2891V58.3485ZM68.2891 20.8349H71.8516V29.1743H68.2891V20.8349ZM64.7266 62.5046H68.2891V66.6879H64.7266V62.5046ZM64.7266 12.5228H68.2891V20.8349H64.7266V12.5228ZM61.1406 4.18338H64.7266V12.5228H61.1406V4.18338ZM57.5781 66.6879H64.7266V70.844H57.5781V66.6879ZM57.5781 54.1651H61.1406V58.3485H57.5781V54.1651ZM57.5781 45.8531H61.1406V50.0091H57.5781V45.8531ZM57.5781 0H61.1406V4.18338H57.5781V0ZM54.0156 4.18338H57.5781V8.33941H54.0156V4.18338ZM25.4453 70.844H57.5781V75H25.4453V70.844ZM50.4297 16.6788H54.0156V25.0182H50.4297V16.6788ZM50.4297 8.33941H54.0156V12.5228H50.4297V8.33941ZM46.8672 33.3303H50.4297V37.5137H46.8672V33.3303ZM43.2813 54.1651H46.8672V58.3485H43.2813V54.1651ZM32.5703 41.6697V45.8531H36.1563V50.0091H43.2813V45.8531H46.8672V41.6697H32.5703ZM36.1563 58.3485H43.2813V62.5046H36.1563V58.3485ZM39.7187 16.6788V25.0182H43.2813V16.6788H50.4297V12.5228H32.5703V16.6788H39.7187ZM29.0078 33.3303H32.5703V37.5137H29.0078V33.3303ZM29.0078 16.6788H32.5703V25.0182H29.0078V16.6788ZM29.0078 8.33941H32.5703V12.5228H29.0078V8.33941ZM25.4453 4.18338H29.0078V8.33941H25.4453V4.18338ZM18.2969 66.6879H25.4453V70.844H18.2969V66.6879ZM21.8594 54.1651H25.4453V58.3485H21.8594V54.1651ZM21.8594 45.8531H25.4453V50.0091H21.8594V45.8531ZM21.8594 0H25.4453V4.18338H21.8594V0ZM18.2969 4.18338H21.8594V12.5228H18.2969V4.18338ZM14.7109 62.5046H18.2969V66.6879H14.7109V62.5046ZM14.7109 12.5228H18.2969V20.8349H14.7109V12.5228ZM11.1484 58.3485H14.7109V62.5046H11.1484V58.3485ZM18.2969 54.1651V50.0091H11.1484V45.8531H18.2969V41.6697H11.1484V29.1743H7.58594V41.6697H4V45.8531H7.58594V50.0091H4V54.1651H7.58594V58.3485H11.1484V54.1651H18.2969ZM11.1484 20.8349H14.7109V29.1743H11.1484V20.8349Z"] },
+  music: { vb: "0 0 83 83", paths: ["M75.4141 28.5703H79V46.4297H75.4141V28.5703ZM71.8516 49.9922H68.2891V60.7266H71.8516V53.5781H75.4141V46.4297H71.8516V49.9922ZM71.8516 21.4219H75.4141V28.5703H71.8516V21.4219ZM68.2891 14.2969H71.8516V21.4219H68.2891V14.2969ZM64.7031 60.7266H68.2891V64.2891H64.7031V60.7266ZM64.7031 10.7109H68.2891V14.2969H64.7031V10.7109ZM61.1406 46.4297H68.2891V49.9922H61.1406V46.4297ZM61.1406 25.0078H64.7031V32.1562H61.1406V25.0078ZM53.9922 64.2891V67.8516H50.4297V71.4375H57.5781V67.8516H64.7031V64.2891H53.9922ZM57.5781 21.4219H61.1406V25.0078H57.5781V21.4219ZM57.5781 7.14844H64.7031V10.7109H57.5781V7.14844ZM53.9922 17.8594H57.5781V21.4219H53.9922V17.8594ZM50.4297 57.1406H53.9922V64.2891H50.4297V57.1406ZM50.4297 46.4297H61.1406V42.8672H53.9922V28.5703H50.4297V46.4297ZM46.8438 14.2969H53.9922V17.8594H46.8438V14.2969ZM50.4297 3.58594H57.5781V7.14844H50.4297V3.58594ZM32.5703 71.4375H50.4297V75H32.5703V71.4375ZM32.5703 46.4297V49.9922H46.8438V57.1406H50.4297V46.4297H32.5703ZM46.8438 32.1562H36.1328V42.8672H46.8438V32.1562ZM43.2812 39.2812H39.7188V35.7188H43.2812V39.2812ZM32.5703 0H50.4297V3.58594H32.5703V0ZM50.4297 28.5703V25.0078H36.1328V21.4219H32.5703V28.5703H50.4297ZM25.4219 67.8516H32.5703V71.4375H25.4219V67.8516ZM32.5703 28.5703H25.4219V32.1562H29.0078V46.4297H32.5703V28.5703ZM29.0078 14.2969H32.5703V21.4219H29.0078V14.2969ZM18.2734 64.2891H25.4219V67.8516H18.2734V64.2891ZM18.2734 25.0078H25.4219V28.5703H18.2734V25.0078ZM25.4219 14.2969H29.0078V7.14844H32.5703V3.58594H25.4219V7.14844H18.2734V10.7109H25.4219V14.2969ZM14.7109 60.7266H18.2734V64.2891H14.7109V60.7266ZM14.7109 10.7109H18.2734V14.2969H14.7109V10.7109ZM11.1484 53.5781H14.7109V60.7266H11.1484V53.5781ZM7.5625 46.4297H11.1484V53.5781H7.5625V46.4297ZM11.1484 25.0078H18.2734V21.4219H14.7109V14.2969H11.1484V21.4219H7.5625V28.5703H11.1484V25.0078ZM4 28.5703H7.5625V46.4297H4V28.5703Z"] },
+  paint: { vb: "0 0 83 83", paths: ["M75.4375 3.5625H79V14.2734H75.4375V3.5625ZM71.8516 14.2734H75.4375V21.4219H71.8516V14.2734ZM68.2891 0H75.4375V3.5625H68.2891V0ZM68.2891 21.4219H71.8516V28.5703H68.2891V21.4219ZM64.7031 28.5703H68.2891V35.7188H64.7031V28.5703ZM64.7031 3.5625H68.2891V10.7109H64.7031V3.5625ZM61.1406 35.7188H64.7031V42.8438H61.1406V35.7188ZM61.1406 10.7109H64.7031V17.8594H61.1406V10.7109ZM57.5781 53.5781H61.1406V64.2891H57.5781V53.5781ZM57.5781 42.8438H61.1406V49.9922H57.5781V42.8438ZM57.5781 17.8594H61.1406V25.0078H57.5781V17.8594ZM53.9922 25.0078H57.5781V32.1328H53.9922V25.0078ZM53.9922 60.7031H50.4297V64.2891H46.8672V60.7031H43.2812V57.1406H39.7188V60.7031H36.1328V53.5781H32.5703V64.2891H29.0078V67.8516H25.4219V71.4141H7.5625V75H46.8672V71.4141H53.9922V67.8516H57.5781V64.2891H53.9922V60.7031ZM50.4297 49.9922H57.5781V53.5781H50.4297V49.9922ZM50.4297 32.1328H53.9922V39.2812H50.4297V32.1328ZM50.4297 49.9922V39.2812H46.8672V46.4297H39.7188V49.9922H50.4297ZM36.1328 49.9922H39.7188V53.5781H36.1328V49.9922ZM36.1328 28.5703H39.7188V32.1328H36.1328V28.5703ZM32.5703 32.1328H36.1328V35.7188H32.5703V32.1328ZM7.5625 25.0078H36.1328V28.5703H7.5625V25.0078Z","M25.4219 53.5781H29.0078V57.1406H25.4219V53.5781ZM21.8594 35.7188H32.5703L32.5703 39.2812H21.8594V35.7188ZM21.8594 57.1406H25.4219V60.7031H21.8594V57.1406ZM14.7109 49.9922H25.4219V53.5781H14.7109V49.9922ZM14.7109 39.2812H21.8594V42.8438H14.7109V39.2812ZM11.1484 60.7031H21.8594V64.2891H11.1484V60.7031ZM11.1484 42.8438H14.7109V49.9922H11.1484V42.8438ZM7.5625 64.2891H11.1484V67.8516H7.5625V64.2891ZM4 67.8516H7.5625V71.4141H4V67.8516Z"] },
+  resume: { vb: "0 0 83 83", paths: ["M75.0412 14.2969H63.1958V3.57422H67.1598V0H11.8762V28.5938H7.9381V32.1562H11.8762V39.3047H7.9381V32.1562H4V60.7266H7.9381V64.2891H11.8762V75H79V10.7227H75.036L75.0412 14.2969ZM15.8402 42.8555H27.6804V53.5664H19.7783V60.7148H15.8402V42.8555ZM75.0412 71.4258H15.8402V64.2773H63.1958V60.7148H67.1598V42.8555H63.1958V39.293H15.8402V3.57422H59.2629V17.8477H75.0412V71.4258ZM43.4587 46.418V57.1523H39.5206V60.7148H31.6185V42.8555H39.5206V46.418H43.4587ZM59.2629 50.0039V53.5664H51.3608V60.7148H47.4227V42.8555H59.2629V46.418H51.3608V50.0039H59.2629Z","M71.1031 7.13672H75.0412V10.7227H71.1031V7.13672ZM67.165 3.57422H71.1031V7.13672H67.165V3.57422ZM35.5825 46.418H39.5206V57.1523H35.5825V46.418ZM19.7783 46.418H23.7423V50.0039H19.7783V46.418Z"] },
+  person: { vb: "0 0 63 63", paths: ["M56.3703 20.9516H59V34.0484H56.3703V20.9516ZM53.7578 34.0484H56.3703V39.2906H53.7578V34.0484ZM53.7578 15.7094H56.3703V20.9516H53.7578V15.7094ZM51.1453 39.2906H53.7578V44.5156H51.1453V39.2906ZM51.1453 10.4844H53.7578V15.7094H51.1453V10.4844ZM48.5156 44.5156H51.1453V47.1453H48.5156V44.5156ZM48.5156 7.85469H51.1453V10.4844H48.5156V7.85469ZM14.4672 41.9031H17.0969V44.5156H22.3219V41.9031H24.9516V39.2906H22.3219V36.6609H19.7094V26.1938H22.3219V23.5641H40.6609V26.1938H43.2734V36.6609H40.6609V39.2906H38.0484V41.9031H40.6609V44.5156H45.9031V41.9031H48.5156V36.6609H51.1453V23.5641H48.5156V18.3391H45.9031V15.7094H43.2734V13.0969H40.6609V10.4844H22.3219V13.0969H19.7094V15.7094H17.0969V18.3391H14.4672V23.5641H11.8547V36.6609H14.4672V41.9031ZM43.2734 47.1453H48.5156V49.7578H43.2734V47.1453ZM43.2734 5.24219H48.5156V7.85469H43.2734V5.24219ZM38.0484 49.7578H43.2734V52.3875H38.0484V49.7578Z","M38.0484 28.8062H40.6609V34.0484H38.0484V28.8062ZM38.0484 2.6125H43.2734V5.24219H38.0484V2.6125ZM24.9516 52.3875H38.0484V55H24.9516V52.3875ZM24.9516 41.9031H38.0484V44.5156H24.9516V41.9031ZM27.5641 36.6609H35.4188V39.2906H27.5641V36.6609ZM24.9516 0H38.0484V2.6125H24.9516V0ZM19.7094 49.7578H24.9516V52.3875H19.7094V49.7578ZM22.3219 28.8062H24.9516V34.0484H22.3219V28.8062ZM19.7094 2.6125H24.9516V5.24219H19.7094V2.6125ZM14.4672 47.1453H19.7094V49.7578H14.4672V47.1453ZM14.4672 5.24219H19.7094V7.85469H14.4672V5.24219ZM11.8547 44.5156H14.4672V47.1453H11.8547V44.5156ZM11.8547 7.85469H14.4672V10.4844H11.8547V7.85469ZM9.24219 39.2906H11.8547V44.5156H9.24219V39.2906ZM9.24219 10.4844H11.8547V15.7094H9.24219V10.4844ZM6.6125 34.0484H9.24219V39.2906H6.6125V34.0484ZM6.6125 15.7094H9.24219V20.9516H6.6125V15.7094ZM4 20.9516H6.6125V34.0484H4V20.9516Z"] },
+  info: { vb: "0 0 56 56", paths: ["M49.72 18.285H52V29.715H49.72V18.285ZM47.425 29.715H49.72V34.29H47.425V29.715ZM47.425 13.71H49.72V18.285H47.425V13.71ZM45.145 34.29H47.425V38.85H45.145V34.29ZM45.145 9.135H47.425V13.71H45.145V9.135ZM42.85 38.85H45.145V41.145H42.85V38.85ZM42.85 6.855H45.145V9.135H42.85V6.855ZM38.29 41.145H42.85V43.425H38.29V41.145ZM38.29 4.575H42.85V6.855H38.29V4.575ZM33.715 43.425H38.29V45.72H33.715V43.425ZM35.995 34.29H33.715V22.86H31.435V20.565H24.565V22.86H22.285V38.85H24.565V41.145H35.995V38.85H38.29V36.57H35.995V34.29ZM33.715 2.28H38.29V4.575H33.715V2.28ZM22.285 45.72H33.715V48H22.285V45.72ZM24.565 18.285H31.435V16.005H33.715V9.135H31.435V6.855H24.565V9.135H22.285V16.005H24.565V18.285ZM22.285 0H33.715V2.28H22.285V0ZM17.71 43.425H22.285V45.72H17.71V43.425ZM17.71 2.28H22.285V4.575H17.71V2.28ZM13.135 41.145H17.71V43.425H13.135V41.145ZM13.135 4.575H17.71V6.855H13.135V4.575ZM10.855 38.85H13.135V41.145H10.855V38.85ZM10.855 6.855H13.135V9.135H10.855V6.855ZM8.575 34.29H10.855V38.85H8.575V34.29ZM8.575 9.135H10.855V13.71H8.575V9.135ZM6.28 29.715H8.575V34.29H6.28V29.715ZM6.28 13.71H8.575V18.285H6.28V13.71ZM4 18.285H6.28V29.715H4V18.285Z"] },
+  briefcase: { vb: "0 0 56 56", paths: ["M49.6055 12H52V21.6063H49.6055V12ZM47.1953 9.6063H49.6055V12H47.1953V9.6063ZM44.8008 43.1968H47.1953V45.6063H44.8008V43.1968ZM44.8008 24H47.1953V43.1968H49.6055V21.6063H44.8008V24ZM39.9961 24H44.8008V26.4094H39.9961V24ZM11.1992 45.6063H44.8008V48H11.1992V45.6063ZM35.2071 26.4094H39.9961V28.8031H35.2071V26.4094ZM25.5976 31.1968V36H30.4024V31.1968H35.2071V28.8031H30.4024V26.4094H25.5976V28.8031H20.7929V31.1968H25.5976ZM15.9882 0H39.9961V2.40945H15.9882V0Z","M15.9882 26.4094H20.7929V28.8031H15.9882V26.4094ZM11.1992 24H15.9882V26.4094H11.1992V24ZM47.1953 9.6063L47.1953 7.2126H42.4063V2.40945H39.9961L39.9961 7.2126H15.9882V2.40945H13.5937V7.2126H8.78897V9.6063H47.1953ZM8.78897 43.1969H11.1992V45.6063L8.78897 45.6063V43.1969ZM8.78897 24H11.1992V21.6063H6.39449V43.1969H8.78897V24ZM6.39449 9.6063H8.78897V12H6.39449V9.6063ZM4 12H6.39449V21.6063H4V12Z"] },
+  starheart: { vb: "0 0 56 56", paths: ["M49.72 22.86H52V38.865H49.72V22.86ZM47.44 38.865H49.72V41.145H47.44V38.865ZM47.44 20.58H49.72V22.86H47.44V20.58ZM45.145 45.72H42.865V48H47.44V41.145H45.145V45.72ZM42.865 18.285H33.715V16.005H31.435V18.285H26.86V20.58H47.44V18.285H45.145V11.43H42.865V18.285ZM40.57 43.44H42.865V45.72H40.57V43.44ZM42.865 22.86H38.29V25.155H36.01V22.86H31.435V25.155H29.14V29.715H31.435V32.01H33.715V34.29H36.01V36.585H38.29V34.29H40.57V32.01H42.865V29.715H45.145V25.155H42.865V22.86ZM40.57 9.15H42.865V11.43H40.57V9.15ZM38.29 41.145H40.57V43.44H38.29V41.145ZM38.29 6.87H40.57V9.15H38.29V6.87ZM26.86 38.865H38.29V41.145H26.86V38.865ZM33.715 4.575H38.29V6.87H33.715V4.575ZM29.14 2.295H33.715V4.575H29.14V2.295Z","M33.715 13.725V16.005H36.01V11.43H29.14V9.15H26.86V13.725H33.715ZM24.58 36.585H26.86V38.865H24.58V36.585ZM24.58 20.58H26.86V22.86H24.58V20.58ZM24.58 6.87H26.86V9.15H24.58V6.87ZM24.58 22.86H20.005V25.155H22.285V34.29H15.43V36.585H24.58V22.86ZM22.285 4.575H24.58V6.87H22.285V4.575ZM20.005 0H29.14V2.295H20.005V0ZM20.005 6.87H22.285V9.15H20.005V6.87Z","M17.725 25.155H20.005V27.435H17.725V25.155ZM15.43 2.295H20.005V4.575H15.43V2.295ZM15.43 27.435H17.725V29.715H15.43V27.435ZM15.43 18.285H17.725V22.86H15.43V18.285ZM13.15 22.86H15.43V27.435H13.15V22.86ZM13.15 16.005H15.43V18.285H13.15V16.005ZM20.005 13.725V9.15H17.725V11.43H10.855V16.005H13.15V13.725H20.005ZM10.855 4.575H15.43V6.87H10.855V4.575ZM8.575 36.585V34.29H6.295V36.585H4V38.865H15.43V36.585H8.575ZM8.575 29.715H10.855V34.29H8.575V29.715ZM8.575 6.87H10.855V9.15H8.575V6.87ZM6.295 27.435H8.575V29.715H6.295V27.435ZM6.295 9.15H8.575V11.43H6.295V9.15ZM4 11.43H6.295V27.435H4V11.43Z"] },
+  heart: { vb: "0 0 61 53", paths: ["M54.4659 8.43519H57V22.5H54.4659V8.43519ZM51.9484 22.5H54.4659V28.1296H51.9484V22.5ZM51.9484 5.62961H54.4659V8.43519H51.9484V5.62961ZM49.4309 28.1296H51.9484V30.9352H49.4309V28.1296ZM49.4309 11.2408H51.9484V16.8704H49.4309V11.2408ZM49.4309 2.80558H51.9484V5.62961H49.4309V2.80558ZM46.8969 8.43519H49.4309V11.2408H46.8969V8.43519ZM44.3794 30.9352H49.4309V33.7408H44.3794V30.9352ZM41.8453 5.62961H46.8969V8.43519H41.8453V5.62961ZM39.3278 33.7408H44.3794V36.5648H39.3278V33.7408ZM36.8103 0H49.4309V2.80558H36.8103V0ZM34.2763 36.5648H39.3278V39.3704H34.2763V36.5648ZM34.2763 2.80558H36.8103V5.62961H34.2763V2.80558ZM31.7588 39.3704H34.2763V42.176H31.7588V39.3704ZM31.7588 5.62961H34.2763V8.43519H31.7588V5.62961ZM29.2412 42.176H31.7588V45H29.2412V42.176ZM29.2412 8.43519H31.7588V11.2408H29.2412V8.43519ZM26.7072 39.3704H29.2412V42.176H26.7072V39.3704ZM26.7072 5.62961H29.2412V8.43519H26.7072V5.62961ZM21.6556 36.5648H26.7072V39.3704H21.6556V36.5648ZM24.1897 2.80558H26.7072V5.62961H24.1897V2.80558ZM16.6206 33.7408H21.6556V36.5648H16.6206V33.7408ZM11.5691 30.9352H16.6206V33.7408H11.5691V30.9352ZM11.5691 0H24.1897V2.80558H11.5691V0ZM9.05156 28.1296H11.5691V30.9352H9.05156V28.1296ZM9.05156 2.80558H11.5691V5.62961H9.05156V2.80558ZM6.5175 22.5H9.05156V28.1296H6.5175V22.5ZM6.5175 5.62961H9.05156V8.43519H6.5175V5.62961ZM4 8.43519H6.5175V22.5H4V8.43519Z"] },
+  eye: { vb: "0 0 48 48", paths: ["M45.72 38.865H48V45.72H45.72V38.865ZM45.72 20.58H48V27.435H45.72V20.58ZM45.72 2.295H48V9.15H45.72V2.295ZM43.425 27.435H45.72V29.715H43.425V27.435ZM43.425 18.285H45.72V20.58H43.425V18.285ZM38.865 0H45.72V2.295H38.865V0ZM38.865 45.72H45.72V48H38.865V45.72ZM41.145 29.715H43.425V32.01H41.145V29.715ZM41.145 16.005H43.425V18.285H41.145V16.005ZM36.57 32.01H41.145V34.29H36.57V32.01ZM36.57 13.725H41.145V16.005H36.57V13.725ZM32.01 34.29H36.57V36.57H32.01V34.29ZM32.01 11.43H36.57V13.725H32.01V11.43ZM32.01 18.285H29.715V16.005H27.435V13.725H20.58V16.005H18.285V18.285H16.005V20.58H13.725V27.435H16.005V29.715H18.285V32.01H20.58V34.29H27.435V32.01H29.715V29.715H32.01V27.435H34.29V20.58H32.01V18.285ZM27.435 25.155H25.14V27.435H22.86V25.155H20.58V22.86H22.86V20.58H25.14V22.86H27.435V25.155ZM16.005 36.57H32.01V38.865H16.005V36.57ZM16.005 9.15H32.01V11.43H16.005V9.15ZM11.43 34.29H16.005V36.57H11.43V34.29ZM11.43 11.43H16.005V13.725H11.43V11.43ZM6.855 32.01H11.43V34.29H6.855V32.01ZM6.855 13.725H11.43V16.005H6.855V13.725ZM2.295 45.72H9.15V48H2.295V45.72ZM4.575 29.715H6.855V32.01H4.575V29.715ZM4.575 16.005H6.855V18.285H4.575V16.005ZM2.295 0H9.15V2.295H2.295V0ZM2.295 27.435H4.575V29.715H2.295V27.435ZM2.295 18.285H4.575V20.58H2.295V18.285ZM0 38.865H2.295V45.72H0V38.865ZM0 20.58H2.295V27.435H0V20.58ZM0 2.295H2.295V9.15H0V2.295Z"] },
+  close: { vb: "0 0 20 20", paths: ["M19.0909 0.909091V0H0.909091V0.909091H0V19.0909H0.909091V20H19.0909V19.0909H20V0.909091H19.0909ZM18.1818 18.1818H1.81818V1.81818H18.1818V18.1818Z","M12.7273 10.9091H13.6364V11.8182H14.5455V12.7273H15.4545V13.6364H14.5455V14.5455H13.6364V15.4545H12.7273V14.5455H11.8182V13.6364H10.9091V12.7273H9.09091V13.6364H8.18182V14.5455H7.27273V15.4545H6.36364V14.5455H5.45455V13.6364H4.54545V12.7273H5.45455V11.8182H6.36364V10.9091H7.27273V9.09091H6.36364V8.18182H5.45455V7.27273H4.54545V6.36364H5.45455V5.45455H6.36364V4.54545H7.27273V5.45455H8.18182V6.36364H9.09091V7.27273H10.9091V6.36364H11.8182V5.45455H12.7273V4.54545H13.6364V5.45455H14.5455V6.36364H15.4545V7.27273H14.5455V8.18182H13.6364V9.09091H12.7273V10.9091Z"] },
+  maximize: { vb: "0 0 28 28", paths: ["M24 0.909091V15.4545H23.0909V16.3636H21.2727V14.5455H22.1818V1.81818H9.45455V2.72727H7.63636V0.909091H8.54545V0H23.0909V0.909091H24Z","M19.4545 4.54545V3.63636H4.90909V4.54545H4V19.0909H4.90909V20H19.4545V19.0909H20.3636V4.54545H19.4545ZM5.81818 18.1818V5.45455H18.5455V18.1818H5.81818Z"] },
+  minimize: { vb: "0 0 20 2", paths: ["M20 0.5V1.5H19.0909V2H0.909091V1.5H0V0.5H0.909091V0H19.0909V0.5H20Z"] },
+  navback: { vb: "0 0 32 32", paths: ["M26.86 9.1425H28V14.8575H26.86V9.1425ZM25.7125 14.8575H26.86V17.145H25.7125V14.8575ZM25.7125 6.855H26.86V9.1425H25.7125V6.855ZM24.5725 17.145H25.7125V19.425H24.5725V17.145ZM24.5725 4.5675H25.7125V6.855H24.5725V4.5675ZM23.425 19.425H24.5725V20.5725H23.425V19.425ZM23.425 3.4275H24.5725V4.5675H23.425V3.4275ZM21.145 20.5725H23.425V21.7125H21.145V20.5725ZM22.285 9.1425H21.145V8.0025H14.2825V5.715H13.1425V6.855H12.0025V8.0025H10.855V9.1425H9.715V10.2825H8.5675V11.43H9.715V12.57H10.855V13.7175H12.0025V14.8575H13.1425V15.9975H14.2825V13.7175H18.8575V14.8575H19.9975V15.9975H18.8575V17.145H17.7175V18.285H19.9975V17.145H22.285V15.9975H23.425V10.2825H22.285V9.1425ZM21.145 2.2875H23.425V3.4275H21.145V2.2875ZM18.8575 21.7125H21.145V22.86H18.8575V21.7125ZM18.8575 1.14H21.145V2.2875H18.8575V1.14ZM13.1425 22.86H18.8575V24H13.1425V22.86ZM13.1425 0H18.8575V1.14H13.1425V0ZM10.855 21.7125H13.1425V22.86H10.855V21.7125ZM10.855 1.14H13.1425V2.2875H10.855V1.14ZM8.5675 20.5725H10.855V21.7125H8.5675V20.5725ZM8.5675 2.2875H10.855V3.4275H8.5675V2.2875ZM7.4275 19.425H8.5675V20.5725H7.4275V19.425ZM7.4275 3.4275H8.5675V4.5675H7.4275V3.4275ZM6.2875 17.145H7.4275V19.425H6.2875V17.145ZM6.2875 4.5675H7.4275V6.855H6.2875V4.5675ZM5.14 14.8575H6.2875V17.145H5.14V14.8575ZM5.14 6.855H6.2875V9.1425H5.14V6.855ZM4 9.1425H5.14V14.8575H4V9.1425Z"] },
+  navforward: { vb: "0 0 32 32", paths: ["M4 9.1425H5.14V14.8575H4V9.1425ZM5.14 14.8575H6.2875V17.145H5.14V14.8575ZM5.14 6.855H6.2875V9.1425H5.14V6.855ZM6.2875 17.145H7.4275V19.425H6.2875V17.145ZM6.2875 4.5675H7.4275V6.855H6.2875V4.5675ZM7.4275 19.425H8.575V20.5725H7.4275V19.425ZM7.4275 3.4275H8.575V4.5675H7.4275V3.4275ZM8.575 20.5725H10.855V21.7125H8.575V20.5725ZM22.285 9.1425H21.145V8.0025H19.9975V6.855H18.8575V5.715H17.7175V8.0025H10.855V9.1425H9.715V10.2825H8.575V15.9975H9.715V17.145H12.0025V18.285H14.2825V17.145H13.1425V15.9975H12.0025V14.8575H13.1425V13.7175H17.7175V15.9975H18.8575V14.8575H19.9975V13.7175H21.145V12.57H22.285V11.43H23.4325V10.2825H22.285V9.1425ZM8.575 2.2875H10.855V3.4275H8.575V2.2875ZM10.855 21.7125H13.1425V22.86H10.855V21.7125ZM10.855 1.14H13.1425V2.2875H10.855V1.14ZM13.1425 22.86H18.8575V24H13.1425V22.86ZM13.1425 0H18.8575V1.14H13.1425V0ZM18.8575 21.7125H21.145V22.86H18.8575V21.7125ZM18.8575 1.14H21.145V2.2875H18.8575V1.14ZM21.145 20.5725H23.4325V21.7125H21.145V20.5725ZM21.145 2.2875H23.4325V3.4275H21.145V2.2875ZM23.4325 19.425H24.5725V20.5725H23.4325V19.425ZM23.4325 3.4275H24.5725V4.5675H23.4325V3.4275ZM24.5725 17.145H25.7125V19.425H24.5725V17.145ZM24.5725 4.5675H25.7125V6.855H24.5725V4.5675ZM25.7125 14.8575H26.86V17.145H25.7125V14.8575ZM25.7125 6.855H26.86V9.1425H25.7125V6.855ZM26.86 9.1425H28V14.8575H26.86V9.1425Z"] },
+  refresh: { vb: "0 0 28 28", paths: ["M22.8263 7.05791H24V12.9421H22.8263V7.05791ZM21.6525 12.9421H22.8263V15.2973H21.6525V12.9421ZM21.6525 4.7027H22.8263V7.05791H21.6525V4.7027ZM22.8263 3.52896V2.35521H24V1.17375H18.1158V7.05791H19.2973V5.88417H20.471V4.7027H21.6525V3.52896H22.8263ZM20.471 15.2973H21.6525V16.471H20.471V15.2973ZM19.2973 16.471H20.471V17.6525H19.2973V16.471ZM16.9421 17.6525H19.2973V18.8263H16.9421V17.6525ZM12.2317 18.8263H16.9421V20H12.2317V18.8263ZM11.0579 0H15.7683V1.17375H11.0579V0ZM8.7027 1.17375H11.0579V2.35521H8.7027V1.17375ZM7.52896 2.35521H8.7027V3.52896H7.52896V2.35521ZM6.35521 3.52896H7.52896V4.7027H6.35521V3.52896ZM5.17375 16.471V17.6525H4V18.8263H9.88417V12.9421H8.7027V14.1158H7.52896V15.2973H6.35521V16.471H5.17375Z","M5.17375 12.9421H6.35521V15.2973H5.17375V12.9421ZM5.17375 4.7027H6.35521V7.05791H5.17375V4.7027ZM4 7.05791H5.17375V12.9421H4V7.05791Z"] },
+  uparrow: { vb: "0 0 40 40", paths: ["M31.6667 28.3334H28.3334V26.6667H26.6667V25H25V23.3334H23.3334V21.6667H21.6667V20H18.3334V21.6667H16.6667V23.3334H15V25H13.3334V26.6667H11.6667V28.3334H8.33335V26.6667H6.66669V23.3334H8.33335V21.6667H10V20H11.6667V18.3334H13.3334V16.6667H15V15H16.6667V13.3334H18.3334V11.6667H21.6667V13.3334H23.3334V15H25V16.6667H26.6667V18.3334H28.3334V20H30V21.6667H31.6667V23.3334H33.3334V26.6667H31.6667V28.3334Z"] },
+  moon: { vb: "0 0 40 40", paths: ["M37.9921 14.0026H35.9974V15.9974H34.0026V18.0052H35.9974V20H37.9921V18.0052H40V15.9974H37.9921V14.0026ZM35.9974 28.0052H37.9921V30H35.9974V28.0052ZM34.0026 0V2.00787H31.9947V4.00262H34.0026V5.99738H35.9974V4.00262H37.9921V2.00787H35.9974V0H34.0026ZM31.9947 10H34.0026V12.0079H31.9947V10ZM31.9947 34.0026H30V35.9974H27.9921V38.0052H30V40H31.9947V38.0052H34.0026V35.9974H31.9947V34.0026ZM30 24.0026H31.9947V25.9974H30V24.0026ZM27.9921 28.0052H15.9974V30H25.9974V31.9947H27.9921V28.0052ZM15.9974 10V12.0079H27.9921V8.00525H25.9974V10H15.9974ZM21.9948 31.9947H25.9974V34.0026H21.9948V31.9947ZM24.0026 24.0026V22.0079H25.9974V20H24.0026V18.0052H21.9948V20H20V22.0079H21.9948V24.0026H24.0026ZM21.9948 5.99738H25.9974V8.00525H21.9948V5.99738ZM11.9948 34.0026H21.9948V35.9974H11.9948V34.0026ZM14.0026 25.9974H15.9974V28.0052H14.0026V25.9974ZM14.0026 12.0079H15.9974V14.0026H14.0026V12.0079ZM11.9948 4.00262H21.9948V5.99738H11.9948V4.00262ZM11.9948 14.0026H14.0026V25.9974H11.9948V14.0026ZM8.00525 31.9947H11.9948V34.0026H8.00525V31.9947ZM8.00525 5.99738H11.9948V8.00525H8.00525V5.99738ZM5.99738 30H8.00525V31.9947H5.99738V30ZM5.99738 8.00525H8.00525V10H5.99738V8.00525ZM4.00262 25.9974H5.99738V30H4.00262V25.9974ZM4.00262 10H5.99738V14.0026H4.00262V10ZM2.00787 38.0052H4.00262V40H2.00787V38.0052ZM2.00787 14.0026H4.00262V25.9974H2.00787V14.0026ZM0 4.00262H2.00787V5.99738H0V4.00262Z"] },
+  wifi: { vb: "0 0 30 30", paths: ["M28.4249 14.2073H26.8497V11.0466H25.2642V9.4715H23.6891V7.89637H22.1036V6.31088H20.5285V4.73575H18.9534V3.16062H15.7927V1.57513H11.057V0H1.58549V3.16062H11.057V4.73575H15.7927V6.31088H18.9534V7.89637H20.5285V9.4715H22.1036V11.0466H23.6891V14.2073H25.2642V18.943H26.8497V28.4249H30V18.943H28.4249V14.2073Z","M1.58549 6.31088V9.4715H9.4715V11.0466H12.6321V12.6321H15.7927V14.2073H17.3679V17.3679H18.9534V20.5285H20.5285V28.4249H23.6891V20.5285H22.1036V17.3679H20.5285V14.2073H18.9534V12.6321H17.3679V11.0466H15.7927V9.4715H12.6321V7.89637H9.4715V6.31088H1.58549Z","M1.58549 15.7927H7.89637V17.3679H11.057V18.943H12.6321V22.1036H14.2176V28.4249H17.3679V22.1036H15.7927V18.943H14.2176V17.3679H12.6321V15.7927H11.057V14.2073H7.89637V12.6321H1.58549V15.7927ZM1.58549 23.6788H0V28.4249H1.58549V30H6.32124V28.4249H7.89637V23.6788H6.32124V22.1036H1.58549V23.6788Z"] },
+  volume: { vb: "0 0 40 34", paths: ["M38.0875 9.44513H40V24.5549H38.0875V9.44513ZM36.1875 24.5549H38.0875V26.4389H36.1875V24.5549ZM36.1875 7.54867H38.0875V9.44513H36.1875V7.54867ZM34.2875 26.4389H36.1875V28.323H34.2875V26.4389ZM34.2875 13.2133H36.1875V20.7743H34.2875V13.2133ZM34.2875 5.6646H36.1875V7.54867H34.2875V5.6646ZM32.375 20.7743H34.2875V22.6584H32.375V20.7743ZM32.375 11.3292H34.2875V13.2133H32.375V11.3292ZM30.475 15.1097H32.375V18.8903H30.475V15.1097ZM26.6625 3.78053H28.5625V30.2195H26.6625V3.78053ZM24.7625 30.2195H26.6625V32.1035H24.7625V30.2195ZM24.7625 1.88407H26.6625V3.78053H24.7625V1.88407ZM19.05 32.1035H24.7625V34H19.05V32.1035ZM20.95 24.5549H22.85V26.4389H20.95V24.5549ZM20.95 7.54867H22.85V9.44513H20.95V7.54867ZM19.05 0H24.7625V1.88407H19.05V0ZM19.05 9.44513H20.95V24.5549H19.05V9.44513ZM17.1375 30.2195H19.05V32.1035H17.1375V30.2195ZM17.1375 1.88407H19.05V3.78053H17.1375V1.88407ZM15.2375 28.323H17.1375V30.2195H15.2375V28.323ZM15.2375 3.78053H17.1375V5.6646H15.2375V3.78053ZM13.325 26.4389H15.2375V28.323H13.325V26.4389ZM13.325 5.6646H15.2375V7.54867H13.325V5.6646ZM11.425 24.5549H13.325V26.4389H11.425V24.5549ZM11.425 7.54867H13.325V9.44513H11.425V7.54867ZM9.525 22.6584H11.425V24.5549H9.525V22.6584ZM9.525 9.44513H11.425V11.3292H9.525V9.44513ZM9.525 11.3292H1.9V13.2133H0V20.7743H1.9V22.6584H9.525V11.3292ZM5.7125 15.1097H3.8125V18.8903H1.9V15.1097H3.8125V13.2133H5.7125V15.1097Z"] },
+  battery: { vb: "0 0 40 40", paths: ["M36.2 12.0079V10H34.2875V14.0026H38.1V20H34.2875V24.0026H36.2V22.0079H40V12.0079H36.2ZM32.3875 24.0026H34.2875V25.9974H32.3875V24.0026ZM32.3875 8.00525H34.2875V10H32.3875V8.00525ZM28.575 6.0105H32.3875V8.00525H28.575V6.0105ZM20.9625 25.9974H32.3875V28.0052H20.9625V25.9974Z","M19.05 34.0026V24.0026H22.8625V22.0079H24.7625V20H26.675V10H24.7625V2.00787H22.8625V10H20.9625V2.00787H19.05V10H17.15V2.00787H15.25V10H13.3375V2.00787H11.4375V10H9.525V20H11.4375V22.0079H13.3375V24.0026H17.15V34.0026H19.05ZM20.9625 14.0026H22.8625V15.9974H20.9625V14.0026ZM13.3375 14.0026H15.25V15.9974H13.3375V14.0026ZM15.25 22.0079V20H13.3375V18.0052H15.25V20H20.9625V18.0052H22.8625V20H20.9625V22.0079H15.25ZM20.9625 0H22.8625V2.00787H20.9625V0ZM13.3375 34.0026H17.15V35.9974H13.3375V34.0026ZM13.3375 0H15.25V2.00787H13.3375V0ZM11.4375 35.9974H13.3375V38.0052H11.4375V35.9974ZM9.525 38.0052H11.4375V40H9.525V38.0052Z","M1.9125 25.9974H13.3375V28.0052H1.9125V25.9974ZM1.9125 6.0105H7.625V8.00525H1.9125V6.0105ZM0 8.00525H1.9125V25.9974H0V8.00525Z"] },
+  folder: { vb: "0 0 52 48", paths: ["M46 8V6H28V4H26V2H24V0H6V2H4V38H6V40H46V38H48V8H46ZM44 36H8V4H22V6H24V8H26V10H44V36Z"] },
+  pencil: { vb: "0 0 48 44", paths: ["M42.1 2.2583H44V33.7417H42.1V2.2583ZM5.9 33.7417H42.1V36H5.9V33.7417ZM40.1875 0H36.3875V2.2583H34.475V4.50185H32.575V6.76015H30.6625V9.00369H28.7625V11.2472H26.8625V13.5055H24.95V15.7491H23.05V20.2509H26.8625V17.9926H28.7625V15.7491H30.6625V13.5055H32.575V11.2472H34.475V9.00369H36.3875V6.76015H38.2875V4.50185H40.1875V0ZM21.1375 20.2509H23.05V22.4945H21.1375V20.2509ZM19.2375 11.2472H21.1375V13.5055H19.2375V11.2472ZM15.425 22.4945H21.1375V24.7528H15.425V22.4945ZM17.3375 13.5055H19.2375V15.7491H17.3375V13.5055ZM15.425 9.00369H19.2375V11.2472H15.425V9.00369ZM15.425 15.7491H17.3375V17.9926H15.425V15.7491ZM13.525 17.9926H15.425V22.4945H13.525V17.9926ZM13.525 11.2472H15.425V13.5055H13.525V11.2472ZM11.625 13.5055H13.525V15.7491H11.625V13.5055Z","M9.7125 6.76015H28.7625V4.50185H7.8125V31.4982H40.1875V9.00369H38.2875V29.2399H9.7125V6.76015ZM5.9 0H32.575V2.2583H5.9V0ZM4 2.2583H5.9V33.7417H4V2.2583Z"] },
+  smiley: { vb: "0 0 48 48", paths: ["M31.2727 23.6364V25.4545H16.7273V23.6364H13.0909V29.0909H14.9091V30.9091H16.7273V32.7273H31.2727V30.9091H33.0909V29.0909H34.9091V23.6364H31.2727ZM29.4545 29.0909V30.9091H20.3636V29.0909H22.1818V27.2727H31.2727V29.0909H29.4545Z","M42.1818 14.5455V10.9091H40.3636V7.27273H38.5455V5.45455H36.7273V3.63636H33.0909V1.81818H29.4545V0H18.5455V1.81818H14.9091V3.63636H11.2727V5.45455H9.45455V7.27273H7.63636V10.9091H5.81818V14.5455H4V25.4545H5.81818V29.0909H7.63636V32.7273H9.45455V34.5455H11.2727V36.3636H14.9091V38.1818H18.5455V40H29.4545V38.1818H33.0909V36.3636H36.7273V34.5455H38.5455V32.7273H40.3636V29.0909H42.1818V25.4545H44V14.5455H42.1818ZM40.3636 25.4545H38.5455V29.0909H36.7273V30.9091H34.9091V32.7273H33.0909V34.5455H29.4545V36.3636H18.5455V34.5455H14.9091V32.7273H13.0909V30.9091H11.2727V29.0909H9.45455V25.4545H7.63636V14.5455H9.45455V10.9091H11.2727V9.09091H13.0909V7.27273H14.9091V5.45455H18.5455V3.63636H29.4545V5.45455H33.0909V7.27273H34.9091V9.09091H36.7273V10.9091H38.5455V14.5455H40.3636V25.4545Z","M14.9091 12.7273H20.3636V18.1818H14.9091V12.7273ZM27.6364 12.7273H33.0909V18.1818H27.6364V12.7273Z"] },
+  ruler: { vb: "0 0 48 48", paths: ["M42.0875 1.9125H44V11.4375H42.0875V1.9125ZM17.3375 11.4375V1.9125H19.2375V3.8125H21.1375V1.9125H24.95V5.725H26.85V1.9125H30.6625V3.8125H32.575V1.9125H36.375V5.725H38.2875V1.9125H42.0875V0H11.6125V1.9125H15.425V11.4375H5.9V7.625H4V38.1H5.9V34.2875H9.7125V32.3875H5.9V28.575H7.8125V26.675H5.9V22.8625H9.7125V20.9625H5.9V17.15H7.8125V15.25H5.9V13.3375H15.425V38.1H17.3375V13.3375H42.0875V11.4375H17.3375ZM5.9 38.1H15.425V40H5.9V38.1Z","M9.7125 1.9125H11.6125V3.8125H9.7125V1.9125ZM7.8125 3.8125H9.7125V5.725H7.8125V3.8125ZM5.9 5.725H7.8125V7.625L5.9 7.625V5.725Z"] },
+  camera: { vb: "0 0 48 38", paths: ["M28.0026 12.0079V14.0026H29.9974V22.0079H31.9921V14.0026H41.9921V25.9974H44V4.00262H41.9921V12.0079H28.0026Z","M39.9974 25.9974L41.9921 25.9974V28.0052H39.9974V25.9974ZM39.9974 2.00787H41.9921V4.00262H39.9974V2.00787ZM38.0026 6.0105H39.9974V8.00525H38.0026V6.0105ZM8.00262 28.0052H39.9974V30H8.00262V28.0052ZM31.9921 8.00525H38.0026V10H31.9921V8.00525ZM31.9921 4.00262H38.0026V6.0105H31.9921V4.00262ZM29.9974 6.0105H31.9921V8.00525H29.9974V6.0105ZM28.0026 22.0079H29.9974V24.0026H28.0026V22.0079ZM25.9948 0H39.9974V2.00787H25.9948V0ZM22.0052 22.0079H25.9948V20H28.0026V15.9974H25.9948V18.0053H24V15.9974H25.9948V14.0026H22.0052V15.9974H19.9974V20H22.0052V22.0079ZM19.9974 10H28.0026V12.0079H19.9974V10ZM19.9974 24.0026H28.0026V25.9974H19.9974V24.0026ZM24 2.00787H25.9948V4.00262H24V2.00787ZM18.0026 22.0079H19.9974V24.0026H18.0026V22.0079ZM14 0H19.9974V2.00787H14V0ZM9.99738 8.00525H14V10H9.99738V8.00525ZM24 6.0105V4.00262H22.0052V2.00787H19.9974V4.00262H14V2.00787H12.0052V4.00262H8.00262V6.0105H24ZM5.99475 25.9974H8.00262V28.0052H5.99475V25.9974ZM5.99475 6.0105H8.00262V8.00525H5.99475V6.0105Z","M5.99475 14.0026H15.9948V22.0079H18.0026V14.0026H19.9974L19.9974 12.0079H5.99475V8.00525H4V25.9974H5.99475V14.0026Z"] },
+};
+
+function iconSVG(key, fill){
+  const d = ICON_DATA[key];
+  if(!d) return '';
+  const paths = d.paths.map(p => `<path d="${p}" fill="${fill || 'url(#rb)'}"/>`).join('');
+  return `<svg viewBox="${d.vb}"><g filter="url(#pshadow)">${paths}</g></svg>`;
+}
+function renderIcons(){
+  document.querySelectorAll('[data-icon]').forEach(el=>{
+    const fill = el.dataset.iconFill === 'black' ? '#000000' : 'url(#rb)';
+    el.innerHTML = iconSVG(el.dataset.icon, fill);
+  });
+}
+// ---------------- window controls ----------------
+const windows = {
+  trash:'win-trash', music:'win-music', welcome:'win-welcome', paint:'win-paint',
+  projects:'win-projects', resume:'win-resume', gallery:'win-gallery',
+  about:'win-about', library:'win-library', contact:'win-contact' , cat:'win-toast'
+};
+let zTop = 10;
+let openSet = new Set(); // window ids that should still have a taskbar tab
+function bringToFront(win){ zTop += 1; win.style.zIndex = zTop; }
+function openWindow(key){
+  const win = document.getElementById(windows[key]);
+  if(!win) return;
+  win.classList.remove('hidden');
+  openSet.add(win.id);
+  bringToFront(win);
+  updateTray();
+}
+// Minimize: hide the window but keep its tab in the taskbar.
+function minimizeWindow(win){
+  win.classList.add('hidden');
+  openSet.add(win.id);
+  updateTray();
+}
+// Close (the X): hide the window AND drop its taskbar tab.
+function closeWindow(win){
+  win.classList.add('hidden');
+  openSet.delete(win.id);
+  updateTray();
+}
+
+document.querySelectorAll('.icon').forEach(icon=>{
+  icon.addEventListener('click', ()=> openWindow(icon.dataset.open));
+});
+document.querySelectorAll('.window').forEach(win=>{
+  win.addEventListener('mousedown', ()=>{ bringToFront(win); if(openSet.has(win.id)) updateTray(); });
+  const closeBtn = win.querySelector('[data-close]');
+  if(closeBtn) closeBtn.addEventListener('click', e=>{ e.stopPropagation(); closeWindow(win); });
+  const minBtn = win.querySelector('[data-min]');
+  if(minBtn) minBtn.addEventListener('click', e=>{ e.stopPropagation(); minimizeWindow(win); });
+  const maxBtn = win.querySelector('[data-max]');
+  if(maxBtn) maxBtn.addEventListener('click', e=>{ e.stopPropagation(); toggleMaximize(win, maxBtn); });
+});
+openWindow('welcome');
+
+// ---------------- maximize ----------------
+const MAXIMIZE_ICON = '<svg viewBox="0 0 14 14"><rect x="2.5" y="2.5" width="9" height="9" rx="1" fill="none" stroke="black" stroke-width="1.3"/></svg>';
+const RESTORE_ICON = '<svg viewBox="0 0 14 14"><rect x="1.5" y="3.5" width="7" height="7" rx="1" fill="none" stroke="black" stroke-width="1.3"/><rect x="4.5" y="1.5" width="7" height="7" rx="1" fill="none" stroke="black" stroke-width="1.3"/></svg>';
+
+function toggleMaximize(win, btn){
+  const isMax = win.dataset.maximized === 'true';
+  if(isMax){
+    win.style.left = win.dataset.prevLeft;
+    win.style.top = win.dataset.prevTop;
+    win.style.width = win.dataset.prevWidth;
+    win.style.height = win.dataset.prevHeight;
+    win.dataset.maximized = 'false';
+    if(btn) btn.innerHTML = MAXIMIZE_ICON;
+  } else {
+    win.dataset.prevLeft = win.style.left;
+    win.dataset.prevTop = win.style.top;
+    win.dataset.prevWidth = win.style.width;
+    win.dataset.prevHeight = win.style.height;
+    win.style.left = '0px';
+    win.style.top = '0px';
+    win.style.width = '100vw';
+    win.style.height = 'calc(100vh - 52px)';
+    win.dataset.maximized = 'true';
+    if(btn) btn.innerHTML = RESTORE_ICON;
+    bringToFront(win);
+  }
+}
+
+// ---------------- drag ----------------
+function makeDraggable(win){
+  const handle = win.querySelector('.titlebar');
+  let dragging=false, offX=0, offY=0;
+  const start=(x,y)=>{
+    if(win.dataset.maximized === 'true') return;
+    dragging=true; const r=win.getBoundingClientRect(); offX=x-r.left; offY=y-r.top; bringToFront(win);
+  };
+  const move=(x,y)=>{
+    if(!dragging) return;
+    let nx = Math.max(0, Math.min(x-offX, window.innerWidth-80));
+    let ny = Math.max(0, Math.min(y-offY, window.innerHeight-40));
+    win.style.left = nx+'px'; win.style.top = ny+'px';
+  };
+  const end=()=> dragging=false;
+  handle.addEventListener('mousedown', e=>{ start(e.clientX,e.clientY); e.preventDefault(); });
+  window.addEventListener('mousemove', e=> move(e.clientX,e.clientY));
+  window.addEventListener('mouseup', end);
+  handle.addEventListener('touchstart', e=>{ const t=e.touches[0]; start(t.clientX,t.clientY); }, {passive:true});
+  window.addEventListener('touchmove', e=>{ const t=e.touches[0]; move(t.clientX,t.clientY); }, {passive:true});
+  window.addEventListener('touchend', end);
+}
+document.querySelectorAll('.window').forEach(makeDraggable);
+
+// ---------------- taskbar tray ----------------
+function updateTray(){
+  const tray = document.getElementById('tray');
+  tray.innerHTML = '';
+  Object.entries(windows).forEach(([key,id])=>{
+    if(!openSet.has(id)) return;
+    const el = document.getElementById(id);
+    const isVisible = !el.classList.contains('hidden');
+    const btn = document.createElement('button');
+    btn.className = 'traybtn active' + (isVisible ? ' visible' : '');
+    btn.title = el.querySelector('.name').textContent;
+    btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="1.8"><rect x="4" y="4" width="16" height="16" rx="2"/></svg><div class="open-dot"></div>';
+    btn.addEventListener('click', ()=>{
+      el.classList.remove('hidden');
+      bringToFront(el);
+      updateTray();
+    });
+    tray.appendChild(btn);
+  });
+}
+
+// ---------------- content: folder icon svg ----------------
+const folderSVG = iconSVG('folder');
+
+// ---------------- simple back/forward history (like a real browser tab) ----------------
+function createHistoryNav(applyFn, addressRowSelector){
+  let stack = [{type:'list'}];
+  let pointer = 0;
+  function apply(){
+    applyFn(stack[pointer]);
+    updateButtons();
+  }
+  function updateButtons(){
+    const row = document.querySelector(addressRowSelector);
+    if(!row) return;
+    const backBtn = row.querySelector('[data-nav="back"]');
+    const fwdBtn = row.querySelector('[data-nav="forward"]');
+    if(backBtn) backBtn.classList.toggle('nav-disabled', pointer <= 0);
+    if(fwdBtn) fwdBtn.classList.toggle('nav-disabled', pointer >= stack.length - 1);
+  }
+  return {
+    go(state){
+      stack = stack.slice(0, pointer + 1);
+      stack.push(state);
+      pointer = stack.length - 1;
+      apply();
+    },
+    back(){ if(pointer > 0){ pointer--; apply(); } },
+    forward(){ if(pointer < stack.length - 1){ pointer++; apply(); } },
+    refresh(){ pointer = 0; stack = [{type:'list'}]; apply(); },
+    init(){ apply(); }
+  };
+}
+
+const projects = [
+  {name:'Project One', tag:'Web app', desc:'Placeholder — describe what this project does, the stack you used, and your role.', link:''},
+  {name:'Project Two', tag:'Design', desc:'Placeholder — swap in a real project summary and a link to the repo or demo.', link:''},
+  {name:'Project Three', tag:'Tool', desc:'Placeholder — describe the problem this solved and how you approached it.', link:''},
+  {name:'Project Four', tag:'Experiment', desc:'Placeholder — a short, punchy description works well here.', link:''},
+  {name:'Project Five', tag:'Open source', desc:'Placeholder — mention your contribution and the outcome.', link:''},
+  {name:'Project Six', tag:'Case study', desc:'Placeholder — replace with a real write-up of your work.', link:''},
+];
+const projectsGrid = document.getElementById('projects-grid');
+projects.forEach((p, i)=>{
+  const el = document.createElement('div');
+  el.className = 'tile';
+  el.innerHTML = folderSVG;
+  el.title = p.name;
+  el.addEventListener('click', ()=> projectsNav.go({type:'detail', index:i}));
+  projectsGrid.appendChild(el);
+});
+function applyProjectsState(state){
+  const list = document.getElementById('projects-list');
+  const detail = document.getElementById('projects-detail');
+  if(state.type === 'list'){
+    list.style.display = 'block';
+    detail.style.display = 'none';
+    return;
+  }
+  const p = projects[state.index];
+  list.style.display = 'none';
+  detail.style.display = 'block';
+  detail.innerHTML = `
+    <div class="detail-back" id="projects-back">
+      <div class="pixicon" data-icon="navback" data-icon-fill="black" style="width:12px;height:12px;"></div>
+      Back to projects
+    </div>
+    <h1>${p.name}</h1>
+    <p class="placeholder">Placeholder content — replace with real project details.</p>
+    <p>${p.desc}</p>
+    <p><span class="csub" style="color:#B7FFC3;">${p.tag}</span></p>
+  `;
+  document.getElementById('projects-back').addEventListener('click', ()=> projectsNav.back());
+}
+const projectsNav = createHistoryNav(applyProjectsState, '[data-nav-win="projects"]');
+
+const galleryIconKeys = ['pencil','ruler','smiley','camera'];
+const galleryCategories = [
+  {name:'Sketches', desc:'Placeholder — quick drawings, doodles, and works in progress.'},
+  {name:'Design', desc:'Placeholder — UI explorations, layouts, and visual studies.'},
+  {name:'Fun', desc:'Placeholder — anything playful that does not fit elsewhere.'},
+  {name:'Photos', desc:'Placeholder — a few photos worth sharing.'},
+];
+const galleryGrid = document.getElementById('gallery-grid');
+galleryCategories.forEach((c,i)=>{
+  const el = document.createElement('div');
+  el.className = 'tile';
+  el.innerHTML = iconSVG(galleryIconKeys[i]);
+  el.title = c.name;
+  el.addEventListener('click', ()=> galleryNav.go({type:'detail', index:i}));
+  galleryGrid.appendChild(el);
+});
+function applyGalleryState(state){
+  const list = document.getElementById('gallery-list');
+  const detail = document.getElementById('gallery-detail');
+  if(state.type === 'list'){
+    list.style.display = 'block';
+    detail.style.display = 'none';
+    return;
+  }
+  const c = galleryCategories[state.index];
+  list.style.display = 'none';
+  detail.style.display = 'block';
+  detail.innerHTML = `
+    <div class="detail-back" id="gallery-back">
+      <div class="pixicon" data-icon="navback" data-icon-fill="black" style="width:12px;height:12px;"></div>
+      Back to gallery
+    </div>
+    <h1>${c.name}</h1>
+    <p class="placeholder">Placeholder — drop your actual images into this category.</p>
+    <p>${c.desc}</p>
+  `;
+  document.getElementById('gallery-back').addEventListener('click', ()=> galleryNav.back());
+}
+const galleryNav = createHistoryNav(applyGalleryState, '[data-nav-win="gallery"]');
+
+// wire up the address-bar back/forward/refresh icons for windows that have real sub-navigation
+const NAVS = { projects: projectsNav, gallery: galleryNav };
+document.querySelectorAll('[data-nav-win]').forEach(row=>{
+  const winKey = row.dataset.navWin;
+  const nav = NAVS[winKey];
+  row.querySelectorAll('[data-nav]').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      if(!nav) return; // e.g. Welcome has no sub-pages, arrows are inert
+      const action = btn.dataset.nav;
+      if(action === 'back') nav.back();
+      else if(action === 'forward') nav.forward();
+      else if(action === 'refresh') nav.refresh();
+    });
+  });
+});
+projectsNav.init();
+galleryNav.init();
+
+// bookshelf shelves
+const shelf = document.getElementById('bookshelf');
+for(let i=0;i<5;i++){
+  const s = document.createElement('div');
+  s.className='shelf';
+  shelf.appendChild(s);
+}
+
+// contact links
+document.querySelectorAll('.contact-row').forEach(r=>{
+  r.addEventListener('click', ()=> window.open(r.dataset.href, '_blank'));
+});
+document.querySelectorAll('.contact-footer button').forEach(b=>{
+  b.addEventListener('click', ()=> window.open(b.dataset.href, '_blank'));
+});
+document.getElementById('resume-link').addEventListener('click', e=>{
+  e.preventDefault();
+  alert('Point this link at your actual resume.pdf file.');
+});
+
+// search filter
+document.getElementById('tasksearch').addEventListener('input', e=>{
+  const q = e.target.value.toLowerCase();
+  document.querySelectorAll('.icon').forEach(icon=>{
+    const label = icon.querySelector('.label').textContent.toLowerCase();
+    icon.style.opacity = (!q || label.includes(q)) ? '1' : '0.25';
+  });
+});
+
+document.getElementById('floatavatar').addEventListener('click', ()=> openWindow('about'));
+renderIcons();
+
+// ---------------- profile flyout ----------------
+const flyout = document.getElementById('profile-flyout');
+function toggleFlyout(e){
+  e.stopPropagation();
+  flyout.classList.toggle('hidden');
+}
+document.getElementById('avatar').onclick = toggleFlyout;
+
+document.getElementById('flyout-header').addEventListener('click', ()=>{
+  openWindow('about');
+  flyout.classList.add('hidden');
+});
+document.querySelectorAll('.flyout-row').forEach(row=>{
+  row.addEventListener('click', ()=>{
+    openWindow(row.dataset.open);
+    flyout.classList.add('hidden');
+  });
+});
+document.querySelectorAll('.flyout-quick button').forEach(btn=>{
+  btn.addEventListener('click', e=>{
+    e.stopPropagation();
+    openWindow(btn.dataset.open);
+    flyout.classList.add('hidden');
+  });
+});
+document.addEventListener('click', e=>{
+  if(!flyout.classList.contains('hidden') && !flyout.contains(e.target) && e.target.id !== 'avatar'){
+    flyout.classList.add('hidden');
+  }
+});
+
+// clock
+function tickClock(){
+  const now = new Date();
+  const time = now.toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'});
+  const date = now.toLocaleDateString([], {month:'2-digit', day:'2-digit', year:'numeric'});
+  document.getElementById('clock').innerHTML = `${time}<br>${date}`;
+}
+tickClock();
+setInterval(tickClock, 1000 * 30);
+
+// TRACK LIST
+let track_list = [
+      {
+          name:"Vickie",
+          artist:"Peach Pit",
+          path:"music/Vickie.mp3"
+      },
+      {
+          name:"Blue Hair",
+          artist:"TV Girl",
+          path:"music/Blue Hair.mp3"
+      },
+      {
+          name:"Dracula",
+          artist:"Tame Impala",
+          path:"music/Dracula.mp3"
+      },
+      {
+          name:"Do I Wanna Know",
+          artist:"Arctic Monkeys",
+          path:"music/Do I Wanna Know.mp3"
+      },
+      {
+          name:"Voodoo",
+          artist:"Valencia Grace",
+          path:"music/Voodoo.mp3"
+      },
+      {
+          name:"Mary On A Cross",
+          artist:"Ghost",
+          path:"music/Mary On A Cross.mp3"
+      }
+  ];
+  
+
+ 
+let now_playing = document.querySelector(".now-playing");
+let track_select = document.querySelector(".track-select");
+let playpause_btn = document.querySelector(".playpause-track");
+let seek_slider = document.querySelector(".seek_slider");
+let curr_time = document.querySelector(".current-time");
+let total_duration = document.querySelector(".total-duration");
+ 
+let track_index = 0;
+let isPlaying = false;
+let updateTimer;
+ 
+let curr_track = document.getElementById("music");
+ 
+function populateDropdown() {
+  if (!track_select) return;
+  track_select.innerHTML = "";
+  track_list.forEach((track, index) => {
+    const option = document.createElement("option");
+    option.value = index;
+    option.textContent = `${track.name} — ${track.artist}`;
+    track_select.appendChild(option);
+  });
+  track_select.value = track_index;
+}
+ 
+function loadTrack(track_index) {
+  clearInterval(updateTimer);
+  resetValues();
+ 
+  curr_track.src = track_list[track_index].path;
+  curr_track.load();
+ 
+  if (now_playing) now_playing.textContent = (track_index + 1) + " / " + track_list.length;
+ 
+  updateTimer = setInterval(seekUpdate, 1000);
+  curr_track.addEventListener("ended", nextTrack);
+ 
+  if (track_select) track_select.value = track_index;
+}
+ 
+function resetValues() {
+  curr_time.textContent = "0:00";
+  total_duration.textContent = "0:00";
+  seek_slider.value = 0;
+}
+ 
+if (track_select) {
+  track_select.addEventListener("change", function() {
+    track_index = parseInt(this.value);
+    loadTrack(track_index);
+    playTrack();
+  });
+}
+ 
+function playpauseTrack() {
+  if (!isPlaying) playTrack();
+  else pauseTrack();
+}
+ 
+function playTrack() {
+  curr_track.play();
+  isPlaying = true;
+  playpause_btn.innerHTML = `
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+    viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round"
+    class="lucide lucide-pause-icon"><rect x="14" y="3" width="5" height="18" rx="1"/><rect x="5" y="3" width="5" height="18" rx="1"/></svg>`;
+}
+ 
+function pauseTrack() {
+  curr_track.pause();
+  isPlaying = false;
+  playpause_btn.innerHTML = `
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+    viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round"
+    class="lucide lucide-play-icon"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003
+    3.458l-12 7A2 2 0 0 1 5 19z"/></svg>`;
+}
+ 
+function nextTrack() {
+  if (track_index < track_list.length - 1) track_index += 1;
+  else track_index = 0;
+  loadTrack(track_index);
+  playTrack();
+}
+ 
+function prevTrack() {
+  if (track_index > 0) track_index -= 1;
+  else track_index = track_list.length - 1;
+  loadTrack(track_index);
+  playTrack();
+}
+ 
+function seekTo() {
+  seekto = curr_track.duration * (seek_slider.value / 100);
+  curr_track.currentTime = seekto;
+}
+ 
+function seekUpdate() {
+  let seekPosition = 0;
+  if (!isNaN(curr_track.duration)) {
+    seekPosition = curr_track.currentTime * (100 / curr_track.duration);
+    seek_slider.value = seekPosition;
+ 
+    let currentMinutes = Math.floor(curr_track.currentTime / 60);
+    let currentSeconds = Math.floor(curr_track.currentTime - currentMinutes * 60);
+    let durationMinutes = Math.floor(curr_track.duration / 60);
+    let durationSeconds = Math.floor(curr_track.duration - durationMinutes * 60);
+ 
+    if (currentSeconds < 10) currentSeconds = "0" + currentSeconds;
+    if (durationSeconds < 10) durationSeconds = "0" + durationSeconds;
+ 
+    curr_time.textContent = currentMinutes + ":" + currentSeconds;
+    total_duration.textContent = durationMinutes + ":" + durationSeconds;
+  }
+}
+ 
+populateDropdown();
+loadTrack(track_index);
+
+</script>
+
+</body>
+</html>

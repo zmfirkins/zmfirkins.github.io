@@ -1,0 +1,534 @@
+:root{
+    --win: #454545;
+    --win-dark: #3a3a3a;
+    --row: rgba(255,255,255,0.05);
+}
+*{ box-sizing:border-box; }
+html,body{
+    margin:0; padding:0; height:100%; overflow:hidden;
+    font-family:'Pixelify Sans', monospace;
+    background:#000;
+    color:#fff;
+}
+svg{ display:block; }
+svg{ shape-rendering:crispEdges; }
+svg *{ shape-rendering:crispEdges; stroke-linecap:square !important; stroke-linejoin:miter !important; }
+.pixicon svg{ width:100%; height:100%; }
+
+#desktop{
+    position:relative; width:100vw; height:100vh;
+    background-image: url(../img/bowlingbkg.gif);
+    overflow:hidden; user-select:none;
+}
+
+  /* ===================== ICON DOCK ===================== */
+#icons{
+    position:absolute; top:26px; left:26px;
+    display:grid;
+    grid-template-columns: 84px 84px;
+    grid-auto-rows: 90px;
+    gap: 12px 42px;
+}
+.icon{
+    width:84px; text-align:center; cursor:pointer;
+    display:flex; flex-direction:column; align-items:center; gap:6px;
+    padding:6px 2px; border-radius:4px;
+}
+.icon:hover{ background:rgba(255,255,255,0.06); }
+.icon svg{ width:38px; height:38px; }
+.icon .label{
+    font-size:12.5px; line-height:15px; color:#fff;
+    text-shadow:0 1px 2px rgba(0,0,0,0.6);
+}
+.giffy {
+  height:10em;
+	margin: 0 1em 0 0;
+	float: right;
+}
+.toast {
+	margin: auto;
+	height: 150px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.jobname {  font-weight: 800; font-size: 3rem; }
+.time    { font-weight: 300; font-size: .5rem; }
+
+
+  /* ===================== WINDOWS ===================== */
+.window{
+    position:absolute;
+    background:var(--win);
+    border-radius:3px;
+    box-shadow:0 14px 34px rgba(0,0,0,0.55);
+    display:flex; flex-direction:column;
+    overflow:hidden;
+}
+.window.hidden{ display:none; }
+
+.titlebar{
+    height:26px; flex:0 0 26px;
+    background:var(--rb);
+    background-image: linear-gradient(117.5deg, #FF7979 0%, #FFD084 20%, #FFFB91 40%, #B7FFC3 60%, #77BBFF 80.29%, #D180FF 100%);
+    display:flex; align-items:center; justify-content:space-between;
+    padding:0 6px 0 8px; cursor:grab;
+}
+.titlebar:active{ cursor:grabbing; }
+.titlebar .tleft{ display:flex; align-items:center; gap:6px; min-width:0; }
+.titlebar .tleft svg{ width:14px; height:14px; flex:0 0 auto; }
+.titlebar .name{
+    font-size:11.5px; color:#000; font-weight:600;
+    white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+}
+.titlebar .controls{ display:flex; align-items:center; gap:6px; }
+.titlebar .controls button{
+    border:none; background:transparent; cursor:pointer; padding:3px;
+    display:flex; align-items:center; justify-content:center;
+}
+.titlebar .controls svg{ width:12px; height:12px; }
+
+  
+.addressrow{
+    flex:0 0 34px; background:var(--win-dark);
+    display:flex; align-items:center; gap:8px; padding:0 10px;
+}
+  
+.navicon{ width:16px; height:16px; cursor:pointer; opacity:0.9; flex:0 0 auto; }
+.navicon.nav-disabled{ opacity:0.3; cursor:default; pointer-events:none; }
+.addresspill{
+    flex:1; height:20px; border-radius:10px;
+    background:rgba(255,255,255,0.08);
+    border:1px solid rgba(255,255,255,0.12);
+    display:flex; align-items:center; padding:0 10px; gap:6px;
+    min-width:0;
+ }
+.addresspill span{
+    font-size:11px; color:#e8e8e8; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+}
+.addr-actions{ display:flex; align-items:center; gap:8px; flex:0 0 auto; }
+.addr-actions svg{ width:14px; height:14px; opacity:0.85; }
+
+.toolrow{
+    flex:0 0 22px; background:var(--win-dark);
+    display:flex; align-items:center; gap:12px; padding:0 12px;
+    border-bottom:1px solid rgba(0,0,0,0.25);
+}
+.toolrow svg{ width:13px; height:13px; opacity:0.85; cursor:pointer; }
+.content{
+    flex:1; overflow-y:auto; background:var(--win);
+    padding:20px;
+    position:relative;
+}
+.content::-webkit-scrollbar{ width:10px; }
+.content::-webkit-scrollbar-track{ background:transparent; }
+.content::-webkit-scrollbar-thumb{
+    background-image:linear-gradient(180deg, #FF7979 0%, #FFD084 20%, #FFFB91 40%, #B7FFC3 60%, #77BBFF 80.29%, #D180FF 100%);
+    border-radius:6px; border:1px solid #fff;
+}
+
+.content h1{
+    font-size:22px; margin:0 0 12px; font-weight:600; color:#fff;
+}
+.content h2{ font-size:15px; margin:20px 0 8px; color:#fff; }
+.content p{ font-size:13.5px; line-height:1.65; color:#dcdcdc; margin:0 0 12px; }
+.content a{ color:#B7FFC3; }
+.placeholder{ font-size:11px; color:#ffcf7a; opacity:0.9; margin:-4px 0 14px; }
+
+  /* tile grids: Projects (folders), Gallery (categories) */
+.tilegrid{ display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+.tilegrid.two{ grid-template-columns:repeat(2,1fr); }
+.tile{
+    background:rgba(255,255,255,0.04);
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:4px;
+    height:76px;
+    display:flex; align-items:center; justify-content:center;
+    cursor:pointer;
+}
+.tile:hover{ background:rgba(255,255,255,0.09); }
+.tile svg{ width:32px; height:32px; }
+.tile .tlabel{ display:none; }
+
+.detail-back{
+    display:inline-flex; align-items:center; gap:6px; cursor:pointer;
+    font-size:12px; color:#B7FFC3; margin-bottom:14px;
+}
+.detail-back svg{ width:12px; height:12px; }
+
+  /* library bookshelf */
+.bookshelf{
+    background:#482F18; border:3px solid #24190F; border-radius:2px;
+    height:100%; min-height:280px;
+    display:flex; flex-direction:column; justify-content:space-evenly;
+    padding:14px 10px;
+}
+.bookshelf .shelf{ border-bottom:2px solid #24190F; height:1px; }
+
+  /* contact window */
+#win-contact .content{ padding:0; display:flex; flex-direction:column; height:100%; }
+.contact-row{
+    display:flex; align-items:center; gap:12px; height:42px; flex:0 0 42px;
+    padding:0 16px; border-bottom:1px solid rgba(255,255,255,0.08); cursor:pointer;
+}
+.contact-row:hover{ background:rgba(255,255,255,0.05); }
+.contact-row svg{ width:18px; height:18px; flex:0 0 auto; }
+.contact-row .ctext{ font-size:12.5px; }
+.contact-row .csub{ font-size:10.5px; color:#aaa; }
+.contact-footer{
+    flex:1; min-height:100px;
+    background-image:linear-gradient(117.5deg, #FF7979 0%, #FFD084 20%, #FFFB91 40%, #B7FFC3 60%, #77BBFF 80.29%, #D180FF 100%);
+    position:relative;
+}
+.contact-footer .social{
+    position:absolute; left:14px; bottom:14px;
+    display:flex; flex-direction:column; gap:8px;
+}
+.contact-footer .social button{
+    width:26px; height:26px; border:none; border-radius:3px; background:#000;
+    display:flex; align-items:center; justify-content:center; cursor:pointer;
+}
+.contact-footer .social svg{ width:14px; height:14px; }
+ 
+:root {
+        --dialog-blue: #6a1535;
+        --dialog-accent: white; /* color of text on diaglog blue */
+        --player-image: url(https://loveberry.nekoweb.org/assets/images/mp/yuzuha.png);
+ 
+    /*** 98 css styling ***/
+    /* while some of these may specify a single element, theyre used across mulitple */
+        --button-highlight: #ffffff;
+        --button-face: #dfdfdf;
+        --button-shadow: #808080;
+        --light-button-shadow: #a9a9a9;
+        --window-frame: #0a0a0a;
+    }
+
+    #musicplayer {
+  font-family: "Pixelated MS Sans Serif", Arial;
+  -webkit-font-smoothing: none;
+  font-size: 11px;
+  color:var(--window-frame);
+  width: fit-content;
+  margin:0 auto;
+    
+  width: 260px;
+    }
+ 
+    .title-color {  
+  padding: 3px 2px 3px 3px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+    background: var(--titlebar-gradient);
+    margin-bottom: 2px;
+    font-weight: bold;
+}
+ 
+.seeking {
+    font-weight: normal;
+    font-size: 11px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+    gap: 5px;
+    margin: 12px 0;
+}
+ 
+.player-flex {
+    display: flex;
+    gap: 3px;
+}
+ 
+.player-main {
+    width: calc(100% - 100px);
+    margin-top: 1px;
+}
+ 
+.player-icon-holder {
+  border: 2px solid var(--surface);
+  width:95px;
+  height:95px;
+  padding: 1px;
+  background-image:linear-gradient(-45deg, var(--button-face) 50%, var(--window-frame) 50%);
+  background-size:cover;
+  background-repeat:no-repeat;
+
+
+  
+  overflow: hidden;
+  position:relative;
+  z-index: 2;
+}
+ 
+.player-icon {
+    background-image:var(--player-image);
+    background-size: contain;
+    background-repeat: no-repeat;
+  width:95px;
+  height:95px;
+  display: display;
+}
+ 
+/* BELOW IS LARGELY RIPPED FROM 98 CSS */
+.track-select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border: none;
+  border-radius:0;
+  box-sizing: border-box;
+  outline:0;
+  
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+ 
+  position: relative;
+  padding: 3px 4px;
+  padding-right: 32px;
+  background-image: url("https://loveberry.nekoweb.org/assets/musicplayer/button-down.svg");
+  background-position: top 2px right 2px;
+  background-repeat: no-repeat;
+  width:100%;
+ 
+  box-shadow: var(--border-field);
+  background-color: var(--button-highlight);
+  height: 21px;
+ 
+  font-family: "Pixelated MS Sans Serif", Arial;
+  -webkit-font-smoothing: none;
+  font-size: 11px;
+  font-weight: lighter;
+}
+ 
+.track-select:focus {
+  color: var(--dialog-accent);
+  background-color: var(--dialog-blue);
+ 
+}
+.track-select:focus option {
+  color: var(--window-frame);
+  background-color: var(--button-highlight);  
+  outline: 1px;
+  border: none;
+}
+ 
+.track-select:active {
+  background-image: url("https://loveberry.nekoweb.org/assets/musicplayer/button-down-active.svg");
+}
+ 
+/* input */
+#musicplayer input[type="range"] {  
+  appearance: none;
+  -webkit-appearance: none;
+  width: 100%;
+  background: transparent;
+}
+ 
+#musicplayer input[type="range"]:focus {
+  outline: none;
+}
+ 
+#musicplayer input[type="range"]::-webkit-slider-thumb {
+  appearance: none;
+  -webkit-appearance: none;
+  height: 21px;
+  width: 11px;
+  background: url("https://loveberry.nekoweb.org/assets/musicplayer/indicator-horizontal.svg");
+  transform: translateY(-8px);
+  box-shadow: none;
+  border: none;
+}
+ 
+#musicplayer input[type="range"].has-box-indicator::-webkit-slider-thumb {
+  background: url("https://loveberry.nekoweb.org/assets/musicplayer/indicator-rectangle-horizontal.svg");
+  transform: translateY(-10px);
+}
+ 
+#musicplayer input[type="range"]::-moz-range-thumb {
+  height: 21px;
+  width: 11px;
+  border: 0;
+  border-radius: 0;
+  background: url("https://loveberry.nekoweb.org/assets/musicplayer/indicator-horizontal.svg");
+  transform: translateY(2px);
+}
+ 
+#musicplayer input[type="range"].has-box-indicator::-moz-range-thumb {
+  background: url("https://loveberry.nekoweb.org/assets/musicplayer/indicator-rectangle-horizontal.svg");
+  transform: translateY(0px);
+}
+ 
+#musicplayer input[type="range"]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 2px;
+  box-sizing: border-box;
+  background: var(--window-frame);
+  border-right: 1px solid var(--button-shadow);
+  border-bottom: 1px solid var(--button-shadow);
+  box-shadow: 1px 0 0 var(--button-highlight), 1px 1px 0 var(--button-highlight), 0 1px 0 var(--button-highlight), -1px 0 0 var(--light-button-shadow),
+    -1px -1px 0 var(--light-button-shadow), 0 -1px 0 var(--light-button-shadow), -1px 1px 0 var(--button-highlight), 1px -1px var(--light-button-shadow);
+}
+ 
+#musicplayer input[type="range"]::-moz-range-track {
+    width: 100%;
+    height: 2px;
+    box-sizing: border-box;
+    background: var(--window-frame);
+    border-right: 1px solid var(--button-shadow);
+    border-bottom: 1px solid var(--button-shadow);
+    box-shadow: 1px 0 0 var(--button-highlight), 1px 1px 0 var(--button-highlight), 0 1px 0 var(--button-highlight), -1px 0 0 var(--light-button-shadow),
+    -1px -1px 0 var(--light-button-shadow), 0 -1px 0 var(--light-button-shadow), -1px 1px 0 var(--button-highlight), 1px -1px var(--light-button-shadow);
+}
+ 
+.window-button {
+    background: var(--surface);
+    border: none;
+    border-radius: 0;
+    box-shadow: inset -1px -1px var(--window-frame),inset 1px 1px var(--button-highlight),inset -2px -2px var(--button-shadow),inset 2px 2px var(--button-face);
+    box-sizing: border-box;
+    color: inherit;
+    text-shadow: 0 0 var(--window-frame);
+}
+ 
+.window-button:active {
+  box-shadow: inset -1px -1px var(--button-highlight), inset 1px 1px var(--window-frame), inset -2px -2px var(--button-face), inset 2px 2px var(--button-shadow);
+  text-shadow: 1px 1px var(--window-frame);
+}
+ 
+ .window-button:focus  {
+  outline: 1px dotted #000;
+  outline-offset: -4px;
+ }
+  .player-buttons {
+    display: flex;
+    gap: 10px;
+    margin: 5px 5px 0 5px;
+ }
+ .player-buttons .window-button  {
+    width: 33%;
+    font-size: 10px;
+    padding: 5px 10px;
+ }
+ .player-buttons .window-button svg {
+   width: 15px;
+   height: 15px;
+ }
+ 
+ .title-bar-controls {
+    display: flex;
+ }
+ .close {
+    margin-left: 2px;
+    background-image: url("https://loveberry.nekoweb.org/assets/musicplayer/close.svg");
+    background-repeat: no-repeat;
+    background-position: top 3px left 4px;
+ 
+    padding: 0;
+    display: block;
+    min-width: 16px;
+    min-height: 14px;
+  }
+ 
+
+  /* ===================== TASKBAR ===================== */
+  #taskbar{
+    position:absolute; left:0; right:0; bottom:0; height:52px;
+    background-image:linear-gradient(117.5deg, #FF7979 0%, #FFD084 20%, #FFFB91 40%, #B7FFC3 60%, #77BBFF 80.29%, #D180FF 100%);
+    display:flex; align-items:center; padding:0 18px; gap:16px;
+  }
+  #avatar{
+    width:34px; height:34px; border-radius:50%; flex:0 0 auto;
+    background:#fdfdfd; padding:6px;
+    display:flex; align-items:center; justify-content:center;
+    border:2.5px solid transparent;
+    background-image:linear-gradient(#fdfdfd,#fdfdfd), linear-gradient(117.5deg, #FF7979 0%, #FFD084 20%, #FFFB91 40%, #B7FFC3 60%, #77BBFF 80.29%, #D180FF 100%);
+    background-origin:border-box; background-clip:content-box, border-box;
+    cursor:pointer; transition:transform 0.1s ease;
+  }
+  #avatar .pixicon{ width:100%; height:100%; }
+  #avatar:hover{ transform:scale(1.06); }
+  #avatar:active{ transform:scale(0.96); }
+  #clock{
+    color:#000; font-size:12px; line-height:1.25; text-align:right;
+    flex:0 0 auto; white-space:nowrap;
+  }
+  #searchbar{
+    width:280px; max-width:34vw; height:30px; border-radius:16px;
+    background:rgba(255,255,255,0.55);
+    border:1.5px solid rgba(0,0,0,0.5);
+    display:flex; align-items:center; gap:8px; padding:0 12px;
+  }
+  #searchbar svg{ width:14px; height:14px; flex:0 0 auto; }
+  #searchbar input{
+    background:transparent; border:none; outline:none; color:#111;
+    font-family:'Pixelify Sans', monospace; font-size:13px; width:100%;
+  }
+  #searchbar input::placeholder{ color:rgba(0,0,0,0.55); }
+  .taskgap{ flex:1; }
+  .tray{ display:flex; align-items:center; gap:16px; }
+  .traybtn{
+    border:none; background:transparent; cursor:pointer; padding:4px;
+    display:flex; align-items:center; justify-content:center; position:relative;
+  }
+  .traybtn svg{ width:19px; height:19px; }
+  .traybtn.active{ opacity:0.55; }
+  .traybtn.active.visible{ opacity:1; }
+  .open-dot{
+    position:absolute; bottom:0; left:50%; transform:translateX(-50%);
+    width:4px; height:4px; border-radius:50%; background:#000; display:none;
+  }
+  .traybtn.active .open-dot{ display:block; }
+
+  #floatavatar{
+    position:absolute; top:18px; right:24px;
+    width:36px; height:36px; border-radius:50%;
+    background:#1c1c1c; border:2px solid #FFD084;
+    display:flex; align-items:center; justify-content:center;
+    color:#fff; font-size:13px; font-weight:600; cursor:pointer;
+  }
+
+  /* ===================== PROFILE FLYOUT ===================== */
+  #profile-flyout{
+    position:absolute; left:18px; bottom:62px; width:210px;
+    background:var(--win); border-radius:8px 8px 4px 4px;
+    overflow:hidden; box-shadow:0 14px 30px rgba(0,0,0,0.55);
+    z-index:500;
+  }
+  #profile-flyout.hidden{ display:none; }
+  .flyout-header{
+    height:64px; position:relative; cursor:pointer;
+    background-image:linear-gradient(117.5deg, #FF7979 0%, #FFD084 20%, #FFFB91 40%, #B7FFC3 60%, #77BBFF 80.29%, #D180FF 100%);
+    display:flex; align-items:center; gap:10px; padding:0 12px;
+  }
+  .flyout-header:hover{ filter:brightness(1.05); }
+  .flyout-avatar{
+    width:34px; height:34px; border-radius:50%; flex:0 0 auto;
+    background:#fdfdfd; padding:6px;
+    display:flex; align-items:center; justify-content:center;
+    border:2.5px solid rgba(0,0,0,0.35);
+  }
+  .flyout-avatar .pixicon{ width:100%; height:100%; }
+  .flyout-name{ font-size:13px; font-weight:600; color:#000; }
+  .flyout-quick{ display:flex; gap:6px; position:absolute; right:10px; top:8px; }
+  .flyout-quick button{
+    width:20px; height:20px; border:none; background:rgba(0,0,0,0.18); border-radius:4px;
+    display:flex; align-items:center; justify-content:center; cursor:pointer;
+  }
+  .flyout-quick svg{ width:12px; height:12px; }
+  .flyout-row{
+    display:flex; align-items:center; gap:10px; height:42px; padding:0 14px;
+    border-top:1px solid rgba(255,255,255,0.06); cursor:pointer;
+  }
+  .flyout-row:hover{ background:rgba(255,255,255,0.07); }
+  .flyout-row svg{ width:18px; height:18px; flex:0 0 auto; }
+  .flyout-row span{ font-size:12.5px; color:#fff; }
+
+  @media (max-width:760px){
+    #icons{ grid-template-columns:70px 70px; gap:8px 22px; }
+    .icon{ width:70px; }
+    .tilegrid{ grid-template-columns:repeat(2,1fr); }
+    .window{ left:5vw !important; right:5vw; width:90vw !important; }
+    #searchbar{ max-width:40vw; }
+  }
