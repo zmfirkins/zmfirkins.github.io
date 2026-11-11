@@ -428,7 +428,7 @@
         <button data-close><div class="pixicon ctrlicon" data-icon="close" data-icon-fill="black"></div></button>
       </div>
     </div>
-    <div class="content"><p>It's empty in here.</p></div>
+    <div class="content"><img src="img/frog.webp" alt="Frog Spinning Gif" width="110px" style="display:block; margin:0 auto;"></div>
   </div>
 
   <!-- RESUME (stub) -->
@@ -445,8 +445,7 @@
       </div>
     </div>
     <div class="content">
-      <p class="placeholder">Placeholder — point this at your real résumé file.</p>
-      <p><a href="#" id="resume-link">Open resume.pdf →</a></p>
+      <p><a href="files/ZoieFirkinsResume.docx" id="resume-link">My Resume</a></p>
     </div>
   </div>
 
@@ -686,6 +685,10 @@ projects.forEach((p, i)=>{
   const el = document.createElement('div');
   el.className = 'tile';
   el.innerHTML = folderSVG;
+  const label = document.createElement('span');
+  label.className = 'tlabel';
+  label.textContent = p.name;
+  el.appendChild(label);
   el.title = p.name;
   el.addEventListener('click', ()=> projectsNav.go({type:'detail', index:i}));
   projectsGrid.appendChild(el);
@@ -717,9 +720,9 @@ const projectsNav = createHistoryNav(applyProjectsState, '[data-nav-win="project
 
 const galleryIconKeys = ['pencil','ruler','smiley','camera'];
 const galleryCategories = [
-  {name:'Sketches', desc:'Placeholder — quick drawings, doodles, and works in progress.'},
-  {name:'Design', desc:'Placeholder — UI explorations, layouts, and visual studies.'},
-  {name:'Fun', desc:'Placeholder — anything playful that does not fit elsewhere.'},
+  {name:'Digital Art', desc:'Placeholder — quick drawings, doodles, and works in progress.'},
+  {name:'Graphics/Stickers', desc:'Placeholder — UI explorations, layouts, and visual studies.'},
+  {name:'Physical Art', desc:'Placeholder — anything playful that does not fit elsewhere.'},
   {name:'Photos', desc:'Placeholder — a few photos worth sharing.'},
 ];
 const galleryGrid = document.getElementById('gallery-grid');
@@ -727,6 +730,10 @@ galleryCategories.forEach((c,i)=>{
   const el = document.createElement('div');
   el.className = 'tile';
   el.innerHTML = iconSVG(galleryIconKeys[i]);
+  const label = document.createElement('span');
+  label.className = 'tlabel';
+  label.textContent = c.name;
+  el.appendChild(label);
   el.title = c.name;
   el.addEventListener('click', ()=> galleryNav.go({type:'detail', index:i}));
   galleryGrid.appendChild(el);

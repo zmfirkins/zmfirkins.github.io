@@ -17,7 +17,7 @@ svg *{ shape-rendering:crispEdges; stroke-linecap:square !important; stroke-line
 
 #desktop{
     position:relative; width:100vw; height:100vh;
-    background-image: url(../img/bowlingbkg.gif);
+    background-image: url(../img/bowlingbkg.webp);
     overflow:hidden; user-select:none;
 }
 
@@ -143,12 +143,13 @@ svg *{ shape-rendering:crispEdges; stroke-linecap:square !important; stroke-line
     border:1px solid rgba(255,255,255,0.08);
     border-radius:4px;
     height:76px;
-    display:flex; align-items:center; justify-content:center;
+    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px;
     cursor:pointer;
+    color: white; font-size:12px; font-weight:600; text-align:center;
 }
 .tile:hover{ background:rgba(255,255,255,0.09); }
 .tile svg{ width:32px; height:32px; }
-.tile .tlabel{ display:none; }
+.tile .tlabel{ display:block; line-height:1.2; }
 
 .detail-back{
     display:inline-flex; align-items:center; gap:6px; cursor:pointer;
