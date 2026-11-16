@@ -59,11 +59,14 @@ function parseCSV(text) {
 //   ...manga rows...
 //   (blank)
 //   (blank)
-//   Title | Rating (out of 5 stars) | Notes   ← games header
+//   Title | Rating (out of 5 stars) | Notes  | Image  ← games header
 //   ...games rows...
-//
+//   (blank)
+//   (blank)
+//   Title | Rating (out of 5 stars) | Notes  | Image  ← books header
+//   ...books rows...
 // We detect each table by the "Title" header rows and assign
-// categories in the order they appear: anime → manga → game.
+// categories in the order they appear: anime → manga → game → books.
 
 async function fetchSheetEntries() {
   const res  = await fetch(SHEET_CSV_URL);

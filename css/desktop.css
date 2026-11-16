@@ -21,6 +21,7 @@ svg *{ shape-rendering:crispEdges; stroke-linecap:square !important; stroke-line
     overflow:hidden; user-select:none;
 }
 
+
   /* ===================== ICON DOCK ===================== */
 #icons{
     position:absolute; top:26px; left:26px;
@@ -371,7 +372,13 @@ svg *{ shape-rendering:crispEdges; stroke-linecap:square !important; stroke-line
   box-shadow: 1px 0 0 var(--button-highlight), 1px 1px 0 var(--button-highlight), 0 1px 0 var(--button-highlight), -1px 0 0 var(--light-button-shadow),
     -1px -1px 0 var(--light-button-shadow), 0 -1px 0 var(--light-button-shadow), -1px 1px 0 var(--button-highlight), 1px -1px var(--light-button-shadow);
 }
- 
+.labels{  
+  font-size: 30px;
+  font-weight: bold;
+}
+li{
+   font-size: 15px;
+}
 #musicplayer input[type="range"]::-moz-range-track {
     width: 100%;
     height: 2px;

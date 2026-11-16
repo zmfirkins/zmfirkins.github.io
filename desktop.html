@@ -214,10 +214,10 @@
               I am currently 22 years old and live in Iowa.
             </p>
 
-              <p><strong> 🎱 Interests  🎱</strong></p>
+              <p class = "labels"><strong> 🎱 Interests  🎱</strong></p>
               <p> My favorite hobbies include video games, all mediums of art, and programming. I hope to find a job where I can combine my artist skills with my technology skills to create creative, yet practical and functional projects.</p>
 
-              <p><strong>💼 Experience 💼</strong></p>
+              <p class = "labels"><strong>💼 Experience 💼</strong></p>
               <p class = "jobname">Perfection Learning, Clive— IT Generalist </p>
               <p class = "time">January 2025-- PRESENT</p>
               <ul>
@@ -236,7 +236,7 @@
                 <li>Maintained knowledge of store layout to help customers locate items</li>
               </ul>
 
-              <p><strong>🎓 Education 🎓</strong></p>
+              <p class = "labels"><strong>🎓 Education 🎓</strong></p>
               <p class = "jobname"> Grand View University, Des Moines- BS</p>
               <p class = "time">August 2024 - May 2026 </p>
               <p> Graduated with a Bachleors of Arts in Information Technology. </p>
@@ -245,7 +245,7 @@
               <p class = "time">  May 2022  - May 2024 </p>
               <p> Graduated with an Associates in Computer Information Systems.</p>
 
-              <p><strong>🛠️ Skills 🛠️</strong></p>
+              <p class = "labels"><strong>🛠️ Skills 🛠️</strong></p>
               <ul>
                 <li>Great organization and time management</li>
                 <li>Technology and adaptability to new software</li>
@@ -706,8 +706,6 @@ function applyProjectsState(state){
   detail.style.display = 'block';
   detail.innerHTML = `
     <div class="detail-back" id="projects-back">
-      <div class="pixicon" data-icon="navback" data-icon-fill="black" style="width:12px;height:12px;"></div>
-      Back to projects
     </div>
     <h1>${p.name}</h1>
     <p class="placeholder">Placeholder content — replace with real project details.</p>
@@ -751,8 +749,6 @@ function applyGalleryState(state){
   detail.style.display = 'block';
   detail.innerHTML = `
     <div class="detail-back" id="gallery-back">
-      <div class="pixicon" data-icon="navback" data-icon-fill="black" style="width:12px;height:12px;"></div>
-      Back to gallery
     </div>
     <h1>${c.name}</h1>
     <p class="placeholder">Placeholder — drop your actual images into this category.</p>
