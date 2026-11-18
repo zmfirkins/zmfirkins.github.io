@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Projects</title>
+    <link rel="icon" href="../img/favicon.ico">
+    <link rel="stylesheet" href="css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+    .textbox {
+        height: 28em;
+    }
+    details {
+        margin-bottom: 0.5rem; 
+
+        padding: 0.5rem; 
+    }
+
+    summary {
+        cursor: pointer;
+        list-style: none;
+        outline: none;
+        padding: 0.3rem 0; 
+        margin: 0; 
+    }
+
+    summary::-webkit-details-marker {
+        display: none;
+    }
+
+    summary::before {
+        content: "❥ ";
+        display: inline-block;
+        margin-right: 0.5rem;
+        transition: transform 0.2s ease;
+    }
+
+    details[open] summary::before {
+        transform: rotate(90deg);
+    }
+
+    .gallery-item {
+        display: none; /* Hide gallery items by default */
+        margin-top: 1rem;
+    }
+
+    details[open] .gallery-item {
+        display: block; /* Show gallery items when dropdown is open */
+    }
+
+
+    .gallery-item img {
+        width: 50%;
+        height: auto;
+        border: 2px solid #666;
+        border-radius: 5px;
+        margin-top: 10px;
+    }
+    .link{
+      color: #2c4a5c;
+    }
+    #travel{
+      width: 90%;
+    }
+    #wireframe{
+      display: block;
+      width: 50%;
+      margin: 0 auto;
+    }
+    </style>
+</head>
+
+<body>
+
+    <div class="main">
+
+    <div class="container">
+      <div class="banner">
+        <img class="banimg" src="../img/log.webp" alt="Zoie Firkins tab">
+      </div>
+      <div class="side1">
+
+        <nav class="sidebar-window">
+          <div class="nav-panel">
+            <div class="labeled"><p>Nav</p></div>
+            <div class="nav-links">
+              <a href="v1index.html">❥ Home</a>
+              <a href="about.html">❥ About Me</a>
+              <a href="gallery.html">❥ Gallery</a>
+              <a href="library.html">❥ Library</a>
+              <a href="projects.html">❥ Projects</a>
+              <a href="contact.html">❥ Contact me</a>
+            </div>
+          </div>
+          <div class="nav-panel outlinks-panel">
+            <div class="labeled"><p>Out</p></div>
+            <div class="nav-links">
+              <a href="mailto:zmfirkins@gmail.com" target="_blank" rel="noopener noreferrer">❥ Email</a>
+              <a href="https://github.com/zmfirkins" target="_blank" rel="noopener noreferrer">❥ Github</a>
+              <a class="last" href="https://www.linkedin.com/in/zoie-firkins-2832b2321/" target="_blank" rel="noopener noreferrer">❥ LinkedIn</a>
+            </div>
+          </div>
+        </nav>
+      </div>
+
+      <div class="maininfo">
+        <div class="labeled">
+          <p>🏗️ Projects 🏗️</p>
+        </div>
+
+        <div class="textbox">
+          <details>
+            <summary><strong>Interactive Art Sandbox</strong></summary>
+            <div class="gallery-item">
+                <img src="../projects/apple.webp" alt="Apple" loading="lazy">
+                <br>
+                <a class = "link" href="https://github.com/zmfirkins/InteractiveArtSandbox.git">Art Sandbox Github</a>
+            </div>
+          </details>
+
+          <details>
+            <summary><strong>TravelNest - booking near your adventurers made easy</strong></summary>
+            <div class="gallery-item">
+                <img id = "travel" src="../projects/travelnest.webp" alt="TravelNest Image" loading="lazy">
+          <p>
+            TravelNest is a personal project inspired by a conversation with my dad while we were planning a trip to Chicago. We wanted to stay somewhere that was roughly central to all the places we wanted to visit — and that sparked the idea.<br>
+            TravelNest lets you input any locations you plan to visit and then suggests nearby hotels or Airbnbs based on the average location of those places. It’s a simple tool to help make trip planning smarter and more efficient.<br>
+            The project is still a work in progress — in the future, I’d love to add the ability to view popular attractions directly on the map and easily add them to your list.
+            <br>
+            <a class = "link" href="https://zmfirkins.github.io/travelnest/" target="_blank" rel="noopener noreferrer">TravelNest Website</a><br>
+            <a class = "link" href="https://github.com/zmfirkins/travelnest" target="_blank" rel="noopener noreferrer">TravelNest Github Repo</a><br>
+          </p>
+            </div>
+          </details>
+            <details>
+            <summary><strong> Campus Life App</strong></summary>
+            <div class="gallery-item">
+                <img id = "travel" src="../projects/campus/campus.webp" alt="Campus Life Image" loading="lazy">
+          <p>
+            Campus Life is a school project where we were assigned to create a web application that addresses common pain points in college life through a unified interface.<br>
+            <br>
+            The project requirements: <br>
+            <ul>
+              <li>Three or more HTML pages using semantic HTML to organize content.</li><br> 
+              <li>Custom CSS with responsive rules and layout techniques.</li><br>
+              <li>Bootstrap integration for styling and responsive components.</li><br>
+              <li>JavaScript interactivity using event-driven programming to enhance user experience.</li><br>
+              <li>One or more external APIs, integrated to display live or dynamic content (e.g., events, maps, menus, news, etc.). We suggest using a free API from this list of free public APIs.</li> <br>
+              <li>Accessibility features that meet WCAG standards (semantic structure, alt text, color contrast, etc.). </li><br>
+              <li>Responsive design that works well on desktop, tablet, and mobile. </li><br>
+              <li>Deployed website using GitHub Pages with all linked files working as expected. </li><br>
+            </ul>
+          <p>Wireframes were created in Procreate </p>
+          <img id = "wireframe" src="../projects/campus/collegewireframe.webp" alt="Campus> Life Wireframe" loading="lazy">
+          <p>
+            <a class = "link" href="https://zmfirkins.github.io/campus-life-super-app/" target="_blank" rel="noopener noreferrer">Campus LifeWebsite</a><br>
+            <a class = "link" href="https://github.com/zmfirkins/campus-life-super-app.git" target="_blank" rel="noopener noreferrer">Campus Life Github Repo</a><br>
+          </p>
+            </div>
+          </details>
+          <details>
+            <summary><strong>ScarletStarLord's Website</strong></summary>
+            <div class="gallery-item">
+                <img id = "travel" src="../projects/scarletstarlord/ScarletStarLord.webp" alt="ScarletStarLord's Website Image" loading="lazy">
+          <p>
+            ScarletStarLord's website is a website for a close friend of mine who needed a simple portfolio site to showcase her artwork and sell comissions. The style of the site is based off of the early 2000s website, MySpace, which features a personal profile and showcases interests and friends.
+            <br>
+            <a class = "link" href="https://zmfirkins.github.io/ScarletStarLord/" target="_blank" rel="noopener noreferrer">ScarletStarLord's Website</a><br>
+            <a class = "link" href="https://github.com/zmfirkins/ScarletStarLord" target="_blank" rel="noopener noreferrer">ScarletStarLord's Website Github Repo</a><br>
+          </p>
+            </div>
+          </details>
+          <details>
+            <summary><strong>Flash Phocus Studio</strong></summary>
+            <div class="gallery-item">
+                <img id = "travel" src="../projects/photographysite/FlashPhocusStudio.webp" alt="Flash Phocus Studio Image" loading="lazy">
+          <p>Flash Phocus Studio is a photography website project for a photographer that needed a simple yet effective online presence to showcase their work and services.</p>
+            
+          <p>I started by creating wireframe designs for each page in Figma (on the left side of page), followed by mock-ups (on right side of page). </p>
+          <p>Home Pages:</p>
+          <p><img id = "wireframe" src="../projects/photographysite/home.webp" alt="Flash Phocus Studio Home Page Wireframes and Mockups" loading="lazy"></p>
+          <p>About Pages:</p>
+         <p><img id = "wireframe" src="../projects/photographysite/about.webp" alt="Flash Phocus Studio About Page Wireframes and Mockups" loading="lazy"></p>
+          <p>Portfolio Pages:</p>
+         <p><img id = "wireframe" src="../projects/photographysite/port.webp" alt="Flash Phocus Studio Portfolio Page Wireframes and Mockups" loading="lazy"></p>
+          <p>Contact Pages:</p>
+         <p><img id = "wireframe" src="../projects/photographysite/contact.webp" alt="Flash Phocus Studio Contact Page Wireframes and Mockups" loading="lazy"></p>
+         <p>After completing the design phase, I moved on to developing the actual website using HTML and CSS. Please feel free to visit the live site or check out the source code on GitHub.</p>
+          <p>
+            <a class = "link" href="https://zmfirkins.github.io/FlashPhocusStudio/" target="_blank" rel="noopener noreferrer">Flash Phocus Studio Photography Website</a><br>
+            <a class = "link" href="https://github.com/zmfirkins/FlashPhocusStudio.git" target="_blank" rel="noopener noreferrer">Flash Phocus Studio Github Repo</a><br>
+          </p>
+            </div>
+          </details>
+
+          <details>
+            <summary><strong>Future Projects Log</strong></summary>
+            <div class="gallery-item">
+             
+          <p>
+           This is where I keep a list of future projects that may or may not be carried out
+          </p>
+            <ul>
+                <li>Inspiration Page- A new page linked from this site displaying the artists/designers I get my inspiration from and how I use that in my work.</li>
+                <li>Local Legends- An application that allows you to look at a map and see all the 'haunted' locations in the area and their lore, e.g. Point Pleasant, West Virginina - Will show mothman as a local legend and allow you to learn more about where the legend came from.</li>
+                <li>Character Page- ScarletStarLord's site will eventually be linked to a new page listing all of her original characters, along with their biographies.</li>
+            </ul>
+            </div>
+          </details>
+        <!--  <details>
+            <summary><strong>InspoNet</strong></summary>
+            <div class="gallery-item">
+
+            </div>
+          </details>
+
+          <details>
+            <summary><strong>Local Legends</strong></summary>
+            <div class="gallery-item">
+
+            </div>
+          </details>
+-->
+        </div>
+      </div>
+
+    </div>
+    <div class="footer">
+      <mark>
+        <br>Zoie Firkins zmfirkins@gmail.com
+        </mark>
+    </div>
+  </div>
+
+  <script src="../js/darkmode.js"></script>
+</body>
+</html>

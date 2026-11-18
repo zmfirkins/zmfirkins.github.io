@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Gallery/Portfolio</title>
+    <link rel="icon" href="../img/favicon.ico">
+    <link rel="stylesheet" href="css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+    .textbox {
+        height: auto;
+        max-height: 48em;
+    }
+    details {
+        margin-bottom: 0.5rem;
+        padding: 0.5rem;
+    }
+
+    summary {
+        cursor: pointer;
+        list-style: none;
+        outline: none;
+        padding: 0.3rem 0;
+        margin: 0;
+        display: flex;
+        align-items: center;
+    }
+
+    summary::-webkit-details-marker {
+        display: none;
+    }
+
+    summary::before {
+        content: "❥ ";
+        display: inline-block;
+        margin-right: 0.5rem;
+        transition: transform 0.2s ease;
+    }
+
+    details[open] summary::before {
+        transform: rotate(90deg);
+    }
+
+    .count-badge {
+        font-family: 'Pixelon';
+        font-size: 0.7em;
+        background: #397a96;
+        color: white;
+        border-radius: 1em;
+        padding: 0.1em 0.6em;
+        margin-left: 0.6em;
+    }
+
+    .gallery-item {
+        display: none;
+        margin-top: 1rem;
+    }
+
+    details[open] .gallery-item {
+        display: block;
+    }
+
+    .img-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        gap: 0.6rem;
+        padding: 0 0.25rem;
+    }
+
+    .img-grid figure {
+        margin: 0 auto;
+        position: relative;
+        aspect-ratio: 1 / 1;
+        max-width: 170px;
+        width: 100%;
+        border: 2px solid #666;
+        border-radius: 5px;
+        overflow: hidden;
+        cursor: pointer;
+        background: #9fc6dd;
+        transition: border-color 0.15s ease;
+    }
+
+    .img-grid figure:hover {
+        border-color: #2c4a5c;
+    }
+
+    .img-grid img {
+        width: 100%;
+        height: 100%;
+        margin:auto;
+        object-fit: cover;
+        display: block;
+    }
+
+    .sensitive-badge {
+        position: absolute;
+        top: 4px;
+        right: 4px;
+        background: #a33d3d;
+        color: white;
+        font-family: 'Pixelon';
+        font-size: 0.65em;
+        padding: 0.1em 0.4em;
+        border-radius: 4px;
+        z-index: 2;
+    }
+
+    .blur-image img {
+        filter: blur(14px) !important;
+        transform: scale(1.1);
+        transition: filter 0.2s ease;
+    }
+
+    .blur-image.clear img {
+        filter: none !important;
+        transform: none;
+    }
+
+    /* Lightbox */
+    #lightbox {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(20, 35, 45, 0.85);
+        z-index: 999;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #lightbox.active {
+        display: flex;
+    }
+
+    .lb-box {
+        background: #cceeff;
+        border: var(--main-border);
+        border-radius: var(--main-radius);
+        padding: 1em;
+        max-width: 90vw;
+        max-height: 90vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .lb-box img {
+        max-width: 100%;
+        max-height: 65vh;
+        border-radius: 8px;
+        border: 2px solid #666;
+        object-fit: contain;
+    }
+
+    .lb-caption {
+        margin-top: 0.6em;
+        font-family: 'Pixelon';
+        color: #416478;
+        text-align: center;
+    }
+
+    .lb-controls {
+        display: flex;
+        gap: 0.6em;
+        margin-top: 0.6em;
+    }
+
+    .lb-controls button {
+        font-family: 'Pixelon';
+        font-size: 0.8em;
+        color: #4b6779;
+        border: none;
+        border-bottom: 0.1em solid #77a8b9;
+        background: var(--btn-gradient);
+        border-radius: 8px;
+        padding: 0.5em 1em;
+        cursor: pointer;
+    }
+
+    .lb-controls button:hover {
+        color: #2E4A5C;
+        background: linear-gradient(0deg, #9bd0eb 0%, #86bde0 20%, #a5d3f3 100%);
+    }
+    </style>
+</head>
+
+<body>
+
+    <div class="main">
+
+    <div class="container">
+      <div class="banner">
+        <img class="banimg" src="../img/log.webp" alt="Zoie Firkins tab">
+      </div>
+      <div class="side1">
+
+        <nav class="sidebar-window">
+          <div class="nav-panel">
+            <div class="labeled"><p>Nav</p></div>
+            <div class="nav-links">
+              <a href="v1index.html">❥ Home</a>
+              <a href="about.html">❥ About Me</a>
+              <a href="gallery.html">❥ Gallery</a>
+              <a href="library.html">❥ Library</a>
+              <a href="projects.html">❥ Projects</a>
+              <a href="contact.html">❥ Contact me</a>
+            </div>
+          </div>
+          <div class="nav-panel outlinks-panel">
+            <div class="labeled"><p>Out</p></div>
+            <div class="nav-links">
+              <a href="mailto:zmfirkins@gmail.com" target="_blank" rel="noopener noreferrer">❥ Email</a>
+              <a href="https://github.com/zmfirkins" target="_blank" rel="noopener noreferrer">❥ Github</a>
+              <a class="last" href="https://www.linkedin.com/in/zoie-firkins-2832b2321/" target="_blank" rel="noopener noreferrer">❥ LinkedIn</a>
+            </div>
+          </div>
+        </nav>
+      </div>
+
+      <div class="maininfo">
+        <div class="labeled">
+          <p>🖼️ Gallery/Portfolio 🖼️</p>
+        </div>
+
+        <div class="textbox">
+          <details open>
+            <summary><strong>Digital Paintings</strong><span class="count-badge">13</span></summary>
+            <div class="gallery-item">
+              <div class="img-grid">
+                <figure><img src="../img/digitalpaintings/dnd.webp" alt="Digital Painting of my friend's DND character" loading="lazy"></figure>
+                <figure><img src="../img/digitalpaintings/couple.webp" alt="Digital Painting of my friend's DND characters" loading="lazy"></figure>
+                <figure><img src="../img/digitalpaintings/Scarlet.webp" alt="Digital Painting of my friend's Persona" loading="lazy"></figure>
+                <figure><img src="../img/digitalpaintings/dragon.webp" alt="Digital Painting of a dragon" loading="lazy"></figure>
+                <figure><img src="../img/digitalpaintings/ace_what.webp" alt="Digital Painting of a character I created" loading="lazy"></figure>
+                <figure><img src="../img/digitalpaintings/battle.webp" alt="Digital Painting of people battling" loading="lazy"></figure>
+                <figure><img src="../img/digitalpaintings/kq.webp" alt="Digital Painting of a dynamic dnd group" loading="lazy"></figure>
+                <figure><img src="../img/digitalpaintings/room.webp" alt="Digital Painting of dirty apartment" loading="lazy"></figure>
+                <figure><img src="../img/digitalpaintings/darius.webp" alt="Digital Painting of my friend's DND character" loading="lazy"></figure>
+                <figure><img src="../img/digitalpaintings/ava.webp" alt="Digital Painting of my friend's DND character" loading="lazy"></figure>
+                <figure><img src="../img/digitalpaintings/dnd.webp" alt="Digital Painting of myDND character" loading="lazy"></figure>
+                <figure><img src="../img/digitalpaintings/nash_and_ash.webp" alt="Digital Painting of DND characters" loading="lazy"></figure>
+                <figure class="blur-image" id="goreFigure"><span class="sensitive-badge">⚠ gore</span><img src="../img/digitalpaintings/gross.webp" alt="Digital Artwork - Gore" loading="lazy"></figure>
+              </div>
+              <p>The artwork marked ⚠ contains gore — click it to reveal.</p>
+            </div>
+          </details>
+
+          <details>
+            <summary><strong>Graphics/Stickers</strong><span class="count-badge">8</span></summary>
+            <div class="gallery-item">
+              <div class="img-grid">
+                <figure><img src="../img/graphics/froggraphic.webp" alt="Frog Graphic/Sticker" loading="lazy"></figure>
+                <figure><img src="../img/graphics/toastgraphic.webp" alt="Toast Graphic/Sticker" loading="lazy"></figure>
+                <figure><img src="../img/graphics/cinnamongraphic.webp" alt="Cinnamon Graphic/Sticker" loading="lazy"></figure>
+                <figure><img src="../img/graphics/jellyfishgraphic.webp" alt="Jellyfish Graphic/Sticker" loading="lazy"></figure>
+                <figure><img src="../img/graphics/mushroomratgraphic.webp" alt="Mushroom Rat Graphic/Sticker" loading="lazy"></figure>
+                <figure><img src="../img/graphics/dragongraphic.webp" alt="Dragon Graphic/Sticker" loading="lazy"></figure>
+                <figure><img src="../img/graphics/phonegraphic.webp" alt="Phone Graphic/Sticker" loading="lazy"></figure>
+                <figure><img src="../img/graphics/bannergraphic.webp" alt="Banner Graphic/Sticker" loading="lazy"></figure>
+              </div>
+            </div>
+          </details>
+
+          <details>
+            <summary><strong>Sculptures/Dioramas</strong><span class="count-badge">5</span></summary>
+            <div class="gallery-item">
+              <div class="img-grid">
+                <figure><img src="../img/sculptures/goose.webp" alt="Whimsical Jewlery Box" loading="lazy"></figure>
+                <figure><img src="../img/sculptures/nuka.webp" alt="Nuka Cola Minifridge" loading="lazy"></figure>
+                <figure><img src="../img/sculptures/tub.webp" alt="Bathtub Diodrama" loading="lazy"></figure>
+                <figure><img src="../img/sculptures/beef.webp" alt="Beefaroni Art" loading="lazy"></figure>
+                <figure><img src="../img/sculptures/cd.webp" alt="CD Chandelier" loading="lazy"></figure>
+              </div>
+            </div>
+          </details>
+
+          <details>
+            <summary><strong>Photos</strong><span class="count-badge">13</span></summary>
+            <div class="gallery-item">
+              <div class="img-grid">
+                <figure><img src="../img/pictures/me.webp" alt="Me :D" loading="lazy"></figure>
+                <figure><img src="../img/pictures/toastinsweater.webp" alt="Toast in a Sweater" loading="lazy"></figure>
+                <figure><img src="../img/pictures/celebrasian2026.webp" alt="My friends and I at Celebrasian" loading="lazy"></figure>
+                <figure><img src="../img/pictures/atopisewed.webp" alt="A top I sewed out of a scarf" loading="lazy"></figure>
+                <figure><img src="../img/pictures/bbno$.webp" alt="BBNO$ Concert" loading="lazy"></figure>
+                <figure><img src="../img/pictures/toasteepy.webp" alt="Toast sleepy" loading="lazy"></figure>
+                <figure><img src="../img/pictures/friends.webp" alt="my friends" loading="lazy"></figure>
+                <figure><img src="../img/pictures/apollo.webp" alt="Apollo the dog" loading="lazy"></figure>
+                <figure><img src="../img/pictures/DubH.webp" alt="My friends dance show" loading="lazy"></figure>
+                <figure><img src="../img/pictures/wizardtoast.webp" alt="Wizard Toast" loading="lazy"></figure>
+                <figure><img src="../img/pictures/Waterlanternfestival.webp" alt="The Water Lantern Festival 2026" loading="lazy"></figure>
+                <figure><img src="../img/pictures/waterlanterns.webp" alt="Water Lanterns" loading="lazy"></figure>
+                <figure><img src="../img/pictures/poloroid.webp" alt="Poloroid of my friend and I" loading="lazy"></figure>
+              </div>
+            </div>
+          </details>
+
+
+          <!-- <details>
+            <summary><strong>UI Designs</strong></summary>
+            <div class="gallery-item">
+
+            </div>
+          </details>
+
+          <details>
+            <summary><strong>Character Design</strong></summary>
+            <div class="gallery-item">
+      
+            </div>
+          </details>
+            -->
+        </div>
+
+      </div>
+
+    </div>
+    <div class="footer">
+      <mark>
+        <br>Zoie Firkins zmfirkins@gmail.com
+        </mark>
+    </div>
+  </div>
+
+  <div id="lightbox">
+    <div class="lb-box">
+      <img id="lb-img" src="" alt="">
+      <div class="lb-caption" id="lb-caption"></div>
+      <div class="lb-controls">
+        <button id="lb-prev">❮ Prev</button>
+        <button id="lb-close">✖ Close</button>
+        <button id="lb-next">Next ❯</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Lightbox
+    const lightbox = document.getElementById("lightbox");
+    const lbImg = document.getElementById("lb-img");
+    const lbCaption = document.getElementById("lb-caption");
+    const lbPrev = document.getElementById("lb-prev");
+    const lbNext = document.getElementById("lb-next");
+    const lbClose = document.getElementById("lb-close");
+
+    let currentGroup = [];
+    let currentIndex = 0;
+
+    function openLightbox(figures, index) {
+      currentGroup = figures;
+      currentIndex = index;
+      updateLightbox();
+      lightbox.classList.add("active");
+    }
+
+    function updateLightbox() {
+      const fig = currentGroup[currentIndex];
+      const img = fig.querySelector("img");
+      lbImg.src = img.src;
+      lbImg.alt = img.alt;
+      lbCaption.textContent = img.alt || "";
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove("active");
+    }
+
+    document.querySelectorAll(".img-grid").forEach((grid) => {
+      const figures = Array.from(grid.querySelectorAll("figure"));
+      figures.forEach((fig, i) => {
+        fig.addEventListener("click", () => {
+          const isBlurred = fig.classList.contains("blur-image") && !fig.classList.contains("clear");
+          if (isBlurred) {
+            // First click on sensitive content only reveals it, doesn't open lightbox
+            fig.classList.add("clear");
+            return;
+          }
+          openLightbox(figures, i);
+        });
+      });
+    });
+
+    lbPrev.addEventListener("click", () => {
+      currentIndex = (currentIndex - 1 + currentGroup.length) % currentGroup.length;
+      updateLightbox();
+    });
+
+    lbNext.addEventListener("click", () => {
+      currentIndex = (currentIndex + 1) % currentGroup.length;
+      updateLightbox();
+    });
+
+    lbClose.addEventListener("click", closeLightbox);
+
+    lightbox.addEventListener("click", (e) => {
+      if (e.target === lightbox) closeLightbox();
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (!lightbox.classList.contains("active")) return;
+      if (e.key === "Escape") closeLightbox();
+      if (e.key === "ArrowLeft") lbPrev.click();
+      if (e.key === "ArrowRight") lbNext.click();
+    });
+  </script>
+  <script src="../js/darkmode.js"></script>
+</body>
+</html>

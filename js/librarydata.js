@@ -70,6 +70,7 @@ function parseCSV(text) {
 
 async function fetchSheetEntries() {
   const res  = await fetch(SHEET_CSV_URL);
+  if (!res.ok) throw new Error(`Library spreadsheet returned HTTP ${res.status}`);
   const text = await res.text();
   const rows = parseCSV(text);
 
