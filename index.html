@@ -448,7 +448,7 @@
         <button data-close><div class="pixicon ctrlicon" data-icon="close" data-icon-fill="black"></div></button>
       </div>
     </div>
-    <iframe width="314" height="321" scrolling="no" src="https://gify.pet/pet/pet.html?name=Toast&dob=1789610842&gender=m&element=Earth&pet=https%3A%2F%2Fcdn.discordapp.com%2Fattachments%2F638121615032451143%2F1549948503503929344%2F1789606895274.png%3Fex%3D6aac8d87%26is%3D6aab3c07%26hm%3D5bc715ea6881aa8779810b796c17086f45b85ba99fae74842304ca9527afdbf6%26&map=hills.jpg&background=&tablecolor=black&textcolor=black" frameborder="0"></iframe>
+    <iframe width="314" height="321" scrolling="no" src="https://gify.pet/pet/pet.html?name=Toast&dob=1795108988&gender=m&element=Earth&pet=https%3A%2F%2Fmedia.discordapp.net%2Fattachments%2F638121615032451143%2F1573024848022605985%2F1795108732455.png%3Fex%3D6b00810d%26is%3D6aff2f8d%26hm%3De3796a4bcb9fb72d3d3be6f66858ea47779533b6bd18f68751c0e0165d93971e%26format%3Dwebp%26quality%3Dlossless%26width%3D902%26height%3D1202&map=hills.jpg&background=&tablecolor=black&textcolor=black" frameborder="0"></iframe>
   </div>
 
   <!-- PAINT (stub) -->
@@ -858,15 +858,6 @@ function makeProjectTile(project, index, parentPath){
   return tile;
 }
 
-function makeProjectBackButton(label){
-  const back = document.createElement('button');
-  back.className = 'detail-back';
-  back.type = 'button';
-  back.textContent = label;
-  back.addEventListener('click', ()=> projectsNav.back());
-  return back;
-}
-
 function renderProjectImages(project){
   if(!project.images || project.images.length === 0) return null;
   const grid = document.createElement('div');
@@ -911,7 +902,6 @@ function applyProjectsState(state){
   const parentPath = state.path || [];
   if(state.type === 'folder'){
     const folder = getProjectAtPath(state.path);
-    projectsDetail.appendChild(makeProjectBackButton('Back to Projects'));
     const title = document.createElement('h1');
     title.textContent = folder.name;
     projectsDetail.appendChild(title);
@@ -928,8 +918,6 @@ function applyProjectsState(state){
   }
 
   const project = getProjectsAt(parentPath)[state.index];
-  const parentName = parentPath.length ? getProjectAtPath(parentPath).name : 'Projects';
-  projectsDetail.appendChild(makeProjectBackButton(`Back to ${parentName}`));
   const title = document.createElement('h1');
   title.textContent = project.name;
   projectsDetail.appendChild(title);
@@ -968,7 +956,7 @@ function renderProjectTiles(grid, items, parentPath){
 }
 const projectsNav = createHistoryNav(applyProjectsState, '[data-nav-win="projects"]');
 
-const galleryIconKeys = ['pencil','ruler','smiley','camera'];
+const galleryIconKeys = ['pencil','smiley','ruler','camera'];
 const galleryCategories = [
   {
     name:'Digital Art',
@@ -994,7 +982,7 @@ const galleryCategories = [
   },
   {
     name:'Graphics/Stickers',
-    desc:'Graphic designs, stickers, and other digital creations.',
+    desc:'Graphic designs, stickers, and other digital goodies.',
     images:[
       {src:'img/graphics/froggraphic.webp', alt:'Frog graphic sticker', caption:'Frog'},
       {src:'img/graphics/toastgraphic.webp', alt:'Toast graphic sticker', caption:'Toast'},
@@ -1010,7 +998,7 @@ const galleryCategories = [
   },
   {
     name:'Physical Art',
-    desc:'Sculptures, miniatures, and handmade projects.',
+    desc:'Sculptures, miniatures, and other handmadeprojects.',
     images:[
       {src:'img/sculptures/goose.webp', alt:'Whimsical goose jewelry box', caption:'Goose jewelry box'},
       {src:'img/sculptures/goose2.webp', alt:'Second view of the goose sculpture', caption:'Goose - another view'},
@@ -1140,12 +1128,6 @@ function applyGalleryState(state){
   detail.style.display = 'block';
   detail.replaceChildren();
 
-  const back = document.createElement('button');
-  back.className = 'detail-back';
-  back.type = 'button';
-  back.textContent = 'Back to Gallery';
-  back.addEventListener('click', ()=> galleryNav.back());
-  detail.appendChild(back);
 
   const title = document.createElement('h1');
   title.textContent = c.name;
