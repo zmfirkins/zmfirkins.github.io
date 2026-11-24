@@ -504,7 +504,7 @@
       </a>
     </div>
   </div>
-
+  <!-- GALLERY LIGHTBOX CENSOR-->
   <div class="gallery-lightbox" id="gallery-lightbox" role="dialog" aria-modal="true" aria-label="Enlarged image viewer" aria-hidden="true" hidden>
     <div class="gallery-lightbox-panel">
       <div class="gallery-lightbox-controls">
@@ -537,10 +537,9 @@
 
 </div>
 
-<script src="js/librarydata.js"></script>
+<script src="data/librarydata.js"></script>
 <script>
-// ---------------- real Figma pixel-icon assets ----------------
-// Shared once: gradient + drop-shadow, referenced by every icon instance.
+// ---------------- pixel-icon assets ----------------
 const ICON_DATA = {
   trash: { vb: "0 0 72 83", paths: ["M57.8947 13.6364V10.2273H54.5263V6.81818H51.1579V3.40909H47.7895V0H27.5789V3.40909H24.2105V6.81818H20.8421V10.2273H17.4737V13.6364H4V20.4545H10.7368V71.5909H14.1053V75H61.2632V68.1818H64.6316V20.4545H68V13.6364H57.8947ZM24.2105 10.2273H27.5789V6.81818H47.7895V10.2273H51.1579V13.6364H24.2105V10.2273ZM57.8947 68.1818H17.4737V20.4545H57.8947V68.1818Z","M24.2105 27.2727H30.9474V61.3636H24.2105V27.2727ZM44.4211 27.2727H51.1579V61.3636H44.4211V27.2727Z"] },
   welcome: { vb: "0 0 83 83", paths: ["M57.5547 17.8594V25.0078H53.9922V35.7188H57.5547V39.2812H61.1406V42.8672H50.4297V46.4297H46.8438V49.9922H57.5547V57.1406H53.9922V64.2891H57.5547V67.8516H64.7031V64.2891H68.2891V60.7031H71.8516V53.5781H75.4141V46.4297H79V28.5703H75.4141V21.4219H71.8516V14.2969H68.2891V17.8594H57.5547ZM64.7031 10.7109H68.2891V14.2969H64.7031V10.7109ZM57.5547 7.14844H64.7031V10.7109H57.5547V7.14844Z","M50.4297 67.8516H57.5547V71.4375H50.4297V67.8516ZM50.4297 3.5625H57.5547V7.14844H50.4297V3.5625Z","M43.2812 67.8516H39.7188V64.2891H28.9844V67.8516H25.4219V71.4375H32.5703V75H50.4297V71.4375H43.2812V67.8516ZM32.5703 0H50.4297V3.5625H32.5703V0ZM28.9844 39.2812H32.5703V42.8672H36.1328V32.1328H28.9844V39.2812ZM18.2734 64.2891H25.4219V67.8516H18.2734V64.2891ZM14.7109 60.7031H18.2734V64.2891H14.7109V60.7031Z","M11.1484 53.5781V60.7031H14.7109V57.1406H18.2734V53.5781H21.8594V42.8672H18.2734V39.2812H14.7109V35.7188H11.1484V32.1328H14.7109V28.5703H25.4219V25.0078H28.9844V21.4219H32.5703V25.0078H36.1328V21.4219H39.7188V14.2969H36.1328V10.7109H28.9844V7.14844H32.5703V3.5625H25.4219V7.14844H18.2734V10.7109H14.7109V14.2969H11.1484V21.4219H7.5625V28.5703H4V46.4297H7.5625V53.5781H11.1484Z"] },
@@ -611,7 +610,7 @@ function minimizeWindow(win){
   openSet.add(win.id);
   updateTray();
 }
-// Close (the X): hide the window AND drop its taskbar tab.
+// Close: hide the window AND drop its taskbar tab.
 function closeWindow(win){
   win.classList.add('hidden');
   openSet.delete(win.id);
@@ -708,7 +707,7 @@ function updateTray(){
 // ---------------- content: folder icon svg ----------------
 const folderSVG = iconSVG('folder');
 
-// ---------------- simple back/forward history (like a real browser tab) ----------------
+// ---------------- back/forward history (like a real browser tab) ----------------
 function createHistoryNav(applyFn, addressRowSelector){
   let stack = [{type:'list'}];
   let pointer = 0;
@@ -737,7 +736,7 @@ function createHistoryNav(applyFn, addressRowSelector){
     init(){ apply(); }
   };
 }
-
+// ---------------- Project Info ----------------
 const projects = [
   {
     type:'folder',
@@ -816,7 +815,7 @@ const projects = [
       {src:'projects/originalwebsite/contact.webp', alt:'Original website contact page', caption:'Contact page design'},
     ],
     links:[
-      {label:'Visit Original Website Design', href:'https://zmfirkins.github.io/index.html'},
+      {label:'Visit Original Website Design', href:'https://zmfirkins.github.io/v1index.html'},
     ]
   }
 ];
@@ -956,6 +955,7 @@ function renderProjectTiles(grid, items, parentPath){
 }
 const projectsNav = createHistoryNav(applyProjectsState, '[data-nav-win="projects"]');
 
+// ---------------- Gallery Content ----------------
 const galleryIconKeys = ['pencil','smiley','ruler','camera'];
 const galleryCategories = [
   {
@@ -1030,6 +1030,8 @@ const galleryCategories = [
     ]
   }
 ];
+
+// ---------------- Gallery Controls ----------------
 const galleryGrid = document.getElementById('gallery-grid');
 galleryCategories.forEach((c,i)=>{
   const el = document.createElement('div');
@@ -1183,7 +1185,7 @@ function applyGalleryState(state){
 }
 const galleryNav = createHistoryNav(applyGalleryState, '[data-nav-win="gallery"]');
 
-// wire up the address-bar back/forward/refresh icons for windows that have real sub-navigation
+// address-bar back/forward/refresh icons for windows that have sub-navigation
 const NAVS = { projects: projectsNav, gallery: galleryNav };
 document.querySelectorAll('[data-nav-win]').forEach(row=>{
   const winKey = row.dataset.navWin;
@@ -1242,7 +1244,7 @@ function makeLibraryStars(rating){
   for(let i = 1; i <= 5; i++){
     const star = document.createElement('span');
     star.className = score >= i ? 'star-full' : score >= i - 0.5 ? 'star-half' : 'star-empty';
-    star.textContent = '★';
+    star.classList.add('library-star');
     stars.appendChild(star);
   }
 
@@ -1255,9 +1257,16 @@ function makeLibraryCard(entry){
   const category = String(entry.category || '');
   const picture = entry.picture || entry.poster;
   const rating = Number(entry.rating) || 0;
+  const noteText = String(entry.note || '').trim();
   const categoryName = ({book:'BOOK', manga:'MANGA', anime:'ANIME', game:'GAME', movie:'FILM'})[category] || 'FAVORITE';
   card.className = 'library-card';
   card.dataset.category = category;
+
+  const itemButton = document.createElement('button');
+  itemButton.type = 'button';
+  itemButton.className = 'library-item-button';
+  itemButton.disabled = !noteText;
+  itemButton.setAttribute('aria-label', noteText ? `Show note for ${title}` : title);
 
   const cover = document.createElement('div');
   cover.className = 'library-card-cover';
@@ -1270,8 +1279,8 @@ function makeLibraryCard(entry){
   if(picture){
     const image = document.createElement('img');
     image.className = 'library-card-image';
-    image.src = picture;
-    image.alt = title;
+    image.src = String(picture);
+    image.alt = '';
     image.loading = 'lazy';
     image.addEventListener('error', ()=>{
       image.hidden = true;
@@ -1279,51 +1288,31 @@ function makeLibraryCard(entry){
     }, {once:true});
     cover.appendChild(image);
   }
-  card.appendChild(cover);
+  itemButton.appendChild(cover);
 
-  const body = document.createElement('div');
-  body.className = 'library-card-body';
-
-  const categoryLabel = document.createElement('span');
-  categoryLabel.className = 'library-card-category';
-  categoryLabel.textContent = categoryName;
-  body.appendChild(categoryLabel);
-
-  const heading = document.createElement('h2');
+  const heading = document.createElement('span');
   heading.className = 'library-card-title';
   heading.textContent = title;
-  body.appendChild(heading);
+  itemButton.appendChild(heading);
+  card.appendChild(itemButton);
 
-  if(entry.note){
+  card.appendChild(makeLibraryStars(rating));
+
+  if(noteText){
     const note = document.createElement('p');
     note.className = 'library-card-note';
-    note.textContent = entry.note;
-    body.appendChild(note);
+    note.textContent = noteText;
+    note.hidden = true;
+    itemButton.setAttribute('aria-expanded', 'false');
+    itemButton.addEventListener('click', ()=>{
+      const expanded = itemButton.getAttribute('aria-expanded') === 'true';
+      itemButton.setAttribute('aria-expanded', String(!expanded));
+      itemButton.setAttribute('aria-label', `${expanded ? 'Show' : 'Hide'} note for ${title}`);
+      note.hidden = expanded;
+    });
+    card.appendChild(note);
   }
 
-  const footer = document.createElement('div');
-  footer.className = 'library-card-footer';
-  footer.appendChild(makeLibraryStars(rating));
-
-  if(entry.link){
-    try{
-      const linkUrl = new URL(entry.link, window.location.href);
-      if(linkUrl.protocol === 'https:' || linkUrl.protocol === 'http:'){
-        const link = document.createElement('a');
-        link.className = 'library-card-link';
-        link.href = linkUrl.href;
-        link.target = '_blank';
-        link.rel = 'noopener noreferrer';
-        link.textContent = '↗ Letterboxd';
-        footer.appendChild(link);
-      }
-    }catch(error){
-      console.warn('Skipping an invalid library link.', error);
-    }
-  }
-
-  body.appendChild(footer);
-  card.appendChild(body);
   return card;
 }
 
@@ -1389,8 +1378,20 @@ async function loadLibrary(){
   }
 }
 
-if(typeof categories !== 'undefined' && Array.isArray(categories)){
-  categories.forEach(category=>{
+const fallbackLibraryCategories = [
+  {id:'all', label:'ALL'},
+  {id:'book', label:'BOOKS'},
+  {id:'manga', label:'MANGA'},
+  {id:'anime', label:'ANIME'},
+  {id:'game', label:'GAMES'},
+  {id:'movie', label:'MOVIES'}
+];
+const libraryCategories = typeof categories !== 'undefined' && Array.isArray(categories)
+  ? categories
+  : fallbackLibraryCategories;
+
+if(libraryCategories.length){
+  libraryCategories.forEach(category=>{
     const button = document.createElement('button');
     button.type = 'button';
     button.className = 'library-filter' + (category.id === 'all' ? ' active' : '');
@@ -1408,9 +1409,6 @@ if(typeof categories !== 'undefined' && Array.isArray(categories)){
     });
     libraryFilterBar.appendChild(button);
   });
-}else{
-  libraryStatus.textContent = 'Library data could not be initialized. Reload the page and try again.';
-  libraryStatus.classList.add('has-error');
 }
 
 loadLibrary();
@@ -1473,32 +1471,38 @@ let track_list = [
       {
           name:"Vickie",
           artist:"Peach Pit",
-          path:"music/Vickie.mp3"
+          path:"music/Vickie.mp3",
+          image:"img/music/Vickie.webp"
       },
       {
           name:"Blue Hair",
           artist:"TV Girl",
-          path:"music/Blue Hair.mp3"
+          path:"music/Blue Hair.mp3",
+          image:"img/music/BlueHair.webp"
       },
       {
           name:"Dracula",
           artist:"Tame Impala",
-          path:"music/Dracula.mp3"
+          path:"music/Dracula.mp3",
+          image:"img/music/Dracula.webp"
       },
       {
           name:"Do I Wanna Know",
           artist:"Arctic Monkeys",
-          path:"music/Do I Wanna Know.mp3"
+          path:"music/Do I Wanna Know.mp3",
+          image:"img/music/DoIWannaKnow.webp"
       },
       {
           name:"Voodoo",
           artist:"Valencia Grace",
-          path:"music/Voodoo.mp3"
+          path:"music/Voodoo.mp3",
+          image:"img/music/Voodoo.webp"
       },
       {
           name:"Mary On A Cross",
           artist:"Ghost",
-          path:"music/Mary On A Cross.mp3"
+          path:"music/Mary On A Cross.mp3",
+          image:"img/music/MaryOnACross.webp"
       }
   ];
   
@@ -1533,6 +1537,11 @@ function loadTrack(track_index) {
   clearInterval(updateTimer);
   resetValues();
  
+  const player_icon = document.querySelector(".player-icon");
+  player_icon.style.backgroundImage = track_list[track_index].image
+    ? `url("${track_list[track_index].image}")`
+    : "";
+
   curr_track.src = track_list[track_index].path;
   curr_track.load();
  
